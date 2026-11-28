@@ -149,7 +149,7 @@ lists every mode with examples.
   pairs. With `CASOracle.Ideal` imported, `oracle := sage`, `singular` or `sympy` proposes the
   basis instead, and Lean checks it the same way. `member` proves `f ∈ Ideal.span {g₁, …, gₘ}`
   with explicit cofactors, and `cas` proves such goals in any commutative ring, though a
-  certificate with denominators needs a ℚ-algebra. A refusal proves nothing about non-membership.
+  certificate with denominators needs a $\mathbb{Q}$-algebra. A refusal proves nothing about non-membership.
   See the [`groebner` page](https://lean-dojo.github.io/SymLean/docs/ref/groebner.html).
 
 ### Equations and linear algebra
