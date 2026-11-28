@@ -1,0 +1,38 @@
+# Rows of tests/floats/measure.py, 26 and 27 November 2026, Lean v4.36.0, three runs of each case, one process at a
+# time on a shared 96-core machine while a parallel build ran. Columns: kind, goal, arithmetic, call, outcome, kernel
+# time in milliseconds (median, smallest, largest), wall time of the process in seconds, largest resident set in
+# MiB. The binary64 and binary128 rows of the polynomial of degree 20 are missing: one binary64 run had not finished
+# after ten minutes.
+base	import CAS			proved	0.0266	0.0252	0.0284	3.5	4512
+call	exp x ≤ 2.72 on [0, 1]	exact	cega	proved	19.5	16.9	20.3	4.0	4532
+call	exp x ≤ 2.72 on [0, 1]	binary64	cega [use_floats]	proved	114	67.6	179	3.6	4532
+call	exp x ≤ 2.72 on [0, 1]	binary128	cega (arith := binary128)	proved	84.7	78	124	4.1	4542
+call	1 / (1 - x) ≤ 2 on [-1/2, 1/2]	exact	cega	proved	24.1	23.9	26.7	3.5	4533
+call	1 / (1 - x) ≤ 2 on [-1/2, 1/2]	binary64	cega [use_floats]	proved	84	83.6	86	3.4	4536
+call	1 / (1 - x) ≤ 2 on [-1/2, 1/2]	binary128	cega (arith := binary128)	proved	81.1	78.9	116	3.5	4537
+call	sqrt 2 ≤ 1.415	exact	cega	proved	15.7	14.7	22.2	4.4	4528
+call	sqrt 2 ≤ 1.415	binary64	cega [use_floats]	proved	90.3	84.7	139	3.8	4535
+call	sqrt 2 ≤ 1.415	binary128	cega (arith := binary128)	proved	112	84.7	135	3.8	4536
+call	exp (x * y) ≤ 21 on [0, 1] × [2, 3]	exact	cega	proved	24.5	24.2	24.9	4.3	4530
+call	exp (x * y) ≤ 21 on [0, 1] × [2, 3]	binary64	cega [use_floats]	proved	98	96.9	153	4.1	4539
+call	exp (x * y) ≤ 21 on [0, 1] × [2, 3]	binary128	cega (arith := binary128)	proved	110	107	127	4.3	4539
+call	x * (1 - x) ≤ 0.26 on [0, 1]	exact	cega	proved	117	111	169	4.4	4542
+call	x * (1 - x) ≤ 0.26 on [0, 1]	binary64	cega [use_floats] (depth := 6)	proved	1.17e+03	1.15e+03	1.17e+03	4.6	4647
+call	x * (1 - x) ≤ 0.26 on [0, 1]	binary128	cega (arith := binary128) (depth := 6)	proved	1.19e+03	1.17e+03	1.2e+03	4.5	4645
+call	sin x ≤ 0.85 on [0, 1]	exact	cega	proved	23.8	23.5	24	3.4	4532
+call	sin x ≤ 0.85 on [0, 1]	binary64	cega [use_floats] (depth := 5)	proved	310	305	318	3.6	4560
+call	sin x ≤ 0.85 on [0, 1]	binary128	cega (arith := binary128) (depth := 5)	proved	324	322	335	3.5	4562
+call	sqrt 2 to thirty digits	exact	cega (prec := 110)	proved	13.9	13.4	14.7	3.2	4530
+call	sqrt 2 to thirty digits	binary64	cega [use_floats]	refused	53.1	50.7	53.8	3.3	4531
+call	sqrt 2 to thirty digits	binary128	cega (arith := binary128)	proved	87.8	84.7	131	3.5	4535
+call	10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401	exact	cega	proved	118	90.9	129	4.7	4541
+call	10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401	binary64	cega [use_floats]	refused	71.3	70	92	3.5	4532
+call	10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401	binary128	cega (arith := binary128)	proved	219	200	333	3.9	4537
+eval	200 evaluations of x * (1 - x)	exact rationals	decide +kernel	proved	2.4e+03	1.65e+03	2.4e+03	5.8	4704
+eval	200 evaluations of x * (1 - x)	binary64	decide +kernel	proved	1.35e+04	1.28e+04	1.36e+04	16.9	5636
+eval	200 evaluations of x * (1 - x)	binary128	decide +kernel	proved	1.57e+04	1.42e+04	1.69e+04	19.2	5643
+eval	200 evaluations of a polynomial of degree 20 in Horner form	exact rationals	decide +kernel	proved	3.31e+04	2.76e+04	3.77e+04	37.5	7637
+eval	200 evaluations of exp (x * y) with y in [2, 3]	rationals at the settings of binary64	decide +kernel	proved	4.55e+03	4.51e+03	4.77e+03	7.8	4960
+eval	200 evaluations of exp (x * y) with y in [2, 3]	binary64	decide +kernel	proved	1.79e+04	1.74e+04	1.87e+04	21.1	6227
+eval	200 evaluations of exp (x * y) with y in [2, 3]	rationals at the settings of binary128	decide +kernel	proved	7.48e+03	6.02e+03	7.54e+03	10.7	5161
+eval	200 evaluations of exp (x * y) with y in [2, 3]	binary128	decide +kernel	proved	2.31e+04	2.23e+04	2.48e+04	26.8	6481

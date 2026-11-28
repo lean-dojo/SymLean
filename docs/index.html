@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SymLean</title>
+<meta name="description" content="SymLean is a verified computer algebra system in Lean. It computes integrals, derivatives, limits, series, sums, roots and numerical bounds, and every answer comes with a theorem that Lean checks.">
+<link rel="stylesheet" href="static/site.css">
+<link rel="icon" type="image/png" href="static/brand/favicon.png">
+<link rel="apple-touch-icon" href="static/brand/apple-touch-icon.png">
+<meta property="og:title" content="SymLean">
+<meta property="og:description" content="SymLean is a verified computer algebra system in Lean. It computes integrals, derivatives, limits, series, sums, roots and numerical bounds, and every answer comes with a theorem that Lean checks.">
+<meta property="og:image" content="https://lean-dojo.github.io/SymLean/static/brand/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="kind-home">
+<a class="skip" href="#main">Skip to the content</a>
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><picture class="brand-logo"><source media="(prefers-color-scheme: dark)" srcset="static/brand/symlean-logo-dark.png"><img src="static/brand/symlean-logo.png" alt="SymLean" width="960" height="252"></picture></a><nav class="top-nav"><a href="docs/index.html">Docs</a><a href="docs/tutorial/first-hour.html">Getting started</a><a href="docs/all.html">Index</a><a class="code-button" href="https://github.com/lean-dojo/SymLean">Code</a></nav></div></header>
+<main class="home" id="main"><header class="hero"><div class="hero-title"><h1><picture class="hero-logo"><source media="(prefers-color-scheme: dark)" srcset="static/brand/symlean-logo-dark.png"><img src="static/brand/symlean-logo.png" alt="SymLean" width="960" height="252"></picture></h1><p class="tagline">A verified computer algebra system in Lean.</p></div><p class="authors">Robert Joseph George · Changhe Yang · Peicong Song · Thomas Y. Hou · Anima Anandkumar</p><p class="affiliation">Caltech</p><p class="buttons"><a class="button primary" href="https://github.com/lean-dojo/SymLean">Code</a><a class="button" href="docs/index.html">Documentation</a><a class="button" href="docs/tutorial/first-hour.html">Getting started</a></p></header><figure class="figure teaser" id="teaser"><div class="figure-body"><div class="cells"><div class="cell in" id="in-1"><a class="label" href="#in-1">In[1]:=</a><div class="cell-body"><pre class="lean"><span class="lean-hover" tabindex="0" data-lean-hover="`#cas [integrate x] e` finds an antiderivative of `e` with respect to `x`, checks it by
+differentiation, and prints it with the conditions under which it holds." title="`#cas [integrate x] e` finds an antiderivative of `e` with respect to `x`, checks it by
+differentiation, and prints it with the conditions under which it holds."><span class="k">#cas</span></span> [<span class="m">integrate</span> x] (atan x)</pre></div></div><div class="cell out" id="out-1"><span class="label">Out[1]=</span><div class="cell-body"><div class="report"><div class="result"><p class="qual">antiderivative</p><div class="tf"><math alttext="\displaystyle x\,\arctan(x) - \frac{1}{2}\,\log(1 + {x}^{2})" xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mstyle displaystyle="true" scriptlevel="0"><mi>x</mi><mspace width="0.167em" /><mi>arctan</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mspace width="0.167em" /><mi>log</mi><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x0002B;</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo stretchy="false">&#x00029;</mo></mstyle></mrow></math></div><code class="plain">x*atan(x) - 1/2*log(1 + x^2)</code></div><div class="theorem"><p class="badge kernel"><span class="tick" aria-hidden="true">✓</span> Checked by Lean’s kernel: Integral of the input</p><pre class="lean">∀ (a b : <span class="ty">ℝ</span>),
+  ∫ (x : <span class="ty">ℝ</span>) <span class="k">in</span> a..b, Real.arctan x =
+    b * Real.arctan b - <span class="n">1</span> / <span class="n">2</span> * Real.log (<span class="n">1</span> + b ^ <span class="n">2</span>) - (a * Real.arctan a - <span class="n">1</span> / <span class="n">2</span> * Real.log (<span class="n">1</span> + a ^ <span class="n">2</span>))</pre><p class="by">from <code>CAS.IntegrationCheck.AntiderivativeCert.intervalIntegral_eq_sub_of_line</code></p></div><details class="cert"><summary>The certificate: 9 checked steps</summary><ol class="steps"><li><p class="step-title">Integral of the input</p><pre class="lean">∀ (a b : <span class="ty">ℝ</span>),
+  ∫ (x : <span class="ty">ℝ</span>) <span class="k">in</span> a..b, Real.arctan x =
+    b * Real.arctan b - <span class="n">1</span> / <span class="n">2</span> * Real.log (<span class="n">1</span> + b ^ <span class="n">2</span>) - (a * Real.arctan a - <span class="n">1</span> / <span class="n">2</span> * Real.log (<span class="n">1</span> + a ^ <span class="n">2</span>))</pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.IntegrationCheck.AntiderivativeCert.intervalIntegral_eq_sub_of_line</code></p></li><li><p class="step-title">Primitive derivative in x: indexed rules compute Expr.diff</p><pre class="lean">(CAS.Verified.Expr.DiffDerivation.build <span class="n">0</span>
+      ((𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+        ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log))).rawDerivative =
+  CAS.Verified.Expr.diff <span class="n">0</span>
+    ((𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+      ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log))</pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Verified.Expr.DiffDerivation.rawDerivative_eq_diff</code></p></li><li><p class="step-title">Primitive derivative in x: normalization preserves evaluation</p><pre class="lean">∀ (ρ : Fin <span class="n">1</span> → <span class="ty">ℝ</span>),
+  CAS.Verified.Expr.eval ρ
+      (CAS.Verified.Expr.DiffDerivation.build <span class="n">0</span>
+          ((𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+            ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul
+              ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log))).simplifiedDerivative =
+    CAS.Verified.Expr.eval ρ
+      (CAS.Verified.Expr.DiffDerivation.build <span class="n">0</span>
+          ((𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+            ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log))).rawDerivative</pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Verified.Expr.DiffDerivation.eval_simplifiedDerivative_eq_rawDerivative</code></p></li><li><p class="step-title">Primitive derivative in x: side-conditioned display normalization</p><pre class="lean">∀ (ρ : Fin <span class="n">1</span> → <span class="ty">ℝ</span>),
+  CAS.Verified.Expr.Alg.SideHolds ρ
+      (CAS.Command.displayDerivativeRoute
+          (CAS.Verified.Expr.DiffDerivation.build <span class="n">0</span>
+            ((𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+              ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log)))).nonzero →
+    CAS.Verified.Expr.eval ρ
+        (CAS.Command.displayDerivativeRoute
+            (CAS.Verified.Expr.DiffDerivation.build <span class="n">0</span>
+              ((𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+                ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log)))).rhs =
+      CAS.Verified.Expr.eval ρ
+        (CAS.Verified.Expr.DiffDerivation.build <span class="n">0</span>
+            ((𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+              ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul
+                ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log))).simplifiedDerivative</pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Command.displayDerivativeRoute_sound</code></p></li><li><p class="step-title">Primitive derivative in x: analytic semantics of the displayed result</p><pre class="lean">∀ (x : <span class="ty">ℝ</span>^<span class="n">1</span>),
+  CAS.Verified.Expr.ValidAt x.ofLp
+      ((𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+        ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log)) →
+    CAS.Verified.Expr.Alg.SideHolds x.ofLp
+        (CAS.Command.displayDerivativeRoute
+            (CAS.Verified.Expr.DiffDerivation.build <span class="n">0</span>
+              ((𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+                ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log)))).nonzero →
+      (fderiv <span class="ty">ℝ</span>
+            (<span class="k">fun</span> y ↦
+              CAS.Verified.Expr.eval y.ofLp
+                ((𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+                  ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log)))
+            x)
+          (EuclideanSpace.single <span class="n">0</span> <span class="n">1</span>) =
+        CAS.Verified.Expr.eval x.ofLp
+          (CAS.Command.displayDerivativeRoute
+              (CAS.Verified.Expr.DiffDerivation.build <span class="n">0</span>
+                ((𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+                  ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log)))).rhs</pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Command.fderiv_apply_single_eq_eval_displayDerivative</code></p></li><li><p class="step-title">Residual route reaches zero</p><pre class="lean">(CAS.IntegrationCheck.route <span class="n">0</span> 𝕏[<span class="n">0</span>].atan
+      {
+          candidate :=
+            (𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+              ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log),
+          routeZero := ⋯ }.candidate).rhs =
+  <span class="n">0</span></pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.IntegrationCheck.AntiderivativeCert.routeZero</code></p></li><li><p class="step-title">Symbolic antiderivative identity under the displayed requirements</p><pre class="lean">∀ (x : <span class="ty">ℝ</span>^<span class="n">1</span>),
+  {
+            candidate :=
+              (𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+                ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log),
+            routeZero := ⋯ }.requirements.Holds
+      x.ofLp →
+    CAS.Verified.Expr.eval x.ofLp
+        (CAS.Verified.Expr.diff <span class="n">0</span>
+          {
+              candidate :=
+                (𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+                  ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log),
+              routeZero := ⋯ }.candidate) =
+      CAS.Verified.Expr.eval x.ofLp 𝕏[<span class="n">0</span>].atan</pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.IntegrationCheck.AntiderivativeCert.eval_diff_eq</code></p></li><li><p class="step-title">Coordinate-line derivative theorem</p><pre class="lean">∀ (x : <span class="ty">ℝ</span>^<span class="n">1</span>) (t : <span class="ty">ℝ</span>),
+  {
+            candidate :=
+              (𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+                ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log),
+            routeZero := ⋯ }.requirements.Holds
+      (x.ofLp + t • (EuclideanSpace.single <span class="n">0</span> <span class="n">1</span>).ofLp) →
+    HasDerivAt
+      (<span class="k">fun</span> s ↦
+        CAS.Verified.Expr.eval (x + s • EuclideanSpace.single <span class="n">0</span> <span class="n">1</span>).ofLp
+          {
+              candidate :=
+                (𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+                  ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log),
+              routeZero := ⋯ }.candidate)
+      (CAS.Verified.Expr.eval (x + t • EuclideanSpace.single <span class="n">0</span> <span class="n">1</span>).ofLp 𝕏[<span class="n">0</span>].atan) t</pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.IntegrationCheck.AntiderivativeCert.hasDerivAt_eval_add_smul_single</code></p></li><li><p class="step-title">Coordinate-line fundamental theorem of calculus</p><pre class="lean">∀ (x : <span class="ty">ℝ</span>^<span class="n">1</span>) (a b : <span class="ty">ℝ</span>),
+  (∀ t ∈ Set.uIcc a b,
+      {
+              candidate :=
+                (𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+                  ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log),
+              routeZero := ⋯ }.requirements.Holds
+        (x.ofLp + t • (EuclideanSpace.single <span class="n">0</span> <span class="n">1</span>).ofLp)) →
+    ∫ (t : <span class="ty">ℝ</span>) <span class="k">in</span> a..b, CAS.Verified.Expr.eval (x + t • EuclideanSpace.single <span class="n">0</span> <span class="n">1</span>).ofLp 𝕏[<span class="n">0</span>].atan =
+      CAS.Verified.Expr.eval (x + b • EuclideanSpace.single <span class="n">0</span> <span class="n">1</span>).ofLp
+          {
+              candidate :=
+                (𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+                  ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log),
+              routeZero := ⋯ }.candidate -
+        CAS.Verified.Expr.eval (x + a • EuclideanSpace.single <span class="n">0</span> <span class="n">1</span>).ofLp
+          {
+              candidate :=
+                (𝕏[<span class="n">0</span>].mul 𝕏[<span class="n">0</span>].atan).sub
+                  ((CAS.Verified.Expr.rat <span class="n">1</span> <span class="n">2</span>).mul ((CAS.Verified.Expr.nat <span class="n">1</span>).add (𝕏[<span class="n">0</span>].pow <span class="n">2</span>)).log),
+              routeZero := ⋯ }.candidate</pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.IntegrationCheck.AntiderivativeCert.intervalIntegral_eq_sub_eval_add_smul_single</code></p></li></ol></details><details class="comp"><summary>The computation</summary><ul class="tree"><li><pre class="node-body">Variables: x</pre></li><li><p class="node-title">Checked antiderivative computation</p><ul class="tree"><li><p class="node-title">1. Differentiate the proposed primitive</p><pre class="node-body">Raw derivative: 1*atan(x) + x*1/(1 + x^2) - 0*log(1 + x^2) - 1/2*(0 + 2*x^1*1)/(1 + x^2)</pre></li><li><p class="node-title">2. Form the derivative residual</p><pre class="node-body">Raw residual: 1*atan(x) + x*1/(1 + x^2) - 0*log(1 + x^2) - 1/2*(0 + 2*x^1*1)/(1 + x^2) - atan(x)
+Definition: CAS.IntegrationCheck.residual</pre></li><li><p class="node-title">3. Check the residual normal form</p><pre class="node-body">Checked residual normal form: 0
+Certificate condition: checked residual normal form = 0</pre></li><li><p class="node-title">4. Record analytic domain requirements</p><pre class="node-body">Certificate nonzero requirements (compacted): 1 + x^2
+Certificate positivity requirements (compacted): (none)</pre></li></ul></li></ul></details></div></div></div></div></div><figcaption><a class="fig-number" href="#teaser">Figure 1.</a> An antiderivative of <span class="inline-math"><math alttext="\arctan x" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>arctan</mi><mspace width="0.1667em"/><mi>x</mi></mrow></math></span>, with the Lean theorem underneath. Open the certificate to follow the differentiation step by step.</figcaption></figure>
+<h2 id="introduction">Introduction<a class="anchor" href="#introduction" aria-label="Link to this section">#</a></h2>
+<p>Computer algebra systems such as Mathematica, Maple and SymPy have long been part of how we do mathematics. Whether we are deriving an equation, working out an integral or simplifying a particularly unpleasant expression, it is often much easier to ask a computer to do the calculation. But when formalizing mathematics in Lean, we still need to prove that the resulting expression is correct. This can take considerably more effort than finding the answer itself. SymLean grew out of our interest in making these two processes work together. We wanted something that feels like a conventional computer algebra system but produces Lean theorems that we can use directly in our proofs.</p>
+<p>The library covers symbolic algebra, differentiation, integration, series expansions, limits, equation solving, special functions and certified numerical computation. Calculations can be performed interactively using <a class="sym" href="docs/ref/cas-command.html"><code class="lean"><span class="k">#cas</span></code></a> or within an existing Lean proof using the <a class="sym" href="docs/ref/cas.html"><code class="lean"><span class="t">cas</span></code></a> and <a class="sym" href="docs/ref/cega.html"><code class="lean"><span class="t">cega</span></code></a> tactics.</p>
+<p>An important distinction is that the algorithms used to find an answer do not themselves need to be trusted. They can be heuristic, and we can even delegate computations to external computer algebra systems. Consider, for instance, the integral of <span class="inline-math"><math alttext="1/x^2" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002F;</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math></span> over <span class="inline-math"><math alttext="[-1,1]" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">[</mo><mo>&#x02212;</mo><mn>1</mn><mo>&#x0002C;</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math></span>. Mathematica has previously returned <span class="inline-math"><math alttext="-2" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mn>2</mn></mrow></math></span> for this integral, even though it diverges. Interestingly, our own search also finds <span class="inline-math"><math alttext="-2" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mn>2</mn></mrow></math></span>! The difference is that <a href="docs/guide/why.html#same-inputs">SymLean cannot certify this answer</a>: the argument requires a nonzero denominator throughout the interval, which is not the case here.</p>
+<h2 id="what">What can we compute?<a class="anchor" href="#what" aria-label="Link to this section">#</a></h2>
+<p>Much of the interface should feel familiar to anyone who has worked with Mathematica or SymPy. We can factor a polynomial, integrate a function, compute a Taylor expansion or find the roots of an equation with a single command. Below are a few examples from different parts of the library. Variables in these commands are interpreted as real numbers, so we do not need to declare them beforehand.</p>
+<figure class="figure" id="six-examples"><div class="figure-body"><div class="grid"><div class="grid-card"><h3>Algebra</h3><div class="cells compact"><div class="cell in" id="in-2"><span class="label">In</span><div class="cell-body"><pre class="lean"><span class="lean-hover" tabindex="0" data-lean-hover="`#cas [factor] p` factors the polynomial `p` with rational coefficients into a product of
+polynomials." title="`#cas [factor] p` factors the polynomial `p` with rational coefficients into a product of
+polynomials."><span class="k">#cas</span></span> [<span class="m">factor</span>] (<span class="n">2</span>*x^<span class="n">3</span> - <span class="n">3</span>*x^<span class="n">2</span> + <span class="n">1</span>)</pre></div></div><div class="cell out" id="out-2"><span class="label">Out</span><div class="cell-body"><div class="report"><div class="result"><div class="tf"><math alttext="\displaystyle {(x - 1)}^{2}(2x + 1)" xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mstyle displaystyle="true" scriptlevel="0"><msup><mrow><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo></mrow><mrow><mn>2</mn></mrow></msup><mo stretchy="false">&#x00028;</mo><mn>2</mn><mi>x</mi><mo>&#x0002B;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo></mstyle></mrow></math></div><code class="plain">(x - 1)^2*(2*x + 1)</code></div><div class="theorem"><p class="badge kernel"><span class="tick" aria-hidden="true">✓</span> Checked by Lean’s kernel: Identity with the factored polynomial</p><pre class="lean">∀ (x : <span class="ty">ℝ</span>), <span class="n">2</span> * x ^ <span class="n">3</span> - <span class="n">3</span> * x ^ <span class="n">2</span> + <span class="n">1</span> = (x - <span class="n">1</span>) ^ <span class="n">2</span> * (<span class="n">2</span> * x + <span class="n">1</span>)</pre></div></div></div></div></div></div><div class="grid-card"><h3>Calculus</h3><div class="cells compact"><div class="cell in" id="in-3"><span class="label">In</span><div class="cell-body"><pre class="lean"><span class="lean-hover" tabindex="0" data-lean-hover="`#cas [integrate x in [a, b]] e` evaluates the definite integral of `e` from `a` to `b` as
+`F b - F a` for the antiderivative `F` that `integrate?` finds (the search of `#cas [integrate x]`
+without its backends), where an endpoint is a real term, `∞` or `-∞` and `F` is replaced by its
+limit at an infinite endpoint. It proves the printed theorem `∫ x in a..b, e = v` with `cas`, or,
+over `Set.Ioi a`, `Set.Iic b` or the whole line, the integrability of `e` there together with the
+value of its integral, such as `IntegrableOn (fun x ↦ e) (Set.Ioi a) ∧ ∫ x in Set.Ioi a, e = v`." title="`#cas [integrate x in [a, b]] e` evaluates the definite integral of `e` from `a` to `b` as
+`F b - F a` for the antiderivative `F` that `integrate?` finds (the search of `#cas [integrate x]`
+without its backends), where an endpoint is a real term, `∞` or `-∞` and `F` is replaced by its
+limit at an infinite endpoint. It proves the printed theorem `∫ x in a..b, e = v` with `cas`, or,
+over `Set.Ioi a`, `Set.Iic b` or the whole line, the integrability of `e` there together with the
+value of its integral, such as `IntegrableOn (fun x ↦ e) (Set.Ioi a) ∧ ∫ x in Set.Ioi a, e = v`."><span class="k">#cas</span></span> [<span class="m">integrate</span> x <span class="k">in</span> [<span class="n">0</span>, <span class="n">1</span>]] (x * exp x)</pre></div></div><div class="cell out" id="out-3"><span class="label">Out</span><div class="cell-body"><div class="report"><div class="result"><p class="qual">definite integral</p><code class="plain only">1</code></div><div class="theorem"><p class="badge kernel"><span class="tick" aria-hidden="true">✓</span> Checked by Lean’s kernel: Definite integral, proved by <code class="lean"><span class="t">cas</span></code></p><pre class="lean">∫ (x : <span class="ty">ℝ</span>) <span class="k">in</span> <span class="n">0</span>..<span class="n">1</span>, x * Real.exp x = <span class="n">1</span></pre></div></div></div></div></div></div><div class="grid-card"><h3>Series and limits</h3><div class="cells compact"><div class="cell in" id="in-4"><span class="label">In</span><div class="cell-body"><pre class="lean"><span class="lean-hover" tabindex="0" data-lean-hover="`#cas [series x a n] e` computes the Taylor polynomial of `e` of degree `n` at the rational
+point `a`, with exact coefficients and a little-o remainder, or the Laurent series when `e` is a
+quotient whose denominator vanishes at `a`." title="`#cas [series x a n] e` computes the Taylor polynomial of `e` of degree `n` at the rational
+point `a`, with exact coefficients and a little-o remainder, or the Laurent series when `e` is a
+quotient whose denominator vanishes at `a`."><span class="k">#cas</span></span> [<span class="m">series</span> x <span class="n">0</span> <span class="n">7</span>] (sin x)</pre></div></div><div class="cell out" id="out-4"><span class="label">Out</span><div class="cell-body"><div class="report"><div class="result"><p class="qual">Taylor polynomial with exact coefficients</p><div class="tf"><math alttext="\displaystyle x - \frac{1}{6}\,{x}^{3} + \frac{1}{120}\,{x}^{5} - \frac{1}{5040}\,{x}^{7} + o({x}^{7})" xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mstyle displaystyle="true" scriptlevel="0"><mi>x</mi><mo>&#x02212;</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>6</mn></mrow></mfrac><mspace width="0.167em" /><msup><mrow><mi>x</mi></mrow><mrow><mn>3</mn></mrow></msup><mo>&#x0002B;</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>120</mn></mrow></mfrac><mspace width="0.167em" /><msup><mrow><mi>x</mi></mrow><mrow><mn>5</mn></mrow></msup><mo>&#x02212;</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>5040</mn></mrow></mfrac><mspace width="0.167em" /><msup><mrow><mi>x</mi></mrow><mrow><mn>7</mn></mrow></msup><mo>&#x0002B;</mo><mi>o</mi><mo stretchy="false">&#x00028;</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>7</mn></mrow></msup><mo stretchy="false">&#x00029;</mo></mstyle></mrow></math></div><code class="plain">x - 1/6*x^3 + 1/120*x^5 - 1/5040*x^7 + o(x^7)</code></div><div class="theorem"><p class="badge kernel"><span class="tick" aria-hidden="true">✓</span> Checked by Lean’s kernel: Taylor expansion with a little-o remainder</p><pre class="lean">(<span class="k">fun</span> x ↦ Real.sin x - (x - <span class="n">1</span> / <span class="n">6</span> * x ^ <span class="n">3</span> + <span class="n">1</span> / <span class="n">120</span> * x ^ <span class="n">5</span> - <span class="n">1</span> / <span class="n">5040</span> * x ^ <span class="n">7</span>)) =o[nhds <span class="n">0</span>] <span class="k">fun</span> x ↦ x ^ <span class="n">7</span></pre></div></div></div></div></div></div><div class="grid-card"><h3>Equations</h3><div class="cells compact"><div class="cell in" id="in-5"><span class="label">In</span><div class="cell-body"><pre class="lean"><span class="lean-hover" tabindex="0" data-lean-hover="`#cas [roots x] (lhs = rhs)` lists every real solution of a polynomial equation in `x`, the
+rational ones exactly and the others as truncated decimals, and proves that the list is
+complete." title="`#cas [roots x] (lhs = rhs)` lists every real solution of a polynomial equation in `x`, the
+rational ones exactly and the others as truncated decimals, and proves that the list is
+complete."><span class="k">#cas</span></span> [<span class="m">roots</span> x] (x ^ <span class="n">5</span> - x - <span class="n">1</span> = <span class="n">0</span>)</pre></div></div><div class="cell out" id="out-5"><span class="label">Out</span><div class="cell-body"><div class="report"><div class="result"><p class="qual">the only real solution, by 20 decimals, truncated</p><code class="plain only">1.16730397826141868425</code></div><div class="theorem"><p class="badge kernel"><span class="tick" aria-hidden="true">✓</span> Checked by Lean’s kernel: Complete list of real solutions</p><pre class="lean">(∃! x, x ∈ Set.Ioo (<span class="n">116730397826141868425</span> / <span class="n">10</span> ^ <span class="n">20</span>) (<span class="n">116730397826141868426</span> / <span class="n">10</span> ^ <span class="n">20</span>) ∧ x ^ <span class="n">5</span> - x - <span class="n">1</span> = <span class="n">0</span>) ∧ ∀ (x : <span class="ty">ℝ</span>), x ^ <span class="n">5</span> - x - <span class="n">1</span> = <span class="n">0</span> → x ∈ Set.Ioo (<span class="n">116730397826141868425</span> / <span class="n">10</span> ^ <span class="n">20</span>) (<span class="n">116730397826141868426</span> / <span class="n">10</span> ^ <span class="n">20</span>)</pre></div></div></div></div></div></div><div class="grid-card"><h3>Special functions</h3><div class="cells compact"><div class="cell in" id="in-6"><span class="label">In</span><div class="cell-body"><pre class="lean"><span class="lean-hover" tabindex="0" data-lean-hover="`#cas e` evaluates `e` when it is a call `f a₁ … aₖ` of a special or number-theoretic function
+of the call table, such as `#cas (gamma (5/2))`, and otherwise simplifies `e` as
+`#cas [simplify] e` does." title="`#cas e` evaluates `e` when it is a call `f a₁ … aₖ` of a special or number-theoretic function
+of the call table, such as `#cas (gamma (5/2))`, and otherwise simplifies `e` as
+`#cas [simplify] e` does."><span class="k">#cas</span></span> (zeta <span class="n">4</span>)</pre></div></div><div class="cell out" id="out-6"><span class="label">Out</span><div class="cell-body"><div class="report"><div class="result"><p class="qual">exact value of ζ</p><div class="tf"><math alttext="\displaystyle \frac{{\pi}^{4}}{90}" xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msup><mrow><mi>&#x003C0;</mi></mrow><mrow><mn>4</mn></mrow></msup></mrow><mrow><mn>90</mn></mrow></mfrac></mstyle></mrow></math></div><code class="plain">pi^4/90</code></div><div class="theorem"><p class="badge kernel"><span class="tick" aria-hidden="true">✓</span> Checked by Lean’s kernel: ζ(2k) by Bernoulli numbers (riemannZeta_two_mul_nat)</p><pre class="lean">riemannZeta <span class="n">4</span> = ↑Real.pi ^ <span class="n">4</span> / <span class="n">90</span></pre></div></div></div></div></div></div><div class="grid-card"><h3>Certified numerics</h3><div class="cells compact"><div class="cell in" id="in-7"><span class="label">In</span><div class="cell-body"><pre class="lean"><span class="lean-hover" tabindex="0" data-lean-hover="`#cas [nintegrate x in [a, b]] f` computes a decimal value `c` of the integral of `f` from `a`
+to `b` with `d` places and proves that `c` is within `10 ^ (-d)` of the integral." title="`#cas [nintegrate x in [a, b]] f` computes a decimal value `c` of the integral of `f` from `a`
+to `b` with `d` places and proves that `c` is within `10 ^ (-d)` of the integral."><span class="k">#cas</span></span> [<span class="m">nintegrate</span> x <span class="k">in</span> [<span class="n">0</span>, <span class="n">1</span>]] (exp (-x^<span class="n">2</span>))</pre></div></div><div class="cell out" id="out-7"><span class="label">Out</span><div class="cell-body"><div class="report"><div class="result"><p class="qual">certified value of the integral</p><div class="tf"><math alttext="\displaystyle 0.746824 \pm {10}^{-6}" xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mstyle displaystyle="true" scriptlevel="0"><mn>0.746824</mn><mo>&#x000B1;</mo><msup><mrow><mn>10</mn></mrow><mrow><mo>&#x02212;</mo><mn>6</mn></mrow></msup></mstyle></mrow></math></div><code class="plain">0.746824 ± 10^-6</code></div><div class="theorem"><p class="badge kernel"><span class="tick" aria-hidden="true">✓</span> Checked by Lean’s kernel: Certified Simpson panels in one kernel check</p><pre class="lean">|(∫ (x : <span class="ty">ℝ</span>) <span class="k">in</span> <span class="n">0</span>..<span class="n">1</span>, Real.exp (-x ^ <span class="n">2</span>)) - <span class="n">746824</span> / <span class="n">10</span> ^ <span class="n">6</span>| ≤ <span class="n">1</span> / <span class="n">10</span> ^ <span class="n">6</span></pre></div></div></div></div></div></div></div></div><figcaption><a class="fig-number" href="#six-examples">Figure 2.</a> The quintic root and the Gaussian integral come back as decimals, and the statements underneath give their error bounds.</figcaption></figure>
+<p>The last two numerical examples are particularly useful in formal proofs. Rather than simply returning a decimal approximation, SymLean establishes a precise bound on the quantity being computed. This is something we frequently need when formalizing arguments in analysis, differential equations and scientific computing.</p>
+<p>The <a href="docs/tutorial/first-hour.html">getting started guide</a> covers how to use these commands in your own Lean files, and the <a class="sym" href="docs/index.html">documentation</a> goes into more detail on the algorithms, options and supported operations.</p>
+<h2 id="pipeline">From computation to proof<a class="anchor" href="#pipeline" aria-label="Link to this section">#</a></h2>
+<p>Finding a mathematical expression and checking that it is correct are often two very different problems. Integration is perhaps the most familiar example: finding an antiderivative can be quite difficult, while checking one usually amounts to differentiation and simplification. We make use of this asymmetry throughout SymLean.</p>
+<figure class="figure" id="pipeline-figure"><div class="figure-body"><div class="svg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 318" role="img" aria-labelledby="pipeline-title pipeline-desc">
+  <title id="pipeline-title">How an answer becomes a theorem</title>
+  <desc id="pipeline-desc">Three stages from left to right. Compute: an ordinary program searches for the antiderivative of atan x and proposes x atan x minus one half log of 1 plus x squared. Certificate: the proposal comes with the facts that make it right, a derivative residual that normalizes to 0 and the condition that 1 plus x squared is nonzero. Kernel check: a proof term of the theorem that the integral of atan from a to b is F of b minus F of a goes to Lean's kernel. The first two stages may be wrong, and a wrong proposal is refused; only the kernel is trusted.</desc>
+  <defs>
+    <marker id="pipeline-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" class="f-arrowhead" fill="#8d929a"/>
+    </marker>
+  </defs>
+
+  <!-- 1. Compute -->
+  <rect class="f-box" x="6" y="10" width="262" height="212" rx="8" fill="#ffffff" stroke="#e4e1d9" stroke-width="1.2"/>
+  <circle class="f-dot" cx="32" cy="38" r="12" fill="#1f6f78"/>
+  <text class="f-num" x="32" y="42.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#ffffff">1</text>
+  <text class="f-title" x="52" y="43" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#1d232a">Compute</text>
+  <text class="f-text" font-family="STIX Two Text, Georgia, serif" font-size="14.5" fill="#6a7078">
+    <tspan x="22" y="74">An ordinary program searches for</tspan>
+    <tspan x="22" y="94">an antiderivative of atan x and</tspan>
+    <tspan x="22" y="114">proposes one:</tspan>
+  </text>
+  <rect class="f-code" x="20" y="130" width="234" height="34" rx="5" fill="#f4f2ec"/>
+  <text class="f-mono" x="137" y="152" text-anchor="middle" font-family="JuliaMono, monospace" font-size="12.5" fill="#1d232a">x·atan(x) − ½·log(1 + x²)</text>
+  <text class="f-tag" x="22" y="202" font-family="system-ui, sans-serif" font-size="12" fill="#8d929a">fast search, not trusted</text>
+
+  <line class="f-arrow" x1="272" y1="116" x2="310" y2="116" stroke="#8d929a" stroke-width="1.6" marker-end="url(#pipeline-arrow)"/>
+
+  <!-- 2. Certificate -->
+  <rect class="f-box" x="316" y="10" width="262" height="212" rx="8" fill="#ffffff" stroke="#e4e1d9" stroke-width="1.2"/>
+  <circle class="f-dot" cx="342" cy="38" r="12" fill="#1f6f78"/>
+  <text class="f-num" x="342" y="42.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#ffffff">2</text>
+  <text class="f-title" x="362" y="43" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#1d232a">Certificate</text>
+  <text class="f-text" font-family="STIX Two Text, Georgia, serif" font-size="14.5" fill="#6a7078">
+    <tspan x="332" y="74">The proposal comes with the facts</tspan>
+    <tspan x="332" y="94">that make it right:</tspan>
+  </text>
+  <rect class="f-code" x="330" y="110" width="234" height="54" rx="5" fill="#f4f2ec"/>
+  <text class="f-mono" font-family="JuliaMono, monospace" font-size="12.5" fill="#1d232a">
+    <tspan x="342" y="132">F′(x) − atan(x)  ⟶  0</tspan>
+    <tspan x="342" y="152">1 + x² ≠ 0</tspan>
+  </text>
+  <text class="f-tag" x="332" y="202" font-family="system-ui, sans-serif" font-size="12" fill="#8d929a">data for the check</text>
+
+  <line class="f-arrow" x1="582" y1="116" x2="620" y2="116" stroke="#8d929a" stroke-width="1.6" marker-end="url(#pipeline-arrow)"/>
+
+  <!-- 3. Kernel check -->
+  <rect class="f-box f-kernel" x="626" y="10" width="268" height="212" rx="8" fill="#ffffff" stroke="#2e7d4f" stroke-width="2"/>
+  <circle class="f-dot f-dot-kernel" cx="652" cy="38" r="12" fill="#2e7d4f"/>
+  <text class="f-num" x="652" y="42.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#ffffff">3</text>
+  <text class="f-title" x="672" y="43" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#1d232a">Kernel check</text>
+  <text class="f-text" font-family="STIX Two Text, Georgia, serif" font-size="14.5" fill="#6a7078">
+    <tspan x="642" y="74">A proof of the theorem goes to</tspan>
+    <tspan x="642" y="94">Lean’s kernel, which checks it:</tspan>
+  </text>
+  <rect class="f-code" x="640" y="110" width="240" height="54" rx="5" fill="#f4f2ec"/>
+  <text class="f-mono" font-family="JuliaMono, monospace" font-size="12.5" fill="#1d232a">
+    <tspan x="652" y="132">∫ x in a..b, atan x</tspan>
+    <tspan x="652" y="152">  = F(b) − F(a)</tspan>
+  </text>
+  <text class="f-tag f-tag-kernel" x="642" y="202" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#2e7d4f">✓ the trusted step</text>
+
+  <!-- What is trusted -->
+  <path class="f-brace" d="M10,246 v10 h564 v-10" fill="none" stroke="#8d929a" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text class="f-text" x="292" y="282" text-anchor="middle" font-family="STIX Two Text, Georgia, serif" font-size="14.5" fill="#6a7078">may be wrong; a proposal that fails its check is refused</text>
+  <path class="f-brace f-brace-kernel" d="M630,246 v10 h260 v-10" fill="none" stroke="#2e7d4f" stroke-width="1.6"/>
+  <text class="f-text" x="760" y="282" text-anchor="middle" font-family="STIX Two Text, Georgia, serif" font-size="14.5" fill="#6a7078">what you trust</text>
+  <text class="f-text" x="760" y="302" text-anchor="middle" font-family="STIX Two Text, Georgia, serif" font-size="14.5" fill="#6a7078">(and three standard axioms)</text>
+</svg>
+</div></div><figcaption><a class="fig-number" href="#pipeline-figure">Figure 3.</a> Finding the antiderivative is the search step. Differentiating it gives Lean something it can check.</figcaption></figure>
+<p>For the integral at the top of this page, the search finds the candidate</p>
+<div class="display-math"><math alttext="F(x)=x\arctan(x)-\frac12\log(1+x^2)." xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>F</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mi>x</mi><mspace width="0.1667em"/><mi>arctan</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mspace width="0.1667em"/><mi>log</mi><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x0002B;</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">&#x00029;</mo><mo>&#x0002E;</mo></mrow></math></div>
+<p>A verified differentiator computes its derivative, and a verified normalizer establishes that <span class="inline-math"><math alttext="F&#x27;(x)-\arctan(x)=0" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>F</mi><mo>&#x02032;</mo></msup><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><mi>arctan</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mn>0</mn></mrow></math></span>. We can then use the fundamental theorem of calculus to obtain the corresponding result for any finite interval.</p>
+<p>There are also some interesting subtleties when working with symbolic expressions in a theorem prover. Division in Lean, for instance, is a total operation, with <span class="inline-math"><math alttext="1/0=0" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002F;</mo><mn>0</mn><mo>&#x0003D;</mo><mn>0</mn></mrow></math></span>. This means that seemingly straightforward simplifications can require additional hypotheses. Take</p>
+<div class="display-math"><math alttext="\frac{x^4-1}{x^2-1}=x^2+1." xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mfrac><mrow><msup><mi>x</mi><mn>4</mn></msup><mo>&#x02212;</mo><mn>1</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>&#x02212;</mo><mn>1</mn></mrow></mfrac><mo>&#x0003D;</mo><msup><mi>x</mi><mn>2</mn></msup><mo>&#x0002B;</mo><mn>1</mn><mo>&#x0002E;</mo></mrow></math></div>
+<p>We would ordinarily cancel the common factor and move on. In Lean, however, the equality is false at <span class="inline-math"><math alttext="x=1" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo>&#x0003D;</mo><mn>1</mn></mrow></math></span> and <span class="inline-math"><math alttext="x=-1" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo>&#x0003D;</mo><mo>&#x02212;</mo><mn>1</mn></mrow></math></span>. SymLean therefore includes the necessary condition <span class="inline-math"><math alttext="x^2-1\neq 0" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>&#x02212;</mo><mn>1</mn><mo>&#x02260;</mo><mn>0</mn></mrow></math></span> in the resulting theorem.</p>
+<div class="cells"><div class="cell in" id="in-8"><a class="label" href="#in-8">In[8]:=</a><div class="cell-body"><pre class="lean"><span class="lean-hover" tabindex="0" data-lean-hover="`#cas [simplify] e` simplifies the real expression `e` by checked exact rewrites and prints the
+result with the conditions under which it equals `e`." title="`#cas [simplify] e` simplifies the real expression `e` by checked exact rewrites and prints the
+result with the conditions under which it equals `e`."><span class="k">#cas</span></span> [<span class="m">simplify</span>] ((x ^ <span class="n">4</span> - <span class="n">1</span>) / (x ^ <span class="n">2</span> - <span class="n">1</span>))</pre></div></div><div class="cell out" id="out-8"><span class="label">Out[8]=</span><div class="cell-body"><div class="report"><div class="result"><div class="tf"><math alttext="\displaystyle {x}^{2} + 1" xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mstyle displaystyle="true" scriptlevel="0"><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>&#x0002B;</mo><mn>1</mn></mstyle></mrow></math></div><code class="plain">x^2 + 1</code></div><dl class="fields"><dt>Conditions</dt><dd><span class="conds"><math alttext="{x}^{2} - 1 \ne 0" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>&#x02212;</mo><mn>1</mn><mo>&#x02260;</mo><mn>0</mn></mrow></math></span></dd></dl><div class="theorem"><p class="badge kernel"><span class="tick" aria-hidden="true">✓</span> Checked by Lean’s kernel: Identity with the simplified form</p><pre class="lean">∀ (x : <span class="ty">ℝ</span>), x * x - <span class="n">1</span> ≠ <span class="n">0</span> → (x ^ <span class="n">4</span> - <span class="n">1</span>) / (x ^ <span class="n">2</span> - <span class="n">1</span>) = x ^ <span class="n">2</span> + <span class="n">1</span></pre><p class="by">from <code>CAS.Command.eq_of_simplifyFinDisplayRoute</code></p></div><details class="cert"><summary>The certificate: 2 checked steps</summary><ol class="steps"><li><p class="step-title">Identity with the simplified form</p><pre class="lean">∀ (x : <span class="ty">ℝ</span>), x * x - <span class="n">1</span> ≠ <span class="n">0</span> → (x ^ <span class="n">4</span> - <span class="n">1</span>) / (x ^ <span class="n">2</span> - <span class="n">1</span>) = x ^ <span class="n">2</span> + <span class="n">1</span></pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Command.eq_of_simplifyFinDisplayRoute</code></p></li><li><p class="step-title">Simplification under generated rewrite assumptions</p><pre class="lean">∀ (ρ : Fin <span class="n">1</span> → <span class="ty">ℝ</span>),
+  CAS.Verified.Expr.Alg.SideHolds ρ
+      (((𝕏[<span class="n">0</span>].pow <span class="n">4</span>).sub (CAS.Verified.Expr.nat <span class="n">1</span>)).div
+            ((𝕏[<span class="n">0</span>].pow <span class="n">2</span>).sub (CAS.Verified.Expr.nat <span class="n">1</span>))).simplifyFinDisplayRoute.nonzero →
+    CAS.Verified.Expr.eval ρ
+        (((𝕏[<span class="n">0</span>].pow <span class="n">4</span>).sub (CAS.Verified.Expr.nat <span class="n">1</span>)).div
+              ((𝕏[<span class="n">0</span>].pow <span class="n">2</span>).sub (CAS.Verified.Expr.nat <span class="n">1</span>))).simplifyFinDisplayRoute.rhs =
+      CAS.Verified.Expr.eval ρ
+        (((𝕏[<span class="n">0</span>].pow <span class="n">4</span>).sub (CAS.Verified.Expr.nat <span class="n">1</span>)).div
+              ((𝕏[<span class="n">0</span>].pow <span class="n">2</span>).sub (CAS.Verified.Expr.nat <span class="n">1</span>))).simplifyFinDisplayRoute.lhs</pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Verified.Expr.SideClaimRoute.sound</code></p></li></ol></details><details class="comp"><summary>The computation</summary><ul class="tree"><li><pre class="node-body">Variables: x</pre></li><li><p class="node-title">Checked symbolic computation</p><pre class="node-body">Raw checked nonzero requirements: x^2 - 1
+Guarantee: these assumptions justify conditional rewrites and preserve real evaluation</pre></li></ul></details></div></div></div></div>
+<p>These conditions are particularly important when symbolic calculations form part of a larger mathematical argument, where a missing hypothesis can invalidate much more than the calculation itself.</p>
+<h2 id="trust">What do we need to trust?<a class="anchor" href="#trust" aria-label="Link to this section">#</a></h2>
+<p>By default, the proofs produced by SymLean are checked by Lean&#x27;s kernel and depend only on the three standard axioms used throughout Mathlib: <code class="lean">propext</code>, <code class="lean">Classical.choice</code> and <code class="lean">Quot.sound</code>. We can inspect this ourselves using <code class="lean"><span class="k">#print</span> axioms</code>.</p>
+<div class="cells"><div class="cell in" id="in-9"><a class="label" href="#in-9">In[9]:=</a><div class="cell-body"><pre class="lean"><span class="k">theorem</span> <span class="lean-hover" tabindex="0" data-lean-hover="integral_x_exp : ∫ (x : ℝ) in 0..1, x * Real.exp x = 1" title="integral_x_exp : ∫ (x : ℝ) in 0..1, x * Real.exp x = 1">integral_x_exp</span> : ∫ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> <span class="k">in</span> (<span class="n">0</span> : <span class="ty">ℝ</span>)..<span class="n">1</span>, <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> * <span class="lean-hover" tabindex="0" data-lean-hover="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential" title="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential">Real.exp</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> = <span class="n">1</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∫ (x : ℝ) in 0..1, x * Real.exp x = 1
+
+After
+no goals" title="Before
+
+⊢ ∫ (x : ℝ) in 0..1, x * Real.exp x = 1
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∫ (x : ℝ) in 0..1, x * Real.exp x = 1
+
+After
+no goals" title="Before
+
+⊢ ∫ (x : ℝ) in 0..1, x * Real.exp x = 1
+
+After
+no goals"><span class="t">cas</span></span>
+
+<span class="lean-hover" tabindex="0" data-lean-hover="Prints the axioms used by a declaration, directly or indirectly.
+Please consult [the reference manual](https://lean-lang.org/doc/reference/4.36.0/find/?domain=Verso.Genre.Manual.section&amp;name=validating-proofs) to understand the significance of the output." title="Prints the axioms used by a declaration, directly or indirectly.
+Please consult [the reference manual](https://lean-lang.org/doc/reference/4.36.0/find/?domain=Verso.Genre.Manual.section&amp;name=validating-proofs) to understand the significance of the output."><span class="k">#print</span></span> axioms <span class="lean-hover" tabindex="0" data-lean-hover="integral_x_exp : ∫ (x : ℝ) in 0..1, x * Real.exp x = 1" title="integral_x_exp : ∫ (x : ℝ) in 0..1, x * Real.exp x = 1">integral_x_exp</span></pre></div></div><div class="cell out" id="out-9"><span class="label">Out[9]=</span><div class="cell-body"><div class="msg axioms"><p><code>integral_x_exp</code> depends on the axioms <code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>.</p></div></div></div></div>
+<p>This separation between computation and verification gives us considerable freedom in how we implement the search algorithms. We can experiment with different symbolic methods, use numerical heuristics or call external software without adding those implementations to our trusted computing base.</p>
+<p>For larger computations, SymLean also provides an optional <a class="sym" href="docs/ref/options.html">native-certificate mode</a>. This uses compiled evaluation to check finite certificates more efficiently, at the cost of additionally trusting Lean&#x27;s compiler. The option is disabled by default, and the additional axiom is visible through <code class="lean"><span class="k">#print</span> axioms</code>. We discuss these choices and their implications in more detail in the <a href="docs/tutorial/trust.html">documentation</a>.</p>
+<h2 id="relations">Mathlib and other computer algebra systems<a class="anchor" href="#relations" aria-label="Link to this section">#</a></h2>
+<p>SymLean is intended to complement existing mathematical software rather than replace it. There is already decades of excellent work on symbolic computation, and we would like to make more of it accessible from within formal mathematics.</p>
+<figure class="figure" id="architecture-figure"><div class="figure-body"><div class="svg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 470" role="img" aria-labelledby="architecture-title architecture-desc">
+  <title id="architecture-title">How SymLean turns proposals into checked theorems</title>
+  <desc id="architecture-desc">A #cas command or a tactic goal enters SymLean. SymLean's own search and, optionally, external systems (SymPy, SageMath, Maxima, Giac, Singular, PARI/GP, FLINT and Gappa, through CASOracle and DSLean) propose answers, which are not trusted. SymLean builds certificates and proofs with Mathlib's definitions and tactics and FloatLib's certified numerics, and Lean's kernel checks the theorem, here x^4 - 1 = (x - 1)(x + 1)(x^2 + 1) for every real x.</desc>
+  <defs>
+    <marker id="architecture-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="f-arrowhead" fill="#8d929a"/></marker>
+  </defs>
+  <rect class="f-box" x="10" y="30" width="250" height="82" rx="8" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <path class="f-code" d="M18,30 h234 a8,8 0 0 1 8,8 v22 h-250 v-22 a8,8 0 0 1 8,-8 z" fill="#f4f2ec"/>
+  <rect class="f-box" x="10" y="30" width="250" height="82" rx="8" fill="none" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-title" x="24" y="50.4" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#1d232a">Lean input</text>
+  <text class="f-mono" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" fill="#1d232a">
+    <tspan x="24" y="90.9">#cas [factor] (x^4 - 1)</tspan>
+  </text>
+  <rect class="f-box" x="10" y="150" width="250" height="76" rx="8" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <path class="f-code" d="M18,150 h234 a8,8 0 0 1 8,8 v22 h-250 v-22 a8,8 0 0 1 8,-8 z" fill="#f4f2ec"/>
+  <rect class="f-box" x="10" y="150" width="250" height="76" rx="8" fill="none" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-title" x="24" y="170.4" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#1d232a">Native search</text>
+  <text class="f-text" font-family="STIX Two Text, STIX Two Math, Cambria Math, Times New Roman, DejaVu Serif, serif" font-size="14" fill="#6a7078">
+    <tspan x="24" y="207.9">symbolic and numerical search</tspan>
+  </text>
+  <rect class="f-box" x="10" y="262" width="250" height="198" rx="10" fill="none" stroke="#8d929a" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text class="f-title" x="24" y="290" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#1d232a">External solvers (optional)</text>
+  <rect class="f-box" x="24" y="304" width="106" height="30" rx="6" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-title" x="77" y="324.0" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1d232a">SymPy</text>
+  <rect class="f-box" x="140" y="304" width="106" height="30" rx="6" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-title" x="193" y="324.0" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1d232a">SageMath</text>
+  <rect class="f-box" x="24" y="342" width="106" height="30" rx="6" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-title" x="77" y="362.0" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1d232a">Maxima</text>
+  <rect class="f-box" x="140" y="342" width="106" height="30" rx="6" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-title" x="193" y="362.0" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1d232a">Giac</text>
+  <rect class="f-box" x="24" y="380" width="106" height="30" rx="6" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-title" x="77" y="400.0" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1d232a">Singular</text>
+  <rect class="f-box" x="140" y="380" width="106" height="30" rx="6" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-title" x="193" y="400.0" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1d232a">PARI/GP</text>
+  <rect class="f-box" x="24" y="418" width="106" height="30" rx="6" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-title" x="77" y="438.0" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1d232a">FLINT</text>
+  <rect class="f-box" x="140" y="418" width="106" height="30" rx="6" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-title" x="193" y="438.0" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1d232a">Gappa</text>
+  <rect class="f-box" x="286" y="334" width="104" height="56" rx="8" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-text" font-family="STIX Two Text, STIX Two Math, Cambria Math, Times New Roman, DejaVu Serif, serif" font-size="14" fill="#6a7078" text-anchor="middle">
+    <tspan x="338" y="357.4">CASOracle /</tspan>
+    <tspan x="338" y="376.3">DSLean</tspan>
+  </text>
+  <rect class="f-box" x="424" y="20" width="168" height="64" rx="8" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-title" x="508" y="40.4" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#1d232a">Mathlib</text>
+  <text class="f-text" font-family="STIX Two Text, STIX Two Math, Cambria Math, Times New Roman, DejaVu Serif, serif" font-size="13.5" fill="#6a7078" text-anchor="middle">
+    <tspan x="508" y="71.7">definitions and tactics</tspan>
+  </text>
+  <rect class="f-box" x="610" y="20" width="168" height="64" rx="8" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-title" x="694" y="40.4" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#1d232a">FloatLib</text>
+  <text class="f-text" font-family="STIX Two Text, STIX Two Math, Cambria Math, Times New Roman, DejaVu Serif, serif" font-size="13.5" fill="#6a7078" text-anchor="middle">
+    <tspan x="694" y="71.7">certified numerics</tspan>
+  </text>
+  <rect class="f-box" x="416" y="128" width="352" height="180" rx="8" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <path class="f-code" d="M424,128 h336 a8,8 0 0 1 8,8 v42 h-352 v-42 a8,8 0 0 1 8,-8 z" fill="#f4f2ec"/>
+  <rect class="f-box" x="416" y="128" width="352" height="180" rx="8" fill="none" stroke="#d9d5cb" stroke-width="1.2"/>
+  <text class="f-title" x="592" y="162.4" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="26" font-weight="600" fill="#1d232a">SymLean</text>
+  <text class="f-text" font-family="STIX Two Text, STIX Two Math, Cambria Math, Times New Roman, DejaVu Serif, serif" font-size="17" fill="#6a7078" text-anchor="middle">
+    <tspan x="592" y="237.5">certificates and</tspan>
+    <tspan x="592" y="260.4">proof construction</tspan>
+  </text>
+  <rect class="f-box f-kernel" x="796" y="195" width="104" height="46" rx="8" fill="#ffffff" stroke="#2e7d4f" stroke-width="2"/>
+  <text class="f-text" font-family="STIX Two Text, STIX Two Math, Cambria Math, Times New Roman, DejaVu Serif, serif" font-size="15" fill="#6a7078" text-anchor="middle">
+    <tspan x="848" y="223.2">Lean kernel</tspan>
+  </text>
+  <rect class="f-box f-kernel" x="926" y="143" width="304" height="150" rx="8" fill="#ffffff" stroke="#2e7d4f" stroke-width="2"/>
+  <path class="f-code" d="M934,143 h288 a8,8 0 0 1 8,8 v22 h-304 v-22 a8,8 0 0 1 8,-8 z" fill="#f4f2ec"/>
+  <rect class="f-box f-kernel" x="926" y="143" width="304" height="150" rx="8" fill="none" stroke="#2e7d4f" stroke-width="2"/>
+  <text class="f-title" x="940" y="163.4" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#1d232a">Checked theorem</text>
+  <text class="f-text" font-family="STIX Two Text, STIX Two Math, Cambria Math, Times New Roman, DejaVu Serif, serif" font-size="16.5" fill="#6a7078">
+    <tspan x="940" y="227.6">∀ x : ℝ,</tspan>
+    <tspan x="940" y="249.9">x⁴ − 1 = (x − 1)(x + 1)(x² + 1)</tspan>
+  </text>
+  <path class="f-arrow" d="M260,71 L356,71 L356,176 L416,176" fill="none" stroke="#8d929a" stroke-width="1.6" marker-end="url(#architecture-arrow)"/>
+  <path class="f-arrow" d="M260,188 L332,188 L332,232 L416,232" fill="none" stroke="#8d929a" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#architecture-arrow)"/>
+  <path class="f-arrow" d="M260,362 L286,362" fill="none" stroke="#8d929a" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#architecture-arrow)"/>
+  <path class="f-arrow" d="M390,362 L402,362 L402,282 L416,282" fill="none" stroke="#8d929a" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#architecture-arrow)"/>
+  <path class="f-arrow" d="M508,84 L508,128" fill="none" stroke="#8d929a" stroke-width="1.6" marker-end="url(#architecture-arrow)"/>
+  <path class="f-arrow" d="M694,84 L694,128" fill="none" stroke="#8d929a" stroke-width="1.6" marker-end="url(#architecture-arrow)"/>
+  <path class="f-arrow" d="M768,218 L796,218" fill="none" stroke="#8d929a" stroke-width="1.6" marker-end="url(#architecture-arrow)"/>
+  <path class="f-arrow" d="M900,218 L926,218" fill="none" stroke="#8d929a" stroke-width="1.6" marker-end="url(#architecture-arrow)"/>
+  <rect class="f-box" x="926" y="350" width="304" height="86" rx="8" fill="#ffffff" stroke="#d9d5cb" stroke-width="1.2"/>
+  <path class="f-arrow" d="M948,380 L1002,380" fill="none" stroke="#8d929a" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#architecture-arrow)"/>
+  <text class="f-text" x="1018" y="385" font-family="STIX Two Text, STIX Two Math, Cambria Math, Times New Roman, DejaVu Serif, serif" font-size="15" fill="#6a7078">proposal (not trusted)</text>
+  <path class="f-arrow" d="M948,412 L1002,412" fill="none" stroke="#8d929a" stroke-width="1.6" marker-end="url(#architecture-arrow)"/>
+  <text class="f-text" x="1018" y="417" font-family="STIX Two Text, STIX Two Math, Cambria Math, Times New Roman, DejaVu Serif, serif" font-size="15" fill="#6a7078">checked proof flow</text>
+</svg>
+</div></div><figcaption><a class="fig-number" href="#architecture-figure">Figure 4.</a> Dashed arrows are proposals, which nobody has to trust. SymLean turns them into certificates and proofs with Mathlib and FloatLib, and Lean&#x27;s kernel checks the result.</figcaption></figure>
+<p><strong>Mathlib.</strong> All of our results are expressed using Mathlib&#x27;s mathematical definitions, including its notions of derivatives, interval integrals, special functions and matrices. This allows the resulting theorems to be used directly in existing formalizations. Internally, SymLean also makes extensive use of established Mathlib tactics such as <code class="lean"><span class="t">ring</span></code>, <code class="lean"><span class="t">field_simp</span></code>, <code class="lean"><span class="t">norm_num</span></code>, <code class="lean"><span class="t">positivity</span></code> and <code class="lean"><span class="t">linarith</span></code>.</p>
+<p><strong>External computer algebra systems.</strong> Through <a class="ext" href="https://github.com/taterowney/DSLean">DSLean</a> and the optional <a class="sym" href="docs/ref/oracle.html"><code class="lean">CASOracle</code></a> library, SymLean can work with SymPy, SageMath, Maxima, PARI/GP, FLINT, Giac, Singular and Gappa. These systems can do much of the computationally difficult work of finding a result, while SymLean constructs the corresponding proof. SymPy and SageMath cover most of the modes, from integrals and factorizations to Gröbner bases, equations, sums and differential equations. Maxima and Giac integrate, PARI/GP and FLINT factor polynomials and find their roots, Singular computes Gröbner bases and ideal memberships, doing the work of Mathlib&#x27;s <code class="lean">polyrith</code> with a local tool, and Gappa proposes the interval bounds that <a class="sym" href="docs/ref/cega.html"><code class="lean"><span class="t">cega</span></code></a> checks.</p>
+<div class="cells"><div class="cell in" id="in-10"><a class="label" href="#in-10">In[10]:=</a><div class="cell-body"><pre class="lean"><span class="k">#cas</span> [<span class="m">factor</span>, oracle := pari] (x ^ <span class="n">6</span> - <span class="n">1</span>)</pre><p class="quote-note">Quoted from <a class="src" href="https://github.com/lean-dojo/SymLean/blob/main/tests/oracle/Oracles.lean"><code>tests/oracle/Oracles.lean</code></a>, where <code>#guard_msgs</code> pins the output (the part shown).</p></div></div><div class="cell out" id="out-10"><span class="label">Out[10]=</span><div class="cell-body"><div class="report"><div class="result"><p class="qual">the identity is checked, irreducibility is not</p><div class="tf"><math alttext="\displaystyle (x - 1)(x + 1)({x}^{2} - x + 1)({x}^{2} + x + 1)" xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mstyle displaystyle="true" scriptlevel="0"><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo>&#x0002B;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo stretchy="false">&#x00028;</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>&#x02212;</mo><mi>x</mi><mo>&#x0002B;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo stretchy="false">&#x00028;</mo><msup><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>&#x0002B;</mo><mi>x</mi><mo>&#x0002B;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo></mstyle></mrow></math></div><code class="plain">(x - 1)*(x + 1)*(x^2 - x + 1)*(x^2 + x + 1)</code></div></div></div></div></div>
+<p>In this example, we certify the factorization identity returned by PARI/GP, but not the irreducibility of the individual factors. The distinction is reflected in the output.</p>
+<p><strong>Hex.</strong> <a class="ext" href="https://github.com/leanprover/hex">Hex</a>, the Lean FRO&#x27;s library of verified computational algebra, proves factorization, determinants and primality in Lean itself. On Lean 4.35, SymLean called it for Berlekamp–Zassenhaus factoring, Bareiss determinants and primality certificates, and that route comes back as soon as Hex is released for Lean 4.36. We are in touch with its developers.</p>
+<h2 id="why">Why are we interested in this?<a class="anchor" href="#why" aria-label="Link to this section">#</a></h2>
+<p>As we formalize more mathematics, particularly in areas such as analysis, differential equations and numerical analysis, symbolic and numerical calculations become increasingly difficult to avoid. A substantial part of a proof may consist of calculations that would ordinarily be delegated to mathematical software. We have encountered this ourselves while working on the formalization of partial differential equations. Sometimes the mathematical argument is already well understood, and the remaining difficulty is simply getting a long calculation through Lean.</p>
+<p>There is also an interesting opportunity here for AI-assisted mathematics. LLMs are becoming increasingly capable of finding mathematical arguments and proposing symbolic manipulations, but verifying the intermediate calculations remains important. A computer algebra system that produces formal proofs could be useful both to mathematicians working interactively and to AI systems exploring new proofs. We hope SymLean will make this kind of work a little easier.</p>
+<h2 id="credits">Credits<a class="anchor" href="#credits" aria-label="Link to this section">#</a></h2>
+<p>SymLean is developed at Caltech by Robert Joseph George, Changhe Yang, Peicong Song, Thomas Y. Hou and Anima Anandkumar. The library builds on <a class="ext" href="https://github.com/leanprover-community/mathlib4">Mathlib</a>, uses <a class="ext" href="https://github.com/lean-dojo/FloatLib">FloatLib</a> for certified numerical computation and integrates with external computer algebra systems through <a class="ext" href="https://github.com/taterowney/DSLean">DSLean</a>. SymLean is also used in <a class="ext" href="https://github.com/lean-dojo/PDEAtlas">PDEAtlas</a>, our ongoing effort to formalize partial differential equations.</p>
+<p>Many thanks to the Lean and Mathlib communities for the mathematical foundations, software and helpful discussions. SymLean is open source under the <a class="ext" href="https://github.com/lean-dojo/SymLean/blob/main/LICENSE">Apache 2.0 license</a>. Contributions, feedback and suggestions for new mathematical applications are very welcome.</p></main>
+<script defer src="static/site.js"></script>
+</body>
+</html>

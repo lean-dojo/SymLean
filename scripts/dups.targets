@@ -1,0 +1,69 @@
+# Declarations that count as used in the duplicate gate although nothing that the gate reads uses
+# them, each with its reason. The gate reads SymLean's own declarations, its source files, the
+# tables that Lean and SymLean keep, and scripts/downstream.names (the built downstream projects).
+# Declarations that the optional libraries call, which the gate does not import: `CASOracle`
+# applies the first by its quoted name for `#cas [eigenvalues, oracle := o]`
+# (`CASOracle/Numeric.lean`), the Hex route of `eulerPhi` called the second (the library `CASHex`,
+# which needs a Hex release for Lean 4.36 to return), `CASOracle/Ideal.lean` calls the third for an ideal equality from
+# an oracle's basis, and `CASOracle/Numeric.lean` calls the fourth for the estimate of an integral.
+CAS.Analysis.Matrix.exists_mem_spectrum_of_signChange
+CAS.NumberTheory.totient_eq_of_primeFactorsList
+CAS.Command.Ideal.spanEqualityOfRows
+CAS.Command.NIntegrate.simpson
+# The program of a run over files: `RunMain.lean`, which `scripts/CertStubs.lean` writes for a
+# manifest, calls it, and `tests/cert/run.sh` runs it. No module of the library is a program.
+CAS.Cert.Run.main
+# The certificate projection of the carrier `EnclosureAttempt`, registered by `cega_carrier`
+# (`CAS/Tactic/CEGA/Registrations.lean`): `cega` applies it by name.
+CAS.Continuum.RationalInterval.EnclosureAttempt.cert
+# Public statements that nothing in SymLean calls, kept for a stated reason.
+# The error function is SymLean's own definition (Mathlib has none): its continuity, its limit at
+# infinity and the Gaussian integral are the basic facts a user of `CAS.erf` looks for.
+CAS.continuous_erf
+CAS.tendsto_erf_atTop
+CAS.integral_exp_neg_sq
+# The radius of a `RationalInterval` is nonnegative. The type carries its endpoint order for this
+# fact and for `center_memReal`, and the radius is the error of `midpointApproxCert`.
+CAS.Continuum.RationalInterval.radius_nonneg
+# The queries of CEGA on a box and on a general domain: PDEAtlas's Blueprint names both in its
+# text, and `cega` itself calls the variants that take a precision.
+CAS.CEGA.encloseBox?
+CAS.CEGA.encloseOn?
+# Quadrature: the budget of a certificate or of a derivative bound is nonnegative, a bounder as a
+# `BoundCert`, and two small operations on quadrature trees. The quadrature theory has a user that
+# is not on the machine where this list is made (the finite-element quadrature project), so its
+# public statements stay.
+CAS.Continuum.QuadratureCert.error_nonneg
+CAS.Continuum.IteratedDerivativeBounderOn.bound_nonneg
+CAS.Continuum.IteratedDerivativeBounderOn.certify
+CAS.Continuum.QuadratureTree.join
+CAS.Continuum.QuadratureTree.WithErrorAtMost.weaken
+# Declarations of modules that no module of SymLean imports. The modules were kept for the
+# downstream projects that import them. PDEAtlas and BlowupZoo, as read for
+# scripts/downstream.names, use none of these 24 declarations; a third project, the
+# finite-element quadrature project, is not on the machine where this list is made, so they stay
+# until it is read.
+CAS.Analysis.IsEvenCosineSeries.const_mul
+CAS.Analysis.IsEvenCosineSeries.cos_two_mul
+CAS.Continuum.ExprAdaptiveTaylor.adaptiveToTolerance?
+CAS.Continuum.Legendre.monicPolynomial_four
+CAS.Continuum.Legendre.monicPolynomial_one
+CAS.Continuum.Legendre.monicPolynomial_three
+CAS.Continuum.Legendre.monicPolynomial_two
+CAS.Continuum.Legendre.monicPolynomial_zero
+CAS.Continuum.Legendre.twoNode_eq_one_div_sqrt
+CAS.Continuum.NodalRule.eval_add
+CAS.Continuum.RationalModelTree.Validated.error_nonneg
+CAS.Continuum.TaylorJetCert.error_nonneg
+CAS.Continuum.TrapezoidalPlan.errorConstant_nonneg
+CAS.Numerics.Binary64WordTree.length_toList
+CAS.Numerics.GridBall.join_encloses_ite
+CAS.Numerics.JetEncloses.contDiffAt
+CAS.Numerics.JetEncloses.smul
+CAS.Numerics.binaryGridSeparable_sound
+CAS.Numerics.coverWalk_sound
+CAS.Numerics.stageTwo
+CAS.Polynomial.Sparse.Univariate.DivisionResult.generate
+CAS.Scalar.heat1DResidual
+CAS.Splines.PolynomialSpline.contDiff_adjacentEvaluator
+CAS.Splines.PolynomialSplineData.MatchesJetsThrough.mono

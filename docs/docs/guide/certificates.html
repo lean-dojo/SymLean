@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Certificates · SymLean</title>
+<meta name="description" content="The statements behind the numerics: enclosures, bounds and approximations on a box, the carriers that hold them, the tactics that prove and reuse them, and certificates on tables of any size.">
+<link rel="stylesheet" href="../../static/site.css">
+<link rel="icon" type="image/png" href="../../static/brand/favicon.png">
+<link rel="apple-touch-icon" href="../../static/brand/apple-touch-icon.png">
+<meta property="og:title" content="Certificates · SymLean">
+<meta property="og:description" content="The statements behind the numerics: enclosures, bounds and approximations on a box, the carriers that hold them, the tactics that prove and reuse them, and certificates on tables of any size.">
+<meta property="og:image" content="https://lean-dojo.github.io/SymLean/static/brand/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="kind-guide">
+<a class="skip" href="#main">Skip to the content</a>
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html"><picture class="brand-logo"><source media="(prefers-color-scheme: dark)" srcset="../../static/brand/symlean-logo-dark.png"><img src="../../static/brand/symlean-logo.png" alt="SymLean" width="960" height="252"></picture></a><nav class="top-nav"><a href="../index.html" aria-current="page">Docs</a><a href="../tutorial/first-hour.html">Getting started</a><a href="../all.html">Index</a><a class="code-button" href="https://github.com/lean-dojo/SymLean">Code</a></nav></div></header>
+<div class="docs"><nav class="sidebar" aria-label="Documentation"><p class="nav-home"><a href="../index.html">Documentation</a></p><p class="nav-heading">Guides</p><details><summary><a href="why.html">Why SymLean</a></summary><ul></ul></details><details><summary><a href="algebra.html">Algebra</a></summary><ul><li><a href="../ref/simplify.html"><code class="lean">simplify</code></a></li><li><a href="../ref/fullSimplify.html"><code class="lean">fullSimplify</code></a></li><li><a href="../ref/expand.html"><code class="lean">expand</code></a></li><li><a href="../ref/factor.html"><code class="lean">factor</code></a></li><li><a href="../ref/collect.html"><code class="lean">collect</code></a></li><li><a href="../ref/trigExpand.html"><code class="lean">trigExpand</code></a></li><li><a href="../ref/together.html"><code class="lean">together</code></a></li><li><a href="../ref/cancel.html"><code class="lean">cancel</code></a></li><li><a href="../ref/apart.html"><code class="lean">apart</code></a></li><li><a href="../ref/numerator.html"><code class="lean">numerator</code></a></li><li><a href="../ref/denominator.html"><code class="lean">denominator</code></a></li></ul></details><details><summary><a href="polynomials.html">Polynomials</a></summary><ul><li><a href="../ref/coefficient.html"><code class="lean">coefficient</code></a></li><li><a href="../ref/coefficientList.html"><code class="lean">coefficientList</code></a></li><li><a href="../ref/exponent.html"><code class="lean">exponent</code></a></li><li><a href="../ref/polynomialGCD.html"><code class="lean">polynomialGCD</code></a></li><li><a href="../ref/polynomialLCM.html"><code class="lean">polynomialLCM</code></a></li><li><a href="../ref/polynomialQuotient.html"><code class="lean">polynomialQuotient</code></a></li><li><a href="../ref/polynomialRemainder.html"><code class="lean">polynomialRemainder</code></a></li><li><a href="../ref/polynomialQuotientRemainder.html"><code class="lean">polynomialQuotientRemainder</code></a></li><li><a href="../ref/interpolatingPolynomial.html"><code class="lean">interpolatingPolynomial</code></a></li><li><a href="../ref/groebner.html"><code class="lean">groebner</code></a></li><li><a href="../ref/member.html"><code class="lean">member</code></a></li></ul></details><details><summary><a href="calculus.html">Calculus</a></summary><ul><li><a href="../ref/derive.html"><code class="lean">derive</code></a></li><li><a href="../ref/grad.html"><code class="lean">grad</code></a></li><li><a href="../ref/integrate.html"><code class="lean">integrate</code></a></li><li><a href="../ref/nintegrate.html"><code class="lean">nintegrate</code></a></li><li><a href="../ref/cas-integrate-primitive.html"><code class="lean"><span class="t">cas</span> [integrate primitive := F]</code></a></li><li><a href="../ref/maximize.html"><code class="lean">maximize</code></a></li><li><a href="../ref/minimize.html"><code class="lean">minimize</code></a></li></ul></details><details><summary><a href="series-limits.html">Series and limits</a></summary><ul><li><a href="../ref/series.html"><code class="lean">series</code></a></li><li><a href="../ref/limit.html"><code class="lean">limit</code></a></li></ul></details><details><summary><a href="equations.html">Equations</a></summary><ul><li><a href="../ref/solve.html"><code class="lean">solve</code></a></li><li><a href="../ref/reduce.html"><code class="lean">reduce</code></a></li><li><a href="../ref/roots.html"><code class="lean">roots</code></a></li><li><a href="../ref/findRoot.html"><code class="lean">findRoot</code></a></li></ul></details><details><summary><a href="sums.html">Sums and recurrences</a></summary><ul><li><a href="../ref/sum.html"><code class="lean">sum</code></a></li><li><a href="../ref/product.html"><code class="lean">product</code></a></li><li><a href="../ref/rsolve.html"><code class="lean">rsolve</code></a></li></ul></details><details><summary><a href="special-functions.html">Special functions</a></summary><ul><li><a href="../ref/gamma.html"><code class="lean">gamma</code></a></li><li><a href="../ref/zeta.html"><code class="lean">zeta</code></a></li><li><a href="../ref/BernoulliB.html"><code class="lean">BernoulliB</code></a></li><li><a href="../ref/erf.html"><code class="lean">erf</code></a></li><li><a href="../ref/BesselJ.html"><code class="lean">BesselJ</code></a></li><li><a href="../ref/LegendreP.html"><code class="lean">LegendreP</code></a></li><li><a href="../ref/ChebyshevT.html"><code class="lean">ChebyshevT</code></a></li><li><a href="../ref/ChebyshevU.html"><code class="lean">ChebyshevU</code></a></li><li><a href="../ref/HermiteH.html"><code class="lean">HermiteH</code></a></li><li><a href="../ref/HermiteHe.html"><code class="lean">HermiteHe</code></a></li></ul></details><details><summary><a href="number-theory.html">Number theory</a></summary><ul><li><a href="../ref/divisors.html"><code class="lean">divisors</code></a></li><li><a href="../ref/divisorSigma.html"><code class="lean">divisorSigma</code></a></li><li><a href="../ref/eulerPhi.html"><code class="lean">eulerPhi</code></a></li><li><a href="../ref/powerMod.html"><code class="lean">powerMod</code></a></li><li><a href="../ref/modularInverse.html"><code class="lean">modularInverse</code></a></li><li><a href="../ref/chineseRemainder.html"><code class="lean">chineseRemainder</code></a></li><li><a href="../ref/extendedGCD.html"><code class="lean">extendedGCD</code></a></li><li><a href="../ref/jacobiSymbol.html"><code class="lean">jacobiSymbol</code></a></li><li><a href="../ref/integerDigits.html"><code class="lean">integerDigits</code></a></li><li><a href="../ref/continuedFraction.html"><code class="lean">continuedFraction</code></a></li><li><a href="../ref/fromContinuedFraction.html"><code class="lean">fromContinuedFraction</code></a></li><li><a href="../ref/binomial.html"><code class="lean">binomial</code></a></li><li><a href="../ref/factorial.html"><code class="lean">factorial</code></a></li><li><a href="../ref/fibonacci.html"><code class="lean">fibonacci</code></a></li></ul></details><details><summary><a href="linear-algebra.html">Linear algebra</a></summary><ul><li><a href="../ref/dot.html"><code class="lean">dot</code></a></li><li><a href="../ref/matrixPower.html"><code class="lean">matrixPower</code></a></li><li><a href="../ref/transpose.html"><code class="lean">transpose</code></a></li><li><a href="../ref/trace.html"><code class="lean">trace</code></a></li><li><a href="../ref/det.html"><code class="lean">det</code></a></li><li><a href="../ref/inverse.html"><code class="lean">inverse</code></a></li><li><a href="../ref/matrixRank.html"><code class="lean">matrixRank</code></a></li><li><a href="../ref/rowReduce.html"><code class="lean">rowReduce</code></a></li><li><a href="../ref/nullSpace.html"><code class="lean">nullSpace</code></a></li><li><a href="../ref/linearSolve.html"><code class="lean">linearSolve</code></a></li><li><a href="../ref/characteristicPolynomial.html"><code class="lean">characteristicPolynomial</code></a></li><li><a href="../ref/eigenvalues.html"><code class="lean">eigenvalues</code></a></li><li><a href="../ref/eigenvectors.html"><code class="lean">eigenvectors</code></a></li><li><a href="../ref/positiveDefinite.html"><code class="lean">positiveDefinite</code></a></li><li><a href="../ref/eigenvalueBounds.html"><code class="lean">eigenvalueBounds</code></a></li></ul></details><details><summary><a href="differential-equations.html">Differential equations</a></summary><ul><li><a href="../ref/dsolve.html"><code class="lean">dsolve</code></a></li><li><a href="../ref/ndsolve.html"><code class="lean">ndsolve</code></a></li><li><a href="../ref/laplace.html"><code class="lean">laplace</code></a></li><li><a href="../ref/inverseLaplace.html"><code class="lean">inverseLaplace</code></a></li><li><a href="../ref/fourierTransform.html"><code class="lean">fourierTransform</code></a></li><li><a href="../ref/fourier.html"><code class="lean">fourier</code></a></li><li><a href="../ref/fourierCos.html"><code class="lean">fourierCos</code></a></li><li><a href="../ref/fourierSin.html"><code class="lean">fourierSin</code></a></li></ul></details><details><summary><a href="numerics.html">Numerics</a></summary><ul><li><a href="../ref/N.html"><code class="lean">N</code></a></li><li><a href="../ref/enclose.html"><code class="lean">enclose</code></a></li><li><a href="../ref/maximize.html"><code class="lean">maximize</code></a></li><li><a href="../ref/minimize.html"><code class="lean">minimize</code></a></li><li><a href="../ref/nintegrate.html"><code class="lean">nintegrate</code></a></li><li><a href="../ref/findRoot.html"><code class="lean">findRoot</code></a></li><li><a href="../ref/ndsolve.html"><code class="lean">ndsolve</code></a></li><li><a href="../ref/eigenvalueBounds.html"><code class="lean">eigenvalueBounds</code></a></li><li><a href="../ref/cega.html"><code class="lean"><span class="t">cega</span></code></a></li><li><a href="../ref/cega-using.html"><code class="lean"><span class="t">cega</span> <span class="t">using</span></code></a></li><li><a href="../ref/cega-query.html"><code class="lean"><span class="t">cega?</span></code></a></li><li><a href="../ref/options.html"><code class="lean">Options</code></a></li></ul></details><details open><summary><a href="certificates.html" aria-current="page">Certificates</a></summary><ul><li><a href="../ref/cega.html"><code class="lean"><span class="t">cega</span></code></a></li><li><a href="../ref/enclose.html"><code class="lean">enclose</code></a></li><li><a href="../ref/cega-using.html"><code class="lean"><span class="t">cega</span> <span class="t">using</span></code></a></li><li><a href="../ref/cega-query.html"><code class="lean"><span class="t">cega?</span></code></a></li><li><a href="../ref/options.html"><code class="lean">Options</code></a></li></ul></details><details><summary><a href="tactics.html">Tactics</a></summary><ul><li><a href="../ref/cas.html"><code class="lean"><span class="t">cas</span></code></a></li><li><a href="../ref/cas-using.html"><code class="lean"><span class="t">cas</span> <span class="t">using</span></code></a></li><li><a href="../ref/cega.html"><code class="lean"><span class="t">cega</span></code></a></li><li><a href="../ref/cega-using.html"><code class="lean"><span class="t">cega</span> <span class="t">using</span></code></a></li><li><a href="../ref/cas-query.html"><code class="lean"><span class="t">cas?</span></code></a></li><li><a href="../ref/cega-query.html"><code class="lean"><span class="t">cega?</span></code></a></li><li><a href="../ref/cas_nf.html"><code class="lean"><span class="t">cas_nf</span></code></a></li><li><a href="../ref/options.html"><code class="lean">Options</code></a></li></ul></details><details><summary><a href="oracles.html">Oracles</a></summary><ul><li><a href="../ref/oracle.html"><code class="lean">oracle</code></a></li><li><a href="../ref/cas.html"><code class="lean"><span class="t">cas</span></code></a></li><li><a href="../ref/cas-integrate-primitive.html"><code class="lean"><span class="t">cas</span> [integrate primitive := F]</code></a></li><li><a href="../ref/options.html"><code class="lean">Options</code></a></li></ul></details><details><summary><a href="library.html">The library</a></summary><ul></ul></details><p class="nav-heading">Tutorials</p><ul class="nav-flat"><li><a href="../tutorial/first-hour.html">Getting started with SymLean</a></li><li><a href="../tutorial/proving.html">Proving with <code class="lean"><span class="t">cas</span></code></a></li><li><a href="../tutorial/trust.html">What you trust</a></li></ul><p class="nav-heading"><a href="../all.html">Index A to Z</a></p></nav><main class="doc" id="main"><nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Documentation</a> <span class="sep">›</span> <span aria-current="page">Certificates</span></nav><header class="page-head"><p class="kind">Guide</p><h1>Certificates</h1><p class="summary">The statements behind the numerics: enclosures, bounds and approximations on a box, the carriers that hold them, the tactics that prove and reuse them, and certificates on tables of any size.</p></header><p>CEGA stands for Certified Enclosures, Guarantees, and Approximations. I wanted a numerical result to be a statement you can read and use like any other, so its statements are ordinary propositions about real functions on a set, and each one has a fixed meaning:</p>
+<table class="opts"><thead><tr><th>Statement</th><th>Meaning</th></tr></thead><tbody><tr><td><code class="lean">EnclosedOn f s lo hi</code></td><td><span class="inline-math"><math alttext="\mathrm{lo} \le f(x) \le \mathrm{hi}" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mrow><mi mathvariant="normal">l</mi><mi mathvariant="normal">o</mi></mrow><mo>&#x02264;</mo><mi>f</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02264;</mo><mrow><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi></mrow></mrow></math></span> for every <span class="inline-math"><math alttext="x \in s" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo>&#x02208;</mo><mi>s</mi></mrow></math></span></td></tr><tr><td><code class="lean">BoundOn f s hi</code></td><td><span class="inline-math"><math alttext="f(x) \le \mathrm{hi}" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02264;</mo><mrow><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi></mrow></mrow></math></span> for every <span class="inline-math"><math alttext="x \in s" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo>&#x02208;</mo><mi>s</mi></mrow></math></span></td></tr><tr><td><code class="lean">ApproxOn f g s ε</code></td><td><span class="inline-math"><math alttext="\lVert f(x) - g(x) \rVert \le \varepsilon" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02016;</mo><mi>f</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02016;</mo><mo>&#x02264;</mo><mi>&#x003B5;</mi></mrow></math></span> for every <span class="inline-math"><math alttext="x \in s" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo>&#x02208;</mo><mi>s</mi></mrow></math></span></td></tr><tr><td><code class="lean">ResidualBound r s ε</code></td><td><span class="inline-math"><math alttext="\lVert r(x) \rVert \le \varepsilon" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02016;</mo><mi>r</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02016;</mo><mo>&#x02264;</mo><mi>&#x003B5;</mi></mrow></math></span> for every <span class="inline-math"><math alttext="x \in s" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo>&#x02208;</mo><mi>s</mi></mrow></math></span></td></tr></tbody></table>
+<p>A carrier, such as <code class="lean">EnclosureCert</code>, <code class="lean">BoundCert</code>, <code class="lean">ApproxCert</code>, <code class="lean">ResidualCert</code>, <code class="lean">ModelApproxCert</code> or <code class="lean">QuadratureCert</code>, keeps the function, the domain, the bounds and a proof of its statement. Anything else it holds, such as the order of a model, is data and proves nothing. Only the proved statement counts.</p>
+<section class="cmd-group"><h3 id="proving-the-statements">Proving the statements</h3><ul class="cmd-list"><li><a class="sym" href="../ref/cega.html"><code class="lean"><span class="t">cega</span></code></a><span class="cmd-summary">Proves numerical bounds: inequalities on a box of real variables, closed constants and interval integrals.</span></li><li><a class="sym" href="../ref/enclose.html"><code class="lean">enclose</code></a><span class="cmd-summary">An interval that holds every value of an expression on a box, with upper, absolute and center bounds, all proved.</span></li></ul></section><section class="cmd-group"><h3 id="reusing-a-carrier">Reusing a carrier</h3><ul class="cmd-list"><li><a class="sym" href="../ref/cega-using.html"><code class="lean"><span class="t">cega</span> <span class="t">using</span></code></a><span class="cmd-summary">Proves a goal from a certificate that you built once, by the certificate’s own soundness theorem.</span></li></ul></section><section class="cmd-group"><h3 id="asking-for-the-call-to-keep">Asking for the call to keep</h3><ul class="cmd-list"><li><a class="sym" href="../ref/cega-query.html"><code class="lean"><span class="t">cega?</span></code></a><span class="cmd-summary">Proves the goal as <code class="lean"><span class="t">cega</span></code> does, and suggests the call to keep in the proof.</span></li></ul></section><section class="cmd-group"><h3 id="settings">Settings</h3><ul class="cmd-list"><li><a class="sym" href="../ref/options.html"><code class="lean">Options</code></a><span class="cmd-summary">The settings of <code class="lean"><span class="t">cas</span></code>, <code class="lean"><span class="t">cega</span></code> and <code class="lean"><span class="k">#cas</span></code>: the budget of a call, what a report shows, and the trace classes.</span></li></ul></section>
+<p>The examples on this page run after <code class="lean"><span class="k">open</span> CAS.Certificate</code>. <code class="lean"><span class="ty">ℝ</span>^n</code> is our notation for Mathlib’s <code class="lean">EuclideanSpace <span class="ty">ℝ</span> (Fin n)</code>, and <code class="lean">p <span class="n">0</span></code> is the first coordinate of a point <code class="lean">p</code>.</p>
+
+<p>The explicit form of <code class="lean"><span class="t">cega</span></code> names the box and the expression. The bounds you state may be weaker than the ones it computes, and exact arithmetic covers the difference:</p>
+<div class="cells"><div class="cell in" id="in-1"><a class="label" href="#in-1">In[1]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> :
+    <span class="lean-hover" tabindex="0" data-lean-hover="EnclosedOn : {α : Type} → (α → ℝ) → Set α → ℝ → ℝ → Prop
+
+A pointwise two-sided real enclosure over a domain.
+
+Interval backends and validated numerical routines usually produce this first;
+it can then be projected to a bound, residual estimate, or midpoint
+approximation certificate." title="EnclosedOn : {α : Type} → (α → ℝ) → Set α → ℝ → ℝ → Prop
+
+A pointwise two-sided real enclosure over a domain.
+
+Interval backends and validated numerical routines usually produce this first;
+it can then be projected to a bound, residual estimate, or midpoint
+approximation certificate.">EnclosedOn</span> (<span class="k">fun</span> <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^1" title="p : ℝ^1">p</span> : <span class="ty">ℝ</span>^<span class="n">1</span> ↦ <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^1" title="p : ℝ^1">p</span> <span class="n">0</span> / (<span class="n">1</span> + <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^1" title="p : ℝ^1">p</span> <span class="n">0</span>))
+      {<span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^1" title="p : ℝ^1">p</span> : <span class="ty">ℝ</span>^<span class="n">1</span> | <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^1" title="p : ℝ^1">p</span> <span class="n">0</span> ∧ <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^1" title="p : ℝ^1">p</span> <span class="n">0</span> ≤ <span class="n">1</span>} <span class="n">0</span> (<span class="n">1</span> / <span class="n">2</span>) := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals" title="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals" title="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals"><span class="t">cega</span></span> [<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals" title="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals">enclose</span> <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals" title="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals">x</span> <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals" title="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals"><span class="k">in</span></span> [<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals" title="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals"><span class="n">0</span></span>, <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals" title="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals"><span class="n">1</span></span>]] (<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals" title="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals">x</span> / (<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals" title="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals"><span class="n">1</span></span> + <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals" title="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0)) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1} 0 (1 / 2)
+
+After
+no goals">x</span>))</pre></div></div><div class="cell out" id="out-1"><span class="label">Out[1]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<p>When the domain is a box with rational bounds, bare <code class="lean"><span class="t">cega</span></code> reads the function and the box off the goal, so you don’t have to repeat them:</p>
+<div class="cells"><div class="cell in" id="in-2"><a class="label" href="#in-2">In[2]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> :
+    <span class="lean-hover" tabindex="0" data-lean-hover="BoundOn : {α : Type} → (α → ℝ) → Set α → ℝ → Prop
+
+A pointwise upper bound on a real-valued function over a domain.
+
+It supplies the magnitude bounds needed by Lipschitz propagation and by product and
+quotient estimates." title="BoundOn : {α : Type} → (α → ℝ) → Set α → ℝ → Prop
+
+A pointwise upper bound on a real-valued function over a domain.
+
+It supplies the magnitude bounds needed by Lipschitz propagation and by product and
+quotient estimates.">BoundOn</span> (<span class="k">fun</span> <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^2" title="p : ℝ^2">p</span> : <span class="ty">ℝ</span>^<span class="n">2</span> ↦ <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^2" title="p : ℝ^2">p</span> <span class="n">0</span> * <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^2" title="p : ℝ^2">p</span> <span class="n">1</span>)
+      {<span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^2" title="p : ℝ^2">p</span> : <span class="ty">ℝ</span>^<span class="n">2</span> | <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^2" title="p : ℝ^2">p</span> <span class="n">0</span> ∧ <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^2" title="p : ℝ^2">p</span> <span class="n">0</span> ≤ <span class="n">1</span> ∧ <span class="n">2</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^2" title="p : ℝ^2">p</span> <span class="n">1</span> ∧ <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^2" title="p : ℝ^2">p</span> <span class="n">1</span> ≤ <span class="n">3</span>} <span class="n">4</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ BoundOn (fun p ↦ p.ofLp 0 * p.ofLp 1) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1 ∧ 2 ≤ p.ofLp 1 ∧ p.ofLp 1 ≤ 3} 4
+
+After
+no goals" title="Before
+
+⊢ BoundOn (fun p ↦ p.ofLp 0 * p.ofLp 1) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1 ∧ 2 ≤ p.ofLp 1 ∧ p.ofLp 1 ≤ 3} 4
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ BoundOn (fun p ↦ p.ofLp 0 * p.ofLp 1) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1 ∧ 2 ≤ p.ofLp 1 ∧ p.ofLp 1 ≤ 3} 4
+
+After
+no goals" title="Before
+
+⊢ BoundOn (fun p ↦ p.ofLp 0 * p.ofLp 1) {p | 0 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 1 ∧ 2 ≤ p.ofLp 1 ∧ p.ofLp 1 ≤ 3} 4
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-2"><span class="label">Out[2]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<p>In practice, most uses need no certificate statement at all. On an inequality whose variables have rational bounds in the context, <code class="lean"><span class="t">cega</span></code> builds the certificate itself and carries it to the goal, as in <a class="sym" href="numerics.html">Numerics</a>.</p>
+<h2 id="arithmetic">Exact rationals or IEEE floats<a class="anchor" href="#arithmetic" aria-label="Link to this section">#</a></h2>
+<p>By default <code class="lean"><span class="t">cega</span></code> computes its enclosures with exact integers and rationals. People also want enclosures in the IEEE format their numbers live in, so <code class="lean"><span class="t">cega</span></code> has a switch. With <code class="lean">[use_floats]</code> the two ends of every interval are finite binary64 values. In the kernel, <a class="ext" href="https://github.com/lean-dojo/FloatLib">FloatLib</a> computes a rational enclosure at each operation and rounds its lower end toward <span class="inline-math"><math alttext="-\infty" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mi>&#x0221E;</mi></mrow></math></span> and its upper end toward <span class="inline-math"><math alttext="+\infty" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x0002B;</mo><mi>&#x0221E;</mi></mrow></math></span>. The theorem doesn’t change. It is still about real numbers, and it uses the same three axioms:</p>
+<div class="cells"><div class="cell in" id="in-3"><a class="label" href="#in-3">In[3]:=</a><div class="cell-body"><pre class="lean"><span class="k">theorem</span> <span class="lean-hover" tabindex="0" data-lean-hover="exp_le_floats : ∀ (x : ℝ), 0 ≤ x → x ≤ 1 → Real.exp x ≤ 2.72" title="exp_le_floats : ∀ (x : ℝ), 0 ≤ x → x ≤ 1 → Real.exp x ≤ 2.72">exp_le_floats</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₀ : 0 ≤ x" title="h₀ : 0 ≤ x">h₀</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₁ : x ≤ 1" title="h₁ : x ≤ 1">h₁</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential" title="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential">Real.exp</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">2.72</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals"><span class="t">cega</span></span> [<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals">use_floats</span>]
+
+<span class="lean-hover" tabindex="0" data-lean-hover="Prints the axioms used by a declaration, directly or indirectly.
+Please consult [the reference manual](https://lean-lang.org/doc/reference/4.36.0/find/?domain=Verso.Genre.Manual.section&amp;name=validating-proofs) to understand the significance of the output." title="Prints the axioms used by a declaration, directly or indirectly.
+Please consult [the reference manual](https://lean-lang.org/doc/reference/4.36.0/find/?domain=Verso.Genre.Manual.section&amp;name=validating-proofs) to understand the significance of the output."><span class="k">#print</span></span> axioms <span class="lean-hover" tabindex="0" data-lean-hover="exp_le_floats : ∀ (x : ℝ), 0 ≤ x → x ≤ 1 → Real.exp x ≤ 2.72" title="exp_le_floats : ∀ (x : ℝ), 0 ≤ x → x ≤ 1 → Real.exp x ≤ 2.72">exp_le_floats</span></pre></div></div><div class="cell out" id="out-3"><span class="label">Out[3]=</span><div class="cell-body"><div class="msg axioms"><p><code>exp_le_floats</code> depends on the axioms <code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>.</p></div></div></div></div>
+<p><code class="lean">(arith := F)</code> picks the format: <code class="lean">binary16</code>, <code class="lean">binary32</code>, <code class="lean">binary64</code>, <code class="lean">binary128</code>, <code class="lean">FloatFormat.ieee e f</code> for <code class="lean">e</code> exponent bits and <code class="lean">f</code> fraction bits, or a format named by its precision and its largest exponent, as in <code class="lean">(arith := <span class="s">"binary(p := 113, emax := 16383)"</span>)</code>. It turns floats on by itself, so <code class="lean"><span class="t">cega</span> (arith := binary128)</code> needs no flag. <code class="lean"><span class="k">set_option</span> cega.arithmetic <span class="s">"binary64"</span></code> does the same for every call after it, and <a class="sym" href="../ref/cega-query.html"><code class="lean"><span class="t">cega?</span></code></a> names the arithmetic that a proof used.</p>
+<h3 id="arithmetic-build">One line for a whole build<a class="anchor" href="#arithmetic-build" aria-label="Link to this section">#</a></h3>
+<p>A project usually wants one arithmetic for all its proofs, and nobody wants to edit every call. <code class="lean">cega.arithmetic</code> is an ordinary Lean option, so the lakefile can set it. In <code class="lean">lakefile.toml</code> that is one line under <code class="lean">[leanOptions]</code>:</p>
+<pre class="shell">[leanOptions]
+weak.cega.arithmetic = &quot;binary64&quot;</pre>
+<p>In <code class="lean">lakefile.lean</code> it is <code class="lean">leanOptions := #[⟨`weak.cega.arithmetic, <span class="s">"binary64"</span>⟩]</code>. When the value comes from a configuration option, the command line chooses the arithmetic:</p>
+<div class="cells"><div class="cell in" id="in-4"><a class="label" href="#in-4">In[4]:=</a><div class="cell-body"><pre class="lean"><span class="k">def</span> arithmetic : String := (get_config? arithmetic).getD <span class="s">"exact"</span></pre><p class="quote-note">Quoted from <a class="src" href="https://github.com/lean-dojo/SymLean/blob/main/tests/floats/consumer/lakefile.lean"><code>tests/floats/consumer/lakefile.lean</code></a>, which its own build compiles.</p></div></div></div>
+<div class="cells"><div class="cell in" id="in-5"><a class="label" href="#in-5">In[5]:=</a><div class="cell-body"><pre class="lean">lean_lib Bounds <span class="k">where</span>
+  leanOptions := #[⟨`weak.cega.arithmetic, arithmetic⟩]</pre><p class="quote-note">Quoted from <a class="src" href="https://github.com/lean-dojo/SymLean/blob/main/tests/floats/consumer/lakefile.lean"><code>tests/floats/consumer/lakefile.lean</code></a>, which its own build compiles.</p></div></div></div>
+<p>With this lakefile, <code class="lean">lake build</code> computes with exact rationals and <code class="lean">lake build -R -Karithmetic=binary64</code> with binary64 floats, and no Lean file changes in between. The prefix <code class="lean">weak.</code> makes Lean skip the option in a module that doesn’t import SymLean. Lake hands the option to Lean as <code class="lean">-Dweak.cega.arithmetic=binary64</code>, and the same flag on the command line of <code class="lean">lean</code> sets it for one file. A call that chooses for itself keeps its choice in every build: <code class="lean"><span class="t">cega</span> [use_floats := false]</code> is exact, <code class="lean"><span class="t">cega</span> (arith := binary128)</code> is binary128, and the explicit query takes <code class="lean">(arith := <span class="s">"exact"</span>)</code>. <code class="lean">tests/floats</code> builds a small package both ways and reads back which computation each proof contains.</p>
+<h3 id="arithmetic-limits">What a format can’t prove<a class="anchor" href="#arithmetic-limits" aria-label="Link to this section">#</a></h3>
+<p>A float end lies a little further out than the rational one, and a format has a largest number. So a true bound can be out of reach of a format. When that happens the call fails, names the format and the reason, and proposes a wider format or exact arithmetic. It never computes with rationals in its place:</p>
+<div class="cells"><div class="cell in" id="in-6"><a class="label" href="#in-6">In[6]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : (<span class="n">10</span> : <span class="ty">ℝ</span>) ^ <span class="n">200</span> * <span class="n">10</span> ^ <span class="n">200</span> ≤ <span class="n">10</span> ^ <span class="n">401</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401
+
+After
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401" title="Before
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401
+
+After
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401
+
+After
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401" title="Before
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401
+
+After
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401"><span class="t">cega</span></span> [<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401
+
+After
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401" title="Before
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401
+
+After
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401">use_floats</span>]</pre></div></div><div class="cell out" id="out-6"><span class="label">Out[6]=</span><div class="cell-body"><div class="msg error"><p class="sev">Error</p><pre>cega box route: the query `cega (arith := binary64) [enclose]
+    (10 ^ 200 *
+      10 ^
+        200)` found no certificate: the binary64 evaluation found no enclosure: the enclosure of a product has an end beyond the largest finite binary64 number (overflow). A wider format, as in `(arith := binary128)`, or exact arithmetic, `cega [use_floats := false]`, may prove it.</pre><details class="more"><summary>The rest of the message</summary><pre>Other routes:
+  carrier search:
+    cega found no registered checked carrier or direct certificate matching the target
+  interval route:
+    cega interval route: FloatLib&#x27;s `interval` computes with exact rationals, so it is not run in binary64 arithmetic. `cega [use_floats := false]` runs it.
+  dyadic_interval route:
+    `dyadic_interval` computes with exact dyadic rationals, so it is not run in binary64 arithmetic. `cega [use_floats := false]` runs it.
+Bare `cega` proves an ordinary real inequality (`f x ≤ c`, `f x &lt; c`, `c ≤ f x`, `c &lt; f x` (also with `≥` and `&gt;`), `|f x| ≤ c`, `|f x| &lt; c`, `a ≤ f x ∧ f x ≤ b` (also with `&lt;`), `f x ∈ Set.Icc a b` (also `Set.Ioo`, `Set.Ico`, `Set.Ioc`), `f x ≤ g x`, `f x &lt; g x`, and conjunctions of these, with `c`, `a`, `b` closed and every real variable bounded by hypotheses `a ≤ x` and `x ≤ b`, `x ∈ Set.Icc a b`, or `|x| ≤ r` with rational literal endpoints), a bound on an interval integral `∫ x in a..b, f x` with rational limits, a certificate goal (`EnclosedOn f s lo hi`, `BoundOn f s c`, `ApproxOn f g s ε`, `ResidualBound r s ε`) on a coordinate box or from a checked carrier in the local context or the goal, a closed decidable statement about floats, which `float_decide` decides, a real inequality that FloatLib&#x27;s `interval` proves, on finite sums and norms too, and a closed goal that interval evaluation proves.</pre></details></div></div></div></div>
+<p><span class="inline-math"><math alttext="10^{200}" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>10</mn><mrow><mn>200</mn></mrow></msup></mrow></math></span> fits within binary64’s finite range, but its square doesn’t. <code class="lean"><span class="t">cega</span> (arith := binary128)</code> proves this bound, and so does plain <code class="lean"><span class="t">cega</span></code>. Thirty digits of <span class="inline-math"><math alttext="\sqrt 2" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msqrt><mn>2</mn></msqrt></mrow></math></span> go the same way, for want of precision rather than range: binary64 has about sixteen, and binary128 about thirty-four.</p>
+<p>The method differs too. When the goal states its bound with numerals, bare <code class="lean"><span class="t">cega</span></code> first tries FloatLib’s check, a refutation of the negation of the bound that bisects the box where it needs to, within <code class="lean">cega.maxRefinementWork</code> evaluations, and then the box query. With floats the query is the plain interval evaluation, on a uniform subdivision of the box when you give <code class="lean">(depth := n)</code>. The exact route also has a planner that uses monotonicity and centered forms, which is how it gets the sharp <span class="inline-math"><math alttext="x(1 - x) \le \tfrac{1}{4}" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x02212;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02264;</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mn>4</mn></mrow></mfrac></mstyle></mrow></math></span> on <span class="inline-math"><math alttext="[0, 1]" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>&#x0002C;</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math></span>. Floats prove that bound with a little room, <code class="lean">≤ <span class="n">0.26</span></code> at <code class="lean">(depth := <span class="n">6</span>)</code>, and not without it. A bound on an integral is computed with exact rationals, so it isn’t run with floats.</p>
+<h3 id="arithmetic-cost">What it costs<a class="anchor" href="#arithmetic-cost" aria-label="Link to this section">#</a></h3>
+<p>In <code class="lean">tests/floats/measure.tsv</code>, the rows of one run of <code class="lean">tests/floats/measure.py</code>, exact arithmetic takes less kernel time than every float format that proves the same goal, both for single <code class="lean"><span class="t">cega</span></code> calls and for repeated interval evaluations. FloatLib computes each float operation in exact rationals and then rounds the result outward into the format. The routes don’t do the same work either: the exact planner can use that sine is increasing on <span class="inline-math"><math alttext="[0, 1]" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>&#x0002C;</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math></span>, while the float query may need subdivisions. So speed isn’t what floats are for. They give you the computation in an IEEE format: the certified ends are numbers of the format, and the numbers keep a fixed size. Exact arithmetic gives you the sharp bounds, the integrals and no overflow.</p>
+<h2 id="large">Certificates of any size<a class="anchor" href="#large" aria-label="Link to this section">#</a></h2>
+<p><code class="lean"><span class="t">cega</span></code> proves one bound on one box. A computer-assisted proof often rests on much more data than that: a table of coefficients, a bound on every cell of a mesh, anything from a few numbers to hundreds of gigabytes. For this SymLean has a small framework, <code class="lean">CAS.Cert</code>. <code class="lean"><span class="k">import</span> CAS</code> doesn’t load it, so the examples below also import <code class="lean">CAS.Cert.Reduce</code> and <code class="lean">CAS.Examples.Cert.Seed</code>, and they run after <code class="lean"><span class="k">open</span> CAS.Cert CAS.Numerics</code>.</p>
+
+<p>I wanted the statement and its test to be written once, whatever the size of the data and whatever evaluates the test. So a condition is a term of one small language, <code class="lean">Cond</code>: comparisons of real expressions in the data, <code class="lean">and</code>, <code class="lean">or</code>, <code class="lean">all n</code> for every index below <code class="lean">n</code>, and <code class="lean">onIcc</code> for every real point of a cell. Its test computes on balls, each a center and a radius in natural numbers, and one theorem, <code class="lean">Cond.holds_of_check</code>, says that a passing test proves the condition for all real data that the balls enclose. On a goal without data, <code class="lean">cert_cond</code> writes the condition for you, and the kernel runs the test:</p>
+<div class="cells"><div class="cell in" id="in-7"><a class="label" href="#in-7">In[7]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : ∀ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ∈ <span class="lean-hover" tabindex="0" data-lean-hover="Set.Icc : {α : Type} → [Preorder α] → α → α → Set α
+
+`Icc a b` is the left-closed right-closed interval $[a, b]$." title="Set.Icc : {α : Type} → [Preorder α] → α → α → Set α
+
+`Icc a b` is the left-closed right-closed interval $[a, b]$.">Set.Icc</span> (<span class="n">0</span> : <span class="ty">ℝ</span>) <span class="n">1</span>, ∀ <span class="lean-hover" tabindex="0" data-lean-hover="y : ℝ" title="y : ℝ">y</span> ∈ <span class="lean-hover" tabindex="0" data-lean-hover="Set.Icc : {α : Type} → [Preorder α] → α → α → Set α
+
+`Icc a b` is the left-closed right-closed interval $[a, b]$." title="Set.Icc : {α : Type} → [Preorder α] → α → α → Set α
+
+`Icc a b` is the left-closed right-closed interval $[a, b]$.">Set.Icc</span> (<span class="n">0</span> : <span class="ty">ℝ</span>) <span class="n">1</span>,
+    <span class="lean-hover" tabindex="0" data-lean-hover="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential" title="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential">Real.exp</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> * <span class="lean-hover" tabindex="0" data-lean-hover="y : ℝ" title="y : ℝ">y</span>) + <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ^ <span class="n">2</span> ≤ <span class="n">4</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ x ∈ Set.Icc 0 1, ∀ y ∈ Set.Icc 0 1, Real.exp (x * y) + x ^ 2 ≤ 4
+
+After
+no goals" title="Before
+
+⊢ ∀ x ∈ Set.Icc 0 1, ∀ y ∈ Set.Icc 0 1, Real.exp (x * y) + x ^ 2 ≤ 4
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ x ∈ Set.Icc 0 1, ∀ y ∈ Set.Icc 0 1, Real.exp (x * y) + x ^ 2 ≤ 4
+
+After
+no goals" title="Before
+
+⊢ ∀ x ∈ Set.Icc 0 1, ∀ y ∈ Set.Icc 0 1, Real.exp (x * y) + x ^ 2 ≤ 4
+
+After
+no goals">cert_cond</span></pre></div></div><div class="cell out" id="out-7"><span class="label">Out[7]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<p>The size of the data changes only who evaluates the test. There are four regimes, with the same condition and the same theorem in each:</p>
+<table class="opts"><thead><tr><th>Regime</th><th>What evaluates the test</th><th>What you trust</th></tr></thead><tbody><tr><td>1</td><td>the kernel, in one module</td><td>the kernel</td></tr><tr><td>2</td><td>the kernel, in many modules that one theorem joins</td><td>the kernel</td></tr><tr><td>3</td><td>the same modules under <a class="sym" href="../ref/options.html"><code class="lean">cega.nativeCertificates</code></a></td><td>Lean’s compiler as well</td></tr><tr><td>4a</td><td>any of these three, on tables recomputed from a seed</td><td>what that regime trusts</td></tr><tr><td>4b</td><td>a program that reads the files</td><td>the program and the files; the run is a hypothesis of the theorem</td></tr></tbody></table>
+<p><code class="lean">tests/cert/measure.py</code> compares these modes on synthetic data using one condition: on each cell of a mesh, the cubic of the cell is at most the bound of the cell at every real point of the cell. Each cell stores its four coefficients and its bound, or recomputes them from a seed in regime 4a. <code class="lean">tests/cert/measure.tsv</code> holds the rows of one run.</p>
+<p>When a single module gets too large, <code class="lean">cert_shard</code> states one range of indices in a module of its own, <code class="lean">cert_aggregate</code> joins the ranges, and <code class="lean">scripts/CertStubs.lean</code> writes the modules from a manifest. <code class="lean">cert_shard</code> checks its batches one after the other, so a module of tests needs the memory of one batch, not of all of them, and <code class="lean">tests/cert/build.sh</code> sets two variables of the C library’s allocator so that the memory of one batch is kept for the next.</p>
+<h3 id="nonempty">The final theorem assumes a certificate<a class="anchor" href="#nonempty" aria-label="Link to this section">#</a></h3>
+<p>When the data are too large to appear in a statement, the final theorem doesn’t mention them. It assumes <code class="lean">Nonempty T</code>, where <code class="lean">T</code> is a type of certificates stated over the real numbers, and a verified checker supplies <code class="lean">Nonempty T</code> from any input that it accepts. The interface is <code class="lean">Check C</code>: a Boolean <code class="lean">run</code> with a proof that <code class="lean">run = true</code> implies <code class="lean">C</code>. Checks combine like the statements they prove, with <code class="lean">Check.and</code>, <code class="lean">Check.all</code>, <code class="lean">Check.onCover</code> and the others, and <code class="lean">Check.nonempty_of_run</code> is the pattern as a theorem. Here a certificate is an integer <span class="inline-math"><math alttext="z" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>z</mi></mrow></math></span> such that the square of <span class="inline-math"><math alttext="z / 10^6" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>z</mi><mo>&#x0002F;</mo><msup><mn>10</mn><mn>6</mn></msup></mrow></math></span> is within <span class="inline-math"><math alttext="10^{-5}" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>10</mn><mrow><mo>&#x02212;</mo><mn>5</mn></mrow></msup></mrow></math></span> of <span class="inline-math"><math alttext="2" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>2</mn></mrow></math></span>, and the checker tests the integer it is given:</p>
+<div class="cells"><div class="cell in" id="in-8"><a class="label" href="#in-8">In[8]:=</a><div class="cell-body"><pre class="lean"><span class="c">/-- A certificate: an integer `z` with the square of `z / 10 ^ 6` within `10⁻⁵` of `2`. -/</span>
+structure RootCert <span class="k">where</span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="z : ℤ" title="z : ℤ">z</span> : <span class="ty">ℤ</span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="near : |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000" title="near : |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000">near</span> : |((<span class="lean-hover" tabindex="0" data-lean-hover="z : ℤ" title="z : ℤ">z</span> : <span class="ty">ℝ</span>) / <span class="n">1000000</span>) ^ <span class="n">2</span> - <span class="n">2</span>| ≤ <span class="n">1</span> / <span class="n">100000</span>
+
+<span class="c">/-- The same statement as a condition on one stored number. -/</span>
+<span class="k">def</span> <span class="lean-hover" tabindex="0" data-lean-hover="rootCond : Cond Unit
+
+The same statement as a condition on one stored number." title="rootCond : Cond Unit
+
+The same statement as a condition on one stored number.">rootCond</span> : <span class="lean-hover" tabindex="0" data-lean-hover="Cond : Type → Type
+
+A condition on data indexed by `ι`. The variables of its expressions are `Sum.inl i`, the
+entry `i` of the data, and `Sum.inr v`, the cell variable `v`: the variable of the `v`-th
+`onIcc` around the expression, counted from the innermost, which is `0`." title="Cond : Type → Type
+
+A condition on data indexed by `ι`. The variables of its expressions are `Sum.inl i`, the
+entry `i` of the data, and `Sum.inr v`, the cell variable `v`: the variable of the `v`-th
+`onIcc` around the expression, counted from the innermost, which is `0`.">Cond</span> <span class="lean-hover" tabindex="0" data-lean-hover="Unit : Type
+
+The canonical type with one element. This element is written `()`.
+
+`Unit` has a number of uses:
+* It can be used to model control flow that returns from a function call without providing other
+  information.
+* Monadic actions that return `Unit` have side effects without computing values.
+* In polymorphic types, it can be used to indicate that no data is to be stored in a particular
+  field." title="Unit : Type
+
+The canonical type with one element. This element is written `()`.
+
+`Unit` has a number of uses:
+* It can be used to model control flow that returns from a function call without providing other
+  information.
+* Monadic actions that return `Unit` have side effects without computing values.
+* In polymorphic types, it can be used to indicate that no data is to be stored in a particular
+  field.">Unit</span> :=
+  .le (<span class="lean-hover" tabindex="0" data-lean-hover="absE : {ι : Type} → CAS.Verified.Expr ι → CAS.Verified.Expr ι
+
+The absolute value `|a|` as an expression: `√(a ^ 2)`, the form that SymLean&#x27;s reifier
+writes." title="absE : {ι : Type} → CAS.Verified.Expr ι → CAS.Verified.Expr ι
+
+The absolute value `|a|` as an expression: `√(a ^ 2)`, the form that SymLean&#x27;s reifier
+writes.">absE</span> (.sub (.pow (<span class="lean-hover" tabindex="0" data-lean-hover="Cond.dat : {ι : Type} → ι → CAS.Verified.Expr (ι ⊕ ℕ)
+
+The entry `i` of the data, as an expression." title="Cond.dat : {ι : Type} → ι → CAS.Verified.Expr (ι ⊕ ℕ)
+
+The entry `i` of the data, as an expression.">Cond.dat</span> ()) <span class="n">2</span>) (.nat <span class="n">2</span>))) (.rat <span class="n">1</span> <span class="n">100000</span>)
+
+<span class="c">/-- The checker: for an integer `z`, the test of `rootCond` on the ball of `z / 10 ^ 6`. -/</span>
+<span class="k">def</span> <span class="lean-hover" tabindex="0" data-lean-hover="rootCheck : ℤ → Check (Nonempty RootCert)
+
+The checker: for an integer `z`, the test of `rootCond` on the ball of `z / 10 ^ 6`." title="rootCheck : ℤ → Check (Nonempty RootCert)
+
+The checker: for an integer `z`, the test of `rootCond` on the ball of `z / 10 ^ 6`.">rootCheck</span> (<span class="lean-hover" tabindex="0" data-lean-hover="z : ℤ" title="z : ℤ">z</span> : <span class="ty">ℤ</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="Check : Prop → Type
+
+A Boolean test `run` whose success proves the statement `C`." title="Check : Prop → Type
+
+A Boolean test `run` whose success proves the statement `C`.">Check</span> (<span class="lean-hover" tabindex="0" data-lean-hover="Nonempty : Type → Prop
+
+`Nonempty α` is a typeclass that says that `α` is not an empty type,
+that is, there exists an element in the type. It differs from `Inhabited α`
+in that `Nonempty α` is a `Prop`, which means that it does not actually carry
+an element of `α`, only a proof that *there exists* such an element.
+Given `Nonempty α`, you can construct an element of `α` *nonconstructively*
+using `Classical.choice`." title="Nonempty : Type → Prop
+
+`Nonempty α` is a typeclass that says that `α` is not an empty type,
+that is, there exists an element in the type. It differs from `Inhabited α`
+in that `Nonempty α` is a `Prop`, which means that it does not actually carry
+an element of `α`, only a proof that *there exists* such an element.
+Given `Nonempty α`, you can construct an element of `α` *nonconstructively*
+using `Classical.choice`.">Nonempty</span> <span class="lean-hover" tabindex="0" data-lean-hover="RootCert : Type
+
+A certificate: an integer `z` with the square of `z / 10 ^ 6` within `10⁻⁵` of `2`." title="RootCert : Type
+
+A certificate: an integer `z` with the square of `z / 10 ^ 6` within `10⁻⁵` of `2`.">RootCert</span>) :=
+  ⟨rootCond.run <span class="n">64</span> <span class="k">fun</span> _ ↦ .ofFrac <span class="n">64</span> (<span class="lean-hover" tabindex="0" data-lean-hover="decide : (p : Prop) → [self : Decidable p] → Bool
+
+Converts a decidable proposition into a `Bool`.
+
+If `p : Prop` is decidable, then `decide p : Bool` is the Boolean value
+that is `true` if `p` is true and `false` if `p` is false." title="decide : (p : Prop) → [self : Decidable p] → Bool
+
+Converts a decidable proposition into a `Bool`.
+
+If `p : Prop` is decidable, then `decide p : Bool` is the Boolean value
+that is `true` if `p` is true and `false` if `p` is false."><span class="t">decide</span></span> (<span class="lean-hover" tabindex="0" data-lean-hover="z : ℤ" title="z : ℤ">z</span> &lt; <span class="n">0</span>)) <span class="lean-hover" tabindex="0" data-lean-hover="z.natAbs : ℕ" title="z.natAbs : ℕ">z.natAbs</span> <span class="n">1000000</span>, <span class="k">fun</span> <span class="lean-hover" tabindex="0" data-lean-hover="h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true" title="h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true">h</span> ↦
+    ⟨⟨<span class="lean-hover" tabindex="0" data-lean-hover="z : ℤ" title="z : ℤ">z</span>, <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals" title="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals"><span class="k">by</span></span>
+      <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 100000⁻¹" title="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 100000⁻¹">simpa</span> [<span class="lean-hover" tabindex="0" data-lean-hover="rootCond : Cond Unit
+
+The same statement as a condition on one stored number." title="rootCond : Cond Unit
+
+The same statement as a condition on one stored number.">rootCond</span>, <span class="lean-hover" tabindex="0" data-lean-hover="Cond.holds : {ι : Type ?u.14} → (ι → ℝ) → Cond ι → (ℕ → ℝ) → Prop
+
+The statement of a condition over the real numbers, for the data `ρ` and the cell
+variables `σ`." title="Cond.holds : {ι : Type ?u.14} → (ι → ℝ) → Cond ι → (ℕ → ℝ) → Prop
+
+The statement of a condition over the real numbers, for the data `ρ` and the cell
+variables `σ`.">Cond.holds</span>, <span class="lean-hover" tabindex="0" data-lean-hover="eval_absE : ∀ {ι : Type ?u.15} (ρ : ι → ℝ) (a : CAS.Verified.Expr ι),
+  CAS.Verified.Expr.eval ρ (absE a) = |CAS.Verified.Expr.eval ρ a|
+
+`absE a` denotes `|a|`." title="eval_absE : ∀ {ι : Type ?u.15} (ρ : ι → ℝ) (a : CAS.Verified.Expr ι),
+  CAS.Verified.Expr.eval ρ (absE a) = |CAS.Verified.Expr.eval ρ a|
+
+`absE a` denotes `|a|`.">eval_absE</span>] <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 100000⁻¹" title="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 100000⁻¹"><span class="t">using</span></span>
+        <span class="lean-hover" tabindex="0" data-lean-hover="Cond.holds_of_run : ∀ {ι : Type} {P : ℕ} {benv : ι → GridBall} {ρ : ι → ℝ},
+  (∀ (i : ι), GridBall.EnclosesReal P (benv i) (ρ i)) →
+    ∀ (c : Cond ι) (σ : ℕ → ℝ), Cond.run P benv c = true → Cond.holds ρ c σ
+
+If the balls `benv` enclose the data `ρ` and `c.run P benv = true`, then `c.holds ρ σ` for
+every value `σ` of the cell variables; a condition whose cell variables are all bound by `onIcc`
+does not depend on `σ`." title="Cond.holds_of_run : ∀ {ι : Type} {P : ℕ} {benv : ι → GridBall} {ρ : ι → ℝ},
+  (∀ (i : ι), GridBall.EnclosesReal P (benv i) (ρ i)) →
+    ∀ (c : Cond ι) (σ : ℕ → ℝ), Cond.run P benv c = true → Cond.holds ρ c σ
+
+If the balls `benv` enclose the data `ρ` and `c.run P benv = true`, then `c.holds ρ σ` for
+every value `σ` of the cell variables; a condition whose cell variables are all bound by `onIcc`
+does not depend on `σ`.">Cond.holds_of_run</span> (<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals" title="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals"><span class="k">fun</span></span> <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals" title="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals">_</span> ↦ <span class="lean-hover" tabindex="0" data-lean-hover="GridBall.enclosesReal_ofFrac : ∀ (P : ℕ) (z : ℤ) (d : ℕ), GridBall.EnclosesReal P (GridBall.ofFrac P (decide (z &lt; 0)) z.natAbs d) (↑z / ↑d)
+
+The ball `ofFrac P (z &lt; 0) |z| d` encloses the real number `z / d`, also for `d = 0`, where
+the ball is invalid." title="GridBall.enclosesReal_ofFrac : ∀ (P : ℕ) (z : ℤ) (d : ℕ), GridBall.EnclosesReal P (GridBall.ofFrac P (decide (z &lt; 0)) z.natAbs d) (↑z / ↑d)
+
+The ball `ofFrac P (z &lt; 0) |z| d` encloses the real number `z / d`, also for `d = 0`, where
+the ball is invalid.">GridBall.enclosesReal_ofFrac</span> <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals" title="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals"><span class="n">64</span></span> <span class="lean-hover" tabindex="0" data-lean-hover="z : ℤ" title="z : ℤ">z</span> <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals" title="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals"><span class="n">1000000</span></span>) <span class="lean-hover" tabindex="0" data-lean-hover="rootCond : Cond Unit
+
+The same statement as a condition on one stored number." title="rootCond : Cond Unit
+
+The same statement as a condition on one stored number.">rootCond</span>
+          (<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals" title="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals"><span class="k">fun</span></span> <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals" title="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals">_</span> ↦ <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals" title="Before
+
+z : ℤ
+h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true
+⊢ |(↑z / 1000000) ^ 2 - 2| ≤ 1 / 100000
+
+After
+no goals"><span class="n">0</span></span>) <span class="lean-hover" tabindex="0" data-lean-hover="h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true" title="h : Cond.run 64 (fun x ↦ GridBall.ofFrac 64 (decide (z &lt; 0)) z.natAbs 1000000) rootCond = true">h</span>⟩⟩⟩
+
+<span class="k">theorem</span> <span class="lean-hover" tabindex="0" data-lean-hover="root_cert : Nonempty RootCert" title="root_cert : Nonempty RootCert">root_cert</span> : <span class="lean-hover" tabindex="0" data-lean-hover="Nonempty : Type → Prop
+
+`Nonempty α` is a typeclass that says that `α` is not an empty type,
+that is, there exists an element in the type. It differs from `Inhabited α`
+in that `Nonempty α` is a `Prop`, which means that it does not actually carry
+an element of `α`, only a proof that *there exists* such an element.
+Given `Nonempty α`, you can construct an element of `α` *nonconstructively*
+using `Classical.choice`." title="Nonempty : Type → Prop
+
+`Nonempty α` is a typeclass that says that `α` is not an empty type,
+that is, there exists an element in the type. It differs from `Inhabited α`
+in that `Nonempty α` is a `Prop`, which means that it does not actually carry
+an element of `α`, only a proof that *there exists* such an element.
+Given `Nonempty α`, you can construct an element of `α` *nonconstructively*
+using `Classical.choice`.">Nonempty</span> <span class="lean-hover" tabindex="0" data-lean-hover="RootCert : Type
+
+A certificate: an integer `z` with the square of `z / 10 ^ 6` within `10⁻⁵` of `2`." title="RootCert : Type
+
+A certificate: an integer `z` with the square of `z / 10 ^ 6` within `10⁻⁵` of `2`.">RootCert</span> :=
+  <span class="lean-hover" tabindex="0" data-lean-hover="Check.nonempty_of_run : ∀ {D T : Type} (c : D → Check (Nonempty T)), (∃ d, (c d).run = true) → Nonempty T
+
+**A certificate from a run.** Let `c d` be a check of `Nonempty T` for every input `d`. If
+the test passes for some input, then `Nonempty T`.
+
+This is the form in which a certificate that is too large for a theorem statement is used: the
+final theorem assumes `Nonempty T` for a type `T` of certificates stated over the real numbers,
+and the verified checker supplies it from any accepted input. The input is quantified
+existentially, so nothing has to be known about it except that the test passed." title="Check.nonempty_of_run : ∀ {D T : Type} (c : D → Check (Nonempty T)), (∃ d, (c d).run = true) → Nonempty T
+
+**A certificate from a run.** Let `c d` be a check of `Nonempty T` for every input `d`. If
+the test passes for some input, then `Nonempty T`.
+
+This is the form in which a certificate that is too large for a theorem statement is used: the
+final theorem assumes `Nonempty T` for a type `T` of certificates stated over the real numbers,
+and the verified checker supplies it from any accepted input. The input is quantified
+existentially, so nothing has to be known about it except that the test passed.">Check.nonempty_of_run</span> <span class="lean-hover" tabindex="0" data-lean-hover="rootCheck : ℤ → Check (Nonempty RootCert)
+
+The checker: for an integer `z`, the test of `rootCond` on the ball of `z / 10 ^ 6`." title="rootCheck : ℤ → Check (Nonempty RootCert)
+
+The checker: for an integer `z`, the test of `rootCond` on the ball of `z / 10 ^ 6`.">rootCheck</span> ⟨<span class="n">1414214</span>, <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ (rootCheck 1414214).run = true
+
+After
+no goals" title="Before
+
+⊢ (rootCheck 1414214).run = true
+
+After
+no goals"><span class="k">by</span></span> <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ (rootCheck 1414214).run = true
+
+After
+no goals" title="Before
+
+⊢ (rootCheck 1414214).run = true
+
+After
+no goals">cert_eval</span> [<span class="lean-hover" tabindex="0" data-lean-hover="rootCheck : ℤ → Check (Nonempty RootCert)
+
+The checker: for an integer `z`, the test of `rootCond` on the ball of `z / 10 ^ 6`." title="rootCheck : ℤ → Check (Nonempty RootCert)
+
+The checker: for an integer `z`, the test of `rootCond` on the ball of `z / 10 ^ 6`.">rootCheck</span>, <span class="lean-hover" tabindex="0" data-lean-hover="rootCond : Cond Unit
+
+The same statement as a condition on one stored number." title="rootCond : Cond Unit
+
+The same statement as a condition on one stored number.">rootCond</span>]⟩
+
+<span class="lean-hover" tabindex="0" data-lean-hover="Prints the axioms used by a declaration, directly or indirectly.
+Please consult [the reference manual](https://lean-lang.org/doc/reference/4.36.0/find/?domain=Verso.Genre.Manual.section&amp;name=validating-proofs) to understand the significance of the output." title="Prints the axioms used by a declaration, directly or indirectly.
+Please consult [the reference manual](https://lean-lang.org/doc/reference/4.36.0/find/?domain=Verso.Genre.Manual.section&amp;name=validating-proofs) to understand the significance of the output."><span class="k">#print</span></span> axioms <span class="lean-hover" tabindex="0" data-lean-hover="root_cert : Nonempty RootCert" title="root_cert : Nonempty RootCert">root_cert</span></pre></div></div><div class="cell out" id="out-8"><span class="label">Out[8]=</span><div class="cell-body"><div class="msg axioms"><p><code>root_cert</code> depends on the axioms <code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>.</p></div></div></div></div>
+<p>The kernel evaluated the test, so <code class="lean">root_cert</code> uses the three standard axioms. An input that is not close to a root, such as <code class="lean"><span class="n">1500000</span></code>, makes the test fail and proves nothing. The type is small enough to inhabit by hand, so it shows only the shape. In a real proof the fields of <code class="lean">T</code> are the numerical hypotheses of the final theorem.</p>
+<h3 id="seed">Recomputing a table instead of storing it<a class="anchor" href="#seed" aria-label="Link to this section">#</a></h3>
+<p>A test never sees a table. It sees a function from an index to a ball, and the theorem asks only that each ball encloses the real entry. So the balls can be computed when they are read, and a table that follows from a small seed doesn’t have to exist anywhere. In <code class="lean">CAS/Examples/Cert/Seed.lean</code> the seed is four coefficients of a cubic, each known within <span class="inline-math"><math alttext="2^{-30}" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>2</mn><mrow><mo>&#x02212;</mo><mn>30</mn></mrow></msup></mrow></math></span>. The tables of a mesh of 256 cells are recomputed from it at every read, and the kernel tests the cells in four declarations. The result holds for the whole family of seeds:</p>
+<div class="cells"><div class="cell in" id="in-9"><a class="label" href="#in-9">In[9]:=</a><div class="cell-body"><pre class="lean"><span class="k">open</span> CAS.Examples.Cert <span class="k">in</span>
+<span class="k">#check</span> @<span class="lean-hover" tabindex="0" data-lean-hover="Seed.cubic_le : ∀ {a : ℕ → ℝ}, Seed.IsSeed a → ∀ {t : ℝ}, 0 ≤ t → t ≤ 1 → a 0 + a 1 * t + a 2 * t ^ 2 + a 3 * t ^ 3 ≤ 1 / 2
+
+**A bound for a family of cubics from recomputed tables.** For every seed, that is for all
+real coefficients `a 0, …, a 3` within `2 ^ -30` of `3/8`, `-5/4`, `7/2`, `-9/4`, and every real
+`t` in `[0, 1]`: `a 0 + a 1 t + a 2 t ^ 2 + a 3 t ^ 3 ≤ 1 / 2`.
+
+No table is stored. The 256 cells of the mesh are tested with coefficients that are recomputed
+from the seed each time they are read, and the Taylor polynomial of a cubic at a mesh point is
+the cubic." title="Seed.cubic_le : ∀ {a : ℕ → ℝ}, Seed.IsSeed a → ∀ {t : ℝ}, 0 ≤ t → t ≤ 1 → a 0 + a 1 * t + a 2 * t ^ 2 + a 3 * t ^ 3 ≤ 1 / 2
+
+**A bound for a family of cubics from recomputed tables.** For every seed, that is for all
+real coefficients `a 0, …, a 3` within `2 ^ -30` of `3/8`, `-5/4`, `7/2`, `-9/4`, and every real
+`t` in `[0, 1]`: `a 0 + a 1 t + a 2 t ^ 2 + a 3 t ^ 3 ≤ 1 / 2`.
+
+No table is stored. The 256 cells of the mesh are tested with coefficients that are recomputed
+from the seed each time they are read, and the Taylor polynomial of a cubic at a mesh point is
+the cubic.">Seed.cubic_le</span></pre></div></div><div class="cell out" id="out-9"><span class="label">Out[9]=</span><div class="cell-body"><pre class="msg info">@Seed.cubic_le : ∀ {a : ℕ → ℝ},
+  Seed.IsSeed a → ∀ {t : ℝ}, 0 ≤ t → t ≤ 1 → a 0 + a 1 * t + a 2 * t ^ 2 + a 3 * t ^ 3 ≤ 1 / 2</pre></div></div></div>
+<p>When the true entries are only close to what the generator computes, <code class="lean">widen</code> enlarges each ball by an error bound, which the theorem then assumes, as <code class="lean">Seed.value_le</code> does.</p>
+<h3 id="run">A run over files is a hypothesis<a class="anchor" href="#run" aria-label="Link to this section">#</a></h3>
+<p>Past what a build can embed, a program reads the files part by part and runs the same test. Lean has no proof that such a run happened, and I didn’t want an axiom for it. So <code class="lean">Run.Ok m family</code> is a proposition: there are byte strings with the lengths and SHA-256 digests of the manifest <code class="lean">m</code> on which the test of every shard passes. A theorem that uses a run takes it as a hypothesis, where you can see it:</p>
+<div class="cells"><div class="cell in" id="in-10"><a class="label" href="#in-10">In[10]:=</a><div class="cell-body"><pre class="lean"><span class="k">open</span> CAS.Examples.Cert MeshSpec <span class="k">in</span>
+<span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="m : Run.Manifest" title="m : Run.Manifest">m</span> : <span class="lean-hover" tabindex="0" data-lean-hover="Run.Manifest : Type
+
+The files of a run and the cut of its indices into shards." title="Run.Manifest : Type
+
+The files of a run and the cut of its indices into shards.">Run.Manifest</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h : Run.Ok m test" title="h : Run.Ok m test">h</span> : <span class="lean-hover" tabindex="0" data-lean-hover="Run.Ok : Run.Manifest → ((ℕ → ℕ → Option ℕ) → ℕ → Bool) → Prop
+
+**A run.** A shard has at least one index (`0 &lt; m.shard`), and there are byte strings that
+match the manifest `m` (`Matches`: for the parts in the window of some shard, the lengths and
+digests of the listed parts, and no text for a part that is not listed) on which the test of
+every shard passes, for the family `family`. This is what a run of `exec` over all shards
+reports; it is used as a hypothesis and proved nowhere for files." title="Run.Ok : Run.Manifest → ((ℕ → ℕ → Option ℕ) → ℕ → Bool) → Prop
+
+**A run.** A shard has at least one index (`0 &lt; m.shard`), and there are byte strings that
+match the manifest `m` (`Matches`: for the parts in the window of some shard, the lengths and
+digests of the listed parts, and no text for a part that is not listed) on which the test of
+every shard passes, for the family `family`. This is what a run of `exec` over all shards
+reports; it is used as a hypothesis and proved nowhere for files.">Run.Ok</span> <span class="lean-hover" tabindex="0" data-lean-hover="m : Run.Manifest" title="m : Run.Manifest">m</span> <span class="lean-hover" tabindex="0" data-lean-hover="test : (ℕ → ℕ → Option ℕ) → ℕ → Bool
+
+The test of cell `k` at 96 bits, for stored tables read through `look?`." title="test : (ℕ → ℕ → Option ℕ) → ℕ → Bool
+
+The test of cell `k` at 96 bits, for stored tables read through `look?`.">test</span>) :
+    ∃ <span class="lean-hover" tabindex="0" data-lean-hover="texts : ℕ → ℕ → ByteArray" title="texts : ℕ → ℕ → ByteArray">texts</span>, <span class="lean-hover" tabindex="0" data-lean-hover="Run.Matches : Run.Manifest → (ℕ → ℕ → ByteArray) → Prop
+
+The byte strings `texts t p` are those of the manifest on every part `p` of every table `t`
+that lies in the window of some shard: a part that the manifest lists has the length and the
+digest of its pin, and a part that it does not list is the empty text, which has no entries.
+These are the parts that a run over all shards reads, and `exec` holds the empty text for a part
+that is not listed. A part outside every window is not constrained." title="Run.Matches : Run.Manifest → (ℕ → ℕ → ByteArray) → Prop
+
+The byte strings `texts t p` are those of the manifest on every part `p` of every table `t`
+that lies in the window of some shard: a part that the manifest lists has the length and the
+digest of its pin, and a part that it does not list is the empty text, which has no entries.
+These are the parts that a run over all shards reads, and `exec` holds the empty text for a part
+that is not listed. A part outside every window is not constrained.">Run.Matches</span> <span class="lean-hover" tabindex="0" data-lean-hover="m : Run.Manifest" title="m : Run.Manifest">m</span> <span class="lean-hover" tabindex="0" data-lean-hover="texts : ℕ → ℕ → ByteArray" title="texts : ℕ → ℕ → ByteArray">texts</span> ∧
+      ∀ <span class="lean-hover" tabindex="0" data-lean-hover="k : ℕ" title="k : ℕ">k</span> &lt; <span class="lean-hover" tabindex="0" data-lean-hover="m.count : ℕ" title="m.count : ℕ">m.count</span>, ∀ <span class="lean-hover" tabindex="0" data-lean-hover="σ : ℕ → ℝ" title="σ : ℕ → ℝ">σ</span>, (<span class="lean-hover" tabindex="0" data-lean-hover="cellCond : ℕ → Cond Ix
+
+The condition of cell `k`: at every `x` of `[mesh k, mesh (k + 1)]` the cubic of the cell,
+in Horner form, is at most the bound of the cell. The test may cut the cell in two once." title="cellCond : ℕ → Cond Ix
+
+The condition of cell `k`: at every `x` of `[mesh k, mesh (k + 1)]` the cubic of the cell,
+in Horner form, is at most the bound of the cell. The test may cut the cell in two once.">cellCond</span> <span class="lean-hover" tabindex="0" data-lean-hover="k : ℕ" title="k : ℕ">k</span>).holds (<span class="lean-hover" tabindex="0" data-lean-hover="storedVal : (ℕ → ℕ → ℕ) → Ix → ℝ
+
+The real tables that the stored integers of `look` stand for." title="storedVal : (ℕ → ℕ → ℕ) → Ix → ℝ
+
+The real tables that the stored integers of `look` stand for.">storedVal</span> (<span class="lean-hover" tabindex="0" data-lean-hover="Run.look : Run.Manifest → (ℕ → ℕ → ByteArray) → ℕ → ℕ → ℕ
+
+The tables of the byte strings: entry `i` of table `t`, and `0`, the biased form of
+`-2 ^ (w - 1)`, where the line of the entry is not in the format. A test does not read such an
+entry as a number: it reads through `windowLook`, where the entry is absent." title="Run.look : Run.Manifest → (ℕ → ℕ → ByteArray) → ℕ → ℕ → ℕ
+
+The tables of the byte strings: entry `i` of table `t`, and `0`, the biased form of
+`-2 ^ (w - 1)`, where the line of the entry is not in the format. A test does not read such an
+entry as a number: it reads through `windowLook`, where the entry is absent.">Run.look</span> <span class="lean-hover" tabindex="0" data-lean-hover="m : Run.Manifest" title="m : Run.Manifest">m</span> <span class="lean-hover" tabindex="0" data-lean-hover="texts : ℕ → ℕ → ByteArray" title="texts : ℕ → ℕ → ByteArray">texts</span>)) <span class="lean-hover" tabindex="0" data-lean-hover="σ : ℕ → ℝ" title="σ : ℕ → ℝ">σ</span> :=
+  <span class="lean-hover" tabindex="0" data-lean-hover="cells_of_run : ∀ {m : Run.Manifest},
+  Run.Ok m test →
+    ∃ texts,
+      Run.Matches m texts ∧ ∀ k &lt; m.count, ∀ (σ : ℕ → ℝ), Cond.holds (storedVal (Run.look m texts)) (cellCond k) σ
+
+**The statement of a run over files.** For every manifest `m`: if a run of `test` over
+files with the lengths and digests of `m` passed (`Run.Ok m test`), then there are byte strings
+with these lengths and digests (`Run.Matches m texts`) such that the real tables which they
+stand for satisfy the condition of each of the `m.count` cells: by `holds_cellCond`, the cubic
+of every cell is at most its bound on the cell.
+
+This is what a run establishes about the data. The byte strings are those of the run; each cell
+was tested through the window of its shard, whose balls enclose the tables of all byte strings
+(`stored_encloses`). The statement is false for a manifest whose digests no such byte strings
+have, so it is not true without the run." title="cells_of_run : ∀ {m : Run.Manifest},
+  Run.Ok m test →
+    ∃ texts,
+      Run.Matches m texts ∧ ∀ k &lt; m.count, ∀ (σ : ℕ → ℝ), Cond.holds (storedVal (Run.look m texts)) (cellCond k) σ
+
+**The statement of a run over files.** For every manifest `m`: if a run of `test` over
+files with the lengths and digests of `m` passed (`Run.Ok m test`), then there are byte strings
+with these lengths and digests (`Run.Matches m texts`) such that the real tables which they
+stand for satisfy the condition of each of the `m.count` cells: by `holds_cellCond`, the cubic
+of every cell is at most its bound on the cell.
+
+This is what a run establishes about the data. The byte strings are those of the run; each cell
+was tested through the window of its shard, whose balls enclose the tables of all byte strings
+(`stored_encloses`). The statement is false for a manifest whose digests no such byte strings
+have, so it is not true without the run.">cells_of_run</span> <span class="lean-hover" tabindex="0" data-lean-hover="h : Run.Ok m test" title="h : Run.Ok m test">h</span></pre></div></div><div class="cell out" id="out-10"><span class="label">Out[10]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<p>The conclusion is about the tables of byte strings with those digests, and <code class="lean">holds_cellCond</code> unfolds the condition of a cell to the inequality on the cell. Whoever asserts <code class="lean">Run.Ok</code> after a run trusts the program that evaluated the test, the reading of the files and the script that started it, and <code class="lean">TRUST.md</code> has the whole list. <code class="lean">CAS/Examples/Cert/Mesh.lean</code> proves <code class="lean">Run.Ok</code> in the kernel for seven short byte strings, so the hypothesis can be met.</p><section class="related" id="related-guides"><h2>Related Guides</h2><ul><li><a href="numerics.html">Numerics</a></li><li><a href="tactics.html">Tactics</a></li></ul></section><section class="related" id="tutorials"><h2>Tutorials</h2><ul><li><a href="../tutorial/trust.html">What you trust</a></li><li><a href="../tutorial/proving.html">Proving with <code class="lean"><span class="t">cas</span></code></a></li></ul></section></main></div>
+<script defer src="../../static/site.js"></script>
+</body>
+</html>

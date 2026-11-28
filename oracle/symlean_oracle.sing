@@ -1,0 +1,99 @@
+// Copyright (c) 2026 SymLean Team. All rights reserved.
+// Released under Apache 2.0 license as described in the file LICENSE.
+//
+// The procedures of SymLean's `singular` oracle. `CASOracle` embeds this file. A script defines
+// the ring Q[v0, v1, ...] with the lexicographic order, then these procedures, and then calls
+// one of them on the polynomials of the request (`Script.singular` in `CASOracle/Oracle.lean`).
+// A procedure prints its records `@@ key payload` once all of them are computed, so a run
+// that stops with an error prints none. Nothing printed here is trusted: Lean checks it.
+
+// The entries of column `column` in the first `rows` rows of `M`, joined by " ; ".
+proc symleanRow(matrix M, int column, int rows)
+{
+  string row;
+  int r;
+  for (r = 1; r <= rows; r++)
+  {
+    if (r > 1) { row = row + " ; "; }
+    row = row + string(M[r, column]);
+  }
+  return(row);
+}
+
+// Print the records of `out`, one per line.
+proc symleanPrint(list out)
+{
+  int r;
+  for (r = 1; r <= size(out); r++) { print(out[r]); }
+}
+
+// The factorization of `p`: the record `constant c`, then one record `factor m g` for each
+// factor `g` with its multiplicity `m`.
+proc symleanFactor(poly p)
+{
+  list L = factorize(p);
+  list out;
+  out[1] = "@@ constant " + string(L[1][1]);
+  int i;
+  for (i = 2; i <= ncols(L[1]); i++)
+  {
+    out[size(out) + 1] = "@@ factor " + string(L[2][i]) + " " + string(L[1][i]);
+  }
+  symleanPrint(out);
+}
+
+// A reduced Groebner basis of the ideal of the `inputs` generators of `I`, with cofactors both
+// ways. For each nonzero element `g` of the basis: `basis g`, then `to_basis` with the
+// cofactors of `g` in the generators. Then, for each generator: `from_basis` with its
+// cofactors in the nonzero elements, an empty row when the basis has none.
+proc symleanGroebner(ideal I, int inputs)
+{
+  matrix T;
+  ideal G = liftstd(I, T);
+  list out;
+  int j;
+  for (j = 1; j <= ncols(G); j++)
+  {
+    if (G[j] != 0)
+    {
+      out[size(out) + 1] = "@@ basis " + string(G[j]);
+      out[size(out) + 1] = "@@ to_basis " + symleanRow(T, j, inputs);
+    }
+  }
+  ideal B = simplify(G, 2);
+  string row;
+  int k;
+  for (k = 1; k <= inputs; k++)
+  {
+    row = "";
+    if (B[1] != 0) { row = symleanRow(lift(B, I[k]), 1, ncols(B)); }
+    out[size(out) + 1] = "@@ from_basis " + row;
+  }
+  symleanPrint(out);
+}
+
+// The least power `k` of `f`, at most `maxPower`, that lies in the ideal of the `generators`
+// generators of `I`: `power k`, then `cofactors` with the cofactors of `f ^ k` in the
+// generators. If there is none: `unsupported`, which says nothing about higher powers.
+proc symleanMember(poly f, ideal I, int generators, int maxPower)
+{
+  ideal S = std(I);
+  int power = 0;
+  int k;
+  for (k = 1; k <= maxPower; k++)
+  {
+    if (reduce(f ^ k, S) == 0) { power = k; break; }
+  }
+  list out;
+  if (power == 0)
+  {
+    out[1] = "@@ unsupported singular found no power of the target up to " + string(maxPower)
+      + " in the ideal";
+  }
+  else
+  {
+    out[1] = "@@ power " + string(power);
+    out[2] = "@@ cofactors " + symleanRow(lift(I, f ^ power), 1, generators);
+  }
+  symleanPrint(out);
+}

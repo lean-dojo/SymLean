@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cega · SymLean</title>
+<meta name="description" content="Proves numerical bounds: inequalities on a box of real variables, closed constants and interval integrals.">
+<link rel="stylesheet" href="../../static/site.css">
+<link rel="icon" type="image/png" href="../../static/brand/favicon.png">
+<link rel="apple-touch-icon" href="../../static/brand/apple-touch-icon.png">
+<meta property="og:title" content="cega · SymLean">
+<meta property="og:description" content="Proves numerical bounds: inequalities on a box of real variables, closed constants and interval integrals.">
+<meta property="og:image" content="https://lean-dojo.github.io/SymLean/static/brand/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="kind-tactic">
+<a class="skip" href="#main">Skip to the content</a>
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="../../index.html"><picture class="brand-logo"><source media="(prefers-color-scheme: dark)" srcset="../../static/brand/symlean-logo-dark.png"><img src="../../static/brand/symlean-logo.png" alt="SymLean" width="960" height="252"></picture></a><nav class="top-nav"><a href="../index.html" aria-current="page">Docs</a><a href="../tutorial/first-hour.html">Getting started</a><a href="../all.html">Index</a><a class="code-button" href="https://github.com/lean-dojo/SymLean">Code</a></nav></div></header>
+<div class="docs"><nav class="sidebar" aria-label="Documentation"><p class="nav-home"><a href="../index.html">Documentation</a></p><p class="nav-heading">Guides</p><details><summary><a href="../guide/why.html">Why SymLean</a></summary><ul></ul></details><details><summary><a href="../guide/algebra.html">Algebra</a></summary><ul><li><a href="simplify.html"><code class="lean">simplify</code></a></li><li><a href="fullSimplify.html"><code class="lean">fullSimplify</code></a></li><li><a href="expand.html"><code class="lean">expand</code></a></li><li><a href="factor.html"><code class="lean">factor</code></a></li><li><a href="collect.html"><code class="lean">collect</code></a></li><li><a href="trigExpand.html"><code class="lean">trigExpand</code></a></li><li><a href="together.html"><code class="lean">together</code></a></li><li><a href="cancel.html"><code class="lean">cancel</code></a></li><li><a href="apart.html"><code class="lean">apart</code></a></li><li><a href="numerator.html"><code class="lean">numerator</code></a></li><li><a href="denominator.html"><code class="lean">denominator</code></a></li></ul></details><details><summary><a href="../guide/polynomials.html">Polynomials</a></summary><ul><li><a href="coefficient.html"><code class="lean">coefficient</code></a></li><li><a href="coefficientList.html"><code class="lean">coefficientList</code></a></li><li><a href="exponent.html"><code class="lean">exponent</code></a></li><li><a href="polynomialGCD.html"><code class="lean">polynomialGCD</code></a></li><li><a href="polynomialLCM.html"><code class="lean">polynomialLCM</code></a></li><li><a href="polynomialQuotient.html"><code class="lean">polynomialQuotient</code></a></li><li><a href="polynomialRemainder.html"><code class="lean">polynomialRemainder</code></a></li><li><a href="polynomialQuotientRemainder.html"><code class="lean">polynomialQuotientRemainder</code></a></li><li><a href="interpolatingPolynomial.html"><code class="lean">interpolatingPolynomial</code></a></li><li><a href="groebner.html"><code class="lean">groebner</code></a></li><li><a href="member.html"><code class="lean">member</code></a></li></ul></details><details><summary><a href="../guide/calculus.html">Calculus</a></summary><ul><li><a href="derive.html"><code class="lean">derive</code></a></li><li><a href="grad.html"><code class="lean">grad</code></a></li><li><a href="integrate.html"><code class="lean">integrate</code></a></li><li><a href="nintegrate.html"><code class="lean">nintegrate</code></a></li><li><a href="cas-integrate-primitive.html"><code class="lean"><span class="t">cas</span> [integrate primitive := F]</code></a></li><li><a href="maximize.html"><code class="lean">maximize</code></a></li><li><a href="minimize.html"><code class="lean">minimize</code></a></li></ul></details><details><summary><a href="../guide/series-limits.html">Series and limits</a></summary><ul><li><a href="series.html"><code class="lean">series</code></a></li><li><a href="limit.html"><code class="lean">limit</code></a></li></ul></details><details><summary><a href="../guide/equations.html">Equations</a></summary><ul><li><a href="solve.html"><code class="lean">solve</code></a></li><li><a href="reduce.html"><code class="lean">reduce</code></a></li><li><a href="roots.html"><code class="lean">roots</code></a></li><li><a href="findRoot.html"><code class="lean">findRoot</code></a></li></ul></details><details><summary><a href="../guide/sums.html">Sums and recurrences</a></summary><ul><li><a href="sum.html"><code class="lean">sum</code></a></li><li><a href="product.html"><code class="lean">product</code></a></li><li><a href="rsolve.html"><code class="lean">rsolve</code></a></li></ul></details><details><summary><a href="../guide/special-functions.html">Special functions</a></summary><ul><li><a href="gamma.html"><code class="lean">gamma</code></a></li><li><a href="zeta.html"><code class="lean">zeta</code></a></li><li><a href="BernoulliB.html"><code class="lean">BernoulliB</code></a></li><li><a href="erf.html"><code class="lean">erf</code></a></li><li><a href="BesselJ.html"><code class="lean">BesselJ</code></a></li><li><a href="LegendreP.html"><code class="lean">LegendreP</code></a></li><li><a href="ChebyshevT.html"><code class="lean">ChebyshevT</code></a></li><li><a href="ChebyshevU.html"><code class="lean">ChebyshevU</code></a></li><li><a href="HermiteH.html"><code class="lean">HermiteH</code></a></li><li><a href="HermiteHe.html"><code class="lean">HermiteHe</code></a></li></ul></details><details><summary><a href="../guide/number-theory.html">Number theory</a></summary><ul><li><a href="divisors.html"><code class="lean">divisors</code></a></li><li><a href="divisorSigma.html"><code class="lean">divisorSigma</code></a></li><li><a href="eulerPhi.html"><code class="lean">eulerPhi</code></a></li><li><a href="powerMod.html"><code class="lean">powerMod</code></a></li><li><a href="modularInverse.html"><code class="lean">modularInverse</code></a></li><li><a href="chineseRemainder.html"><code class="lean">chineseRemainder</code></a></li><li><a href="extendedGCD.html"><code class="lean">extendedGCD</code></a></li><li><a href="jacobiSymbol.html"><code class="lean">jacobiSymbol</code></a></li><li><a href="integerDigits.html"><code class="lean">integerDigits</code></a></li><li><a href="continuedFraction.html"><code class="lean">continuedFraction</code></a></li><li><a href="fromContinuedFraction.html"><code class="lean">fromContinuedFraction</code></a></li><li><a href="binomial.html"><code class="lean">binomial</code></a></li><li><a href="factorial.html"><code class="lean">factorial</code></a></li><li><a href="fibonacci.html"><code class="lean">fibonacci</code></a></li></ul></details><details><summary><a href="../guide/linear-algebra.html">Linear algebra</a></summary><ul><li><a href="dot.html"><code class="lean">dot</code></a></li><li><a href="matrixPower.html"><code class="lean">matrixPower</code></a></li><li><a href="transpose.html"><code class="lean">transpose</code></a></li><li><a href="trace.html"><code class="lean">trace</code></a></li><li><a href="det.html"><code class="lean">det</code></a></li><li><a href="inverse.html"><code class="lean">inverse</code></a></li><li><a href="matrixRank.html"><code class="lean">matrixRank</code></a></li><li><a href="rowReduce.html"><code class="lean">rowReduce</code></a></li><li><a href="nullSpace.html"><code class="lean">nullSpace</code></a></li><li><a href="linearSolve.html"><code class="lean">linearSolve</code></a></li><li><a href="characteristicPolynomial.html"><code class="lean">characteristicPolynomial</code></a></li><li><a href="eigenvalues.html"><code class="lean">eigenvalues</code></a></li><li><a href="eigenvectors.html"><code class="lean">eigenvectors</code></a></li><li><a href="positiveDefinite.html"><code class="lean">positiveDefinite</code></a></li><li><a href="eigenvalueBounds.html"><code class="lean">eigenvalueBounds</code></a></li></ul></details><details><summary><a href="../guide/differential-equations.html">Differential equations</a></summary><ul><li><a href="dsolve.html"><code class="lean">dsolve</code></a></li><li><a href="ndsolve.html"><code class="lean">ndsolve</code></a></li><li><a href="laplace.html"><code class="lean">laplace</code></a></li><li><a href="inverseLaplace.html"><code class="lean">inverseLaplace</code></a></li><li><a href="fourierTransform.html"><code class="lean">fourierTransform</code></a></li><li><a href="fourier.html"><code class="lean">fourier</code></a></li><li><a href="fourierCos.html"><code class="lean">fourierCos</code></a></li><li><a href="fourierSin.html"><code class="lean">fourierSin</code></a></li></ul></details><details><summary><a href="../guide/numerics.html">Numerics</a></summary><ul><li><a href="N.html"><code class="lean">N</code></a></li><li><a href="enclose.html"><code class="lean">enclose</code></a></li><li><a href="maximize.html"><code class="lean">maximize</code></a></li><li><a href="minimize.html"><code class="lean">minimize</code></a></li><li><a href="nintegrate.html"><code class="lean">nintegrate</code></a></li><li><a href="findRoot.html"><code class="lean">findRoot</code></a></li><li><a href="ndsolve.html"><code class="lean">ndsolve</code></a></li><li><a href="eigenvalueBounds.html"><code class="lean">eigenvalueBounds</code></a></li><li><a href="cega.html" aria-current="page"><code class="lean"><span class="t">cega</span></code></a></li><li><a href="cega-using.html"><code class="lean"><span class="t">cega</span> <span class="t">using</span></code></a></li><li><a href="cega-query.html"><code class="lean"><span class="t">cega?</span></code></a></li><li><a href="options.html"><code class="lean">Options</code></a></li></ul></details><details><summary><a href="../guide/certificates.html">Certificates</a></summary><ul><li><a href="cega.html" aria-current="page"><code class="lean"><span class="t">cega</span></code></a></li><li><a href="enclose.html"><code class="lean">enclose</code></a></li><li><a href="cega-using.html"><code class="lean"><span class="t">cega</span> <span class="t">using</span></code></a></li><li><a href="cega-query.html"><code class="lean"><span class="t">cega?</span></code></a></li><li><a href="options.html"><code class="lean">Options</code></a></li></ul></details><details open><summary><a href="../guide/tactics.html">Tactics</a></summary><ul><li><a href="cas.html"><code class="lean"><span class="t">cas</span></code></a></li><li><a href="cas-using.html"><code class="lean"><span class="t">cas</span> <span class="t">using</span></code></a></li><li><a href="cega.html" aria-current="page"><code class="lean"><span class="t">cega</span></code></a></li><li><a href="cega-using.html"><code class="lean"><span class="t">cega</span> <span class="t">using</span></code></a></li><li><a href="cas-query.html"><code class="lean"><span class="t">cas?</span></code></a></li><li><a href="cega-query.html"><code class="lean"><span class="t">cega?</span></code></a></li><li><a href="cas_nf.html"><code class="lean"><span class="t">cas_nf</span></code></a></li><li><a href="options.html"><code class="lean">Options</code></a></li></ul></details><details><summary><a href="../guide/oracles.html">Oracles</a></summary><ul><li><a href="oracle.html"><code class="lean">oracle</code></a></li><li><a href="cas.html"><code class="lean"><span class="t">cas</span></code></a></li><li><a href="cas-integrate-primitive.html"><code class="lean"><span class="t">cas</span> [integrate primitive := F]</code></a></li><li><a href="options.html"><code class="lean">Options</code></a></li></ul></details><details><summary><a href="../guide/library.html">The library</a></summary><ul></ul></details><p class="nav-heading">Tutorials</p><ul class="nav-flat"><li><a href="../tutorial/first-hour.html">Getting started with SymLean</a></li><li><a href="../tutorial/proving.html">Proving with <code class="lean"><span class="t">cas</span></code></a></li><li><a href="../tutorial/trust.html">What you trust</a></li></ul><p class="nav-heading"><a href="../all.html">Index A to Z</a></p></nav><main class="doc" id="main"><nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Documentation</a> <span class="sep">›</span> <a href="../guide/tactics.html">Tactics</a> <span class="sep">›</span> <span aria-current="page"><code class="lean"><span class="t">cega</span></code></span></nav><header class="page-head"><p class="kind">Tactic</p><h1><code class="lean"><span class="t">cega</span></code></h1><p class="summary">Proves numerical bounds: inequalities on a box of real variables, closed constants and interval integrals.</p></header><section class="usage" aria-label="Usage"><div class="usage-row"><div class="usage-form"><code class="lean"><span class="t">cega</span></code></div><div class="usage-meaning">proves a numerical bound: an inequality on real variables that the hypotheses bound by rationals, a bound on a closed constant, or a bound on an interval integral.</div></div><div class="usage-row"><div class="usage-form"><code class="lean"><span class="t">cega</span> (prec := <var>n</var>) (depth := <var>n</var>) (panels := <var>n</var>)</code></div><div class="usage-meaning">the same with the precision, the depth of subdivision and the number of integration panels set by hand.</div></div><div class="usage-row"><div class="usage-form"><code class="lean"><span class="t">cega</span> [fast]</code></div><div class="usage-meaning">tries finite certificates first, checked by compiled code when <code class="lean">cega.nativeCertificates</code> is on, and is bare <code class="lean"><span class="t">cega</span></code> otherwise.</div></div><div class="usage-row"><div class="usage-form"><code class="lean"><span class="t">cega</span> [use_floats]</code></div><div class="usage-meaning">rounds enclosure endpoints outward into binary64. <code class="lean"><span class="t">cega</span> [use_floats] (arith := <var>F</var>)</code> chooses the IEEE format <var>F</var>, and <code class="lean"><span class="t">cega</span> [use_floats := false]</code> selects exact rational endpoints.</div></div><div class="usage-row"><div class="usage-form"><code class="lean"><span class="t">cega</span> [batch := <var>n</var>]</code></div><div class="usage-meaning">proves a goal <code class="lean">∀ i : Fin m, p i</code> by checking <var>n</var> indices at a time in the kernel.</div></div><div class="usage-row"><div class="usage-form"><code class="lean"><span class="t">cega</span> [fast, batch := <var>n</var>]</code></div><div class="usage-meaning">the same, with the batches checked by compiled code when <code class="lean">cega.nativeCertificates</code> is on.</div></div></section>
+<p><code class="lean"><span class="t">cega</span></code> is the tactic I use for numbers. A bound like <span class="inline-math"><math alttext="\sin x \le 0.85" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>sin</mi><mspace width="0.1667em"/><mi>x</mi><mo>&#x02264;</mo><mn>0.85</mn></mrow></math></span> for <span class="inline-math"><math alttext="x \in [0, 1]" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo>&#x02208;</mo><mo stretchy="false">[</mo><mn>0</mn><mo>&#x0002C;</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math></span> is true, obvious from a plot and tedious to prove by hand. <code class="lean"><span class="t">cega</span></code> encloses the expression on the box that your hypotheses describe, compares the enclosure with the bound by exact rational arithmetic, and hands the kernel a certificate for the whole argument.</p>
+<p>The name is short for <em>certified enclosures, guarantees and approximations</em>.</p>
+<details class="section details-options" id="details" open><summary><h2>Details and Options</h2></summary><ul><li>The goal is a bound: <span class="inline-math"><math alttext="f \le c" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi><mo>&#x02264;</mo><mi>c</mi></mrow></math></span>, <span class="inline-math"><math alttext="f &lt; c" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi><mo>&#x0003C;</mo><mi>c</mi></mrow></math></span>, <span class="inline-math"><math alttext="c \le f" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>c</mi><mo>&#x02264;</mo><mi>f</mi></mrow></math></span>, <span class="inline-math"><math alttext="\lvert f \rvert \le c" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x0007C;</mo><mi>f</mi><mo>&#x0007C;</mo><mo>&#x02264;</mo><mi>c</mi></mrow></math></span>, a two-sided bound, <code class="lean">f ∈ Set.Icc a b</code> (also <code class="lean">Ioo</code>, <code class="lean">Ico</code>, <code class="lean">Ioc</code>), <span class="inline-math"><math alttext="f \le g" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi><mo>&#x02264;</mo><mi>g</mi></mrow></math></span>, or a conjunction of these.</li><li>Every real variable needs rational bounds among the hypotheses: <code class="lean">a ≤ x</code> and <code class="lean">x ≤ b</code>, <code class="lean">x ∈ Set.Icc a b</code>, or <code class="lean">|x| ≤ r</code>. A goal without variables needs none.</li><li>When the first enclosure is too weak, the box is cut in halves, by default to depth 2. <code class="lean">(depth := n)</code> sets that depth.</li><li>A bound on one interval integral with rational limits, such as <span class="inline-math"><math alttext="\int_a^b f \le c" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msubsup><mo>&#x0222B;</mo><mi>a</mi><mi>b</mi></msubsup><mi>f</mi><mo>&#x02264;</mo><mi>c</mi></mrow></math></span> or <span class="inline-math"><math alttext="\lvert \int_a^b f - c \rvert \le \varepsilon" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x0007C;</mo><msubsup><mo>&#x0222B;</mo><mi>a</mi><mi>b</mi></msubsup><mi>f</mi><mo>&#x02212;</mo><mi>c</mi><mo>&#x0007C;</mo><mo>&#x02264;</mo><mi>&#x003B5;</mi></mrow></math></span>, uses Simpson panels when the first four derivatives of <span class="inline-math"><math alttext="f" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi></mrow></math></span> are certified on <span class="inline-math"><math alttext="[a, b]" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>&#x0002C;</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math></span>, and range panels, which need only continuity, otherwise. The number of panels doubles up to <code class="lean">cega.maxIntegrationPanels</code>, by default 256, and <code class="lean">(panels := n)</code> fixes it.</li><li>A real inequality that the box route does not prove goes to FloatLib’s <code class="lean">interval</code>, which reads the bounds in the hypotheses itself and is not limited by <code class="lean">cega.maxDimension</code>. It also proves bounds on finite sums, and it bounds a trigonometric polynomial in one variable by its coefficients, with no bounds on the variable. With floats on, it is not run, since it computes with exact rationals.</li><li>A closed goal that these routes refuse is tried with the tactic <code class="lean">dyadic_interval</code> at 32 bits, or at the bits of <code class="lean">(prec := n)</code>.</li><li>The <a href="../guide/certificates.html">certificate propositions</a> <code class="lean">EnclosedOn</code>, <code class="lean">BoundOn</code> and <code class="lean">ApproxOn</code> of SymLean are goals too.</li><li>The functions are those of <a class="sym" href="N.html"><code class="lean">N</code></a>, written as Mathlib terms such as <code class="lean">Real.sin x</code> and <code class="lean">Real.sqrt x</code>. The box route takes at most 8 variables (<code class="lean">cega.maxDimension</code>).</li><li><code class="lean"><span class="k">set_option</span> cega.nativeCertificates true</code> lets the <code class="lean">fast</code> forms check finite certificates with compiled code. That also trusts Lean’s compiler, so it is off by default and every check stays in the kernel.</li><li><code class="lean">[use_floats]</code> rounds each lower endpoint toward <span class="inline-math"><math alttext="-\infty" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mi>&#x0221E;</mi></mrow></math></span> and each upper endpoint toward <span class="inline-math"><math alttext="+\infty" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x0002B;</mo><mi>&#x0221E;</mi></mrow></math></span> into binary64, and the kernel evaluates every operation. <code class="lean">(arith := F)</code> selects another IEEE binary format of FloatLib, such as <code class="lean">binary32</code>, <code class="lean">binary128</code>, <code class="lean">FloatFormat.ieee <span class="n">15</span> <span class="n">112</span></code> or <code class="lean"><span class="s">"binary(p := 113, emax := 16383)"</span></code>, and turns floats on by itself. The flag shares its bracket group with <code class="lean">fast</code>, as in <code class="lean"><span class="t">cega</span> [fast, use_floats]</code>.</li><li><code class="lean"><span class="k">set_option</span> cega.arithmetic <span class="s">"binary64"</span></code> sets the default arithmetic. A call can override it: <code class="lean"><span class="t">cega</span> [use_floats := false]</code> and the explicit query with <code class="lean">(arith := <span class="s">"exact"</span>)</code> both use exact endpoints. <a href="../guide/certificates.html#arithmetic">Certificates</a> shows how to set the default in Lake.</li><li>When the goal states its bound with numerals, bare <code class="lean"><span class="t">cega</span></code> first tries FloatLib’s check, a refutation of the negation of the bound that bisects the box where it needs to, within <code class="lean">cega.maxRefinementWork</code> evaluations, and then the box query. With floats on, the query is the plain interval evaluation, on a uniform subdivision of depth <code class="lean">(depth := n)</code>. In a float format neither has the monotonicity argument of the exact planner, so a sharp bound needs some room or a larger depth. A bound on an integral is computed with exact rationals and is not run. A float call that does not prove its goal fails with the format and the reason, and never computes with rationals in its place.</li><li><code class="lean"><span class="t">cega</span> [batch := n]</code> and <code class="lean"><span class="t">cega</span> [fast, batch := n]</code> need <code class="lean"><span class="k">import</span> CAS.Numerics.Tactic</code>.</li><li>A false bound, or a true one that the enclosures do not reach, is refused, and the message proposes the next call to try.</li></ul></details>
+<section class="examples" id="examples"><h2>Examples <span class="count">(27)</span><a class="anchor" href="#examples" aria-label="Link to this section">#</a></h2><details class="ex-section" id="basic-examples" open><summary><h3>Basic Examples <span class="count">(3)</span></h3></summary><div class="ex-body"><p>A bound on a box, from the hypotheses on <code class="lean">x</code>:</p>
+<div class="cells"><div class="cell in" id="in-1"><a class="label" href="#in-1">In[1]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₀ : 0 ≤ x" title="h₀ : 0 ≤ x">h₀</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₁ : x ≤ 1" title="h₁ : x ≤ 1">h₁</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine" title="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine">Real.sin</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">0.85</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-1"><span class="label">Out[1]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<hr class="sep">
+<p>A bound on a constant:</p>
+<div class="cells"><div class="cell in" id="in-2"><a class="label" href="#in-2">In[2]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : <span class="lean-hover" tabindex="0" data-lean-hover="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential" title="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential">Real.exp</span> <span class="n">1</span> ≤ <span class="n">2.72</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ Real.exp 1 ≤ 2.72
+
+After
+no goals" title="Before
+
+⊢ Real.exp 1 ≤ 2.72
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ Real.exp 1 ≤ 2.72
+
+After
+no goals" title="Before
+
+⊢ Real.exp 1 ≤ 2.72
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-2"><span class="label">Out[2]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<hr class="sep">
+<p>A bound on an integral with no elementary antiderivative:</p>
+<div class="cells"><div class="cell in" id="in-3"><a class="label" href="#in-3">In[3]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : (∫ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> <span class="k">in</span> (<span class="n">0</span> : <span class="ty">ℝ</span>)..<span class="n">1</span>, <span class="lean-hover" tabindex="0" data-lean-hover="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential" title="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential">Real.exp</span> (-<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ^ <span class="n">2</span>)) ≤ <span class="n">3</span> / <span class="n">4</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∫ (x : ℝ) in 0..1, Real.exp (-x ^ 2) ≤ 3 / 4
+
+After
+no goals" title="Before
+
+⊢ ∫ (x : ℝ) in 0..1, Real.exp (-x ^ 2) ≤ 3 / 4
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∫ (x : ℝ) in 0..1, Real.exp (-x ^ 2) ≤ 3 / 4
+
+After
+no goals" title="Before
+
+⊢ ∫ (x : ℝ) in 0..1, Real.exp (-x ^ 2) ≤ 3 / 4
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-3"><span class="label">Out[3]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div></div></details><details class="ex-section" id="scope"><summary><h3>Scope <span class="count">(5)</span></h3></summary><div class="ex-body"><p>A strict two-sided bound, and membership in an open interval:</p>
+<div class="cells"><div class="cell in" id="in-4"><a class="label" href="#in-4">In[4]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h0 : 0 ≤ x" title="h0 : 0 ≤ x">h0</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h1 : x ≤ 1" title="h1 : x ≤ 1">h1</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) : <span class="n">0</span> &lt; <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> * (<span class="n">1</span> - <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) + <span class="n">1</span> ∧ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> * (<span class="n">1</span> - <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) + <span class="n">1</span> &lt; <span class="n">2</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ 0 &lt; x * (1 - x) + 1 ∧ x * (1 - x) + 1 &lt; 2
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ 0 &lt; x * (1 - x) + 1 ∧ x * (1 - x) + 1 &lt; 2
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ 0 &lt; x * (1 - x) + 1 ∧ x * (1 - x) + 1 &lt; 2
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ 0 &lt; x * (1 - x) + 1 ∧ x * (1 - x) + 1 &lt; 2
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-4"><span class="label">Out[4]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<div class="cells"><div class="cell in" id="in-5"><a class="label" href="#in-5">In[5]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h0 : 0 ≤ x" title="h0 : 0 ≤ x">h0</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h1 : x ≤ 1" title="h1 : x ≤ 1">h1</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> * (<span class="n">1</span> - <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) ∈ <span class="lean-hover" tabindex="0" data-lean-hover="Set.Ioo : {α : Type} → [Preorder α] → α → α → Set α
+
+`Ioo a b` is the left-open right-open interval $(a, b)$." title="Set.Ioo : {α : Type} → [Preorder α] → α → α → Set α
+
+`Ioo a b` is the left-open right-open interval $(a, b)$.">Set.Ioo</span> (-<span class="n">1</span> : <span class="ty">ℝ</span>) <span class="n">1</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * (1 - x) ∈ Set.Ioo (-1) 1
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * (1 - x) ∈ Set.Ioo (-1) 1
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * (1 - x) ∈ Set.Ioo (-1) 1
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * (1 - x) ∈ Set.Ioo (-1) 1
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-5"><span class="label">Out[5]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<hr class="sep">
+<p>Several bounds at once. The three expressions differ, so each bound is proved on its own:</p>
+<div class="cells"><div class="cell in" id="in-6"><a class="label" href="#in-6">In[6]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h0 : 0 ≤ x" title="h0 : 0 ≤ x">h0</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h1 : x ≤ 1" title="h1 : x ≤ 1">h1</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) :
+    <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> / (<span class="n">1</span> + <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) ∧ <span class="lean-hover" tabindex="0" data-lean-hover="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential" title="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential">Real.exp</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">3</span> ∧ |<span class="lean-hover" tabindex="0" data-lean-hover="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine" title="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine">Real.sin</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>| &lt; <span class="n">1</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ 0 ≤ x / (1 + x) ∧ Real.exp x ≤ 3 ∧ |Real.sin x| &lt; 1
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ 0 ≤ x / (1 + x) ∧ Real.exp x ≤ 3 ∧ |Real.sin x| &lt; 1
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ 0 ≤ x / (1 + x) ∧ Real.exp x ≤ 3 ∧ |Real.sin x| &lt; 1
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ 0 ≤ x / (1 + x) ∧ Real.exp x ≤ 3 ∧ |Real.sin x| &lt; 1
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-6"><span class="label">Out[6]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<hr class="sep">
+<p>A hypothesis <code class="lean">|x| ≤ r</code> gives the box <span class="inline-math"><math alttext="[-r, r]" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">[</mo><mo>&#x02212;</mo><mi>r</mi><mo>&#x0002C;</mo><mi>r</mi><mo stretchy="false">]</mo></mrow></math></span>. Here it also keeps the denominator away from zero:</p>
+<div class="cells"><div class="cell in" id="in-7"><a class="label" href="#in-7">In[7]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="hx : |x| ≤ 1 / 2" title="hx : |x| ≤ 1 / 2">hx</span> : |<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>| ≤ <span class="n">1</span> / <span class="n">2</span>) : <span class="n">1</span> / (<span class="n">1</span> - <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) ≤ <span class="n">2</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+hx : |x| ≤ 1 / 2
+⊢ 1 / (1 - x) ≤ 2
+
+After
+no goals" title="Before
+
+x : ℝ
+hx : |x| ≤ 1 / 2
+⊢ 1 / (1 - x) ≤ 2
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+hx : |x| ≤ 1 / 2
+⊢ 1 / (1 - x) ≤ 2
+
+After
+no goals" title="Before
+
+x : ℝ
+hx : |x| ≤ 1 / 2
+⊢ 1 / (1 - x) ≤ 2
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-7"><span class="label">Out[7]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<hr class="sep">
+<p>A trigonometric polynomial needs no bounds on its variable. FloatLib’s <code class="lean">interval</code> bounds <span class="inline-math"><math alttext="\sin x + \tfrac{1}{2} \cos 2x" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>sin</mi><mspace width="0.1667em"/><mi>x</mi><mo>&#x0002B;</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac></mstyle><mi>cos</mi><mspace width="0.1667em"/><mn>2</mn><mi>x</mi></mrow></math></span> by its coefficients, <span class="inline-math"><math alttext="1 + \tfrac{1}{2}" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002B;</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac></mstyle></mrow></math></span>:</p>
+<div class="cells"><div class="cell in" id="in-8"><a class="label" href="#in-8">In[8]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine" title="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine">Real.sin</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> + <span class="lean-hover" tabindex="0" data-lean-hover="Real.cos : ℝ → ℝ
+
+The real cosine function, defined as the real part of the complex cosine" title="Real.cos : ℝ → ℝ
+
+The real cosine function, defined as the real part of the complex cosine">Real.cos</span> (<span class="n">2</span> * <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) / <span class="n">2</span> ≤ <span class="n">3</span> / <span class="n">2</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+⊢ Real.sin x + Real.cos (2 * x) / 2 ≤ 3 / 2
+
+After
+no goals" title="Before
+
+x : ℝ
+⊢ Real.sin x + Real.cos (2 * x) / 2 ≤ 3 / 2
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+⊢ Real.sin x + Real.cos (2 * x) / 2 ≤ 3 / 2
+
+After
+no goals" title="Before
+
+x : ℝ
+⊢ Real.sin x + Real.cos (2 * x) / 2 ≤ 3 / 2
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-8"><span class="label">Out[8]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<hr class="sep">
+<p>Integrals with the limits reversed, and with an integrand that has a corner:</p>
+<div class="cells"><div class="cell in" id="in-9"><a class="label" href="#in-9">In[9]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : (∫ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> <span class="k">in</span> (<span class="n">1</span> : <span class="ty">ℝ</span>)..<span class="n">0</span>, <span class="lean-hover" tabindex="0" data-lean-hover="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential" title="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential">Real.exp</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) &lt; -<span class="n">1</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∫ (x : ℝ) in 1..0, Real.exp x &lt; -1
+
+After
+no goals" title="Before
+
+⊢ ∫ (x : ℝ) in 1..0, Real.exp x &lt; -1
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∫ (x : ℝ) in 1..0, Real.exp x &lt; -1
+
+After
+no goals" title="Before
+
+⊢ ∫ (x : ℝ) in 1..0, Real.exp x &lt; -1
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-9"><span class="label">Out[9]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<div class="cells"><div class="cell in" id="in-10"><a class="label" href="#in-10">In[10]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : <span class="n">1</span> / <span class="n">2</span> &lt; ∫ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> <span class="k">in</span> (-<span class="n">1</span> : <span class="ty">ℝ</span>)..<span class="n">1</span>, |<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>| := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ 1 / 2 &lt; ∫ (x : ℝ) in -1..1, |x|
+
+After
+no goals" title="Before
+
+⊢ 1 / 2 &lt; ∫ (x : ℝ) in -1..1, |x|
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ 1 / 2 &lt; ∫ (x : ℝ) in -1..1, |x|
+
+After
+no goals" title="Before
+
+⊢ 1 / 2 &lt; ∫ (x : ℝ) in -1..1, |x|
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-10"><span class="label">Out[10]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div></div></details><details class="ex-section" id="options"><summary><h3>Options <span class="count">(6)</span></h3></summary><div class="ex-body"><p><code class="lean">(panels := <span class="n">2</span>)</code> fixes the number of Simpson panels instead of doubling them:</p>
+<div class="cells"><div class="cell in" id="in-11"><a class="label" href="#in-11">In[11]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : |(∫ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> <span class="k">in</span> (<span class="n">0</span> : <span class="ty">ℝ</span>)..<span class="n">1</span>, <span class="lean-hover" tabindex="0" data-lean-hover="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential" title="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential">Real.exp</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) - <span class="n">17182818</span> / <span class="n">10000000</span>| ≤ <span class="n">1</span> / <span class="n">10000</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+no goals" title="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+no goals" title="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+no goals"><span class="t">cega</span></span> (<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+no goals" title="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+no goals">panels</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+no goals" title="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+no goals"><span class="n">2</span></span>)</pre></div></div><div class="cell out" id="out-11"><span class="label">Out[11]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<hr class="sep">
+<p><code class="lean">(depth := <span class="n">3</span>)</code> allows the box to be cut in halves to depth 3:</p>
+<div class="cells"><div class="cell in" id="in-12"><a class="label" href="#in-12">In[12]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h0 : 0 ≤ x" title="h0 : 0 ≤ x">h0</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h1 : x ≤ 1" title="h1 : x ≤ 1">h1</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> * (<span class="n">1</span> - <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) ≤ <span class="n">1</span> / <span class="n">4</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * (1 - x) ≤ 1 / 4
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * (1 - x) ≤ 1 / 4
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * (1 - x) ≤ 1 / 4
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * (1 - x) ≤ 1 / 4
+
+After
+no goals"><span class="t">cega</span></span> (<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * (1 - x) ≤ 1 / 4
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * (1 - x) ≤ 1 / 4
+
+After
+no goals">depth</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * (1 - x) ≤ 1 / 4
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * (1 - x) ≤ 1 / 4
+
+After
+no goals"><span class="n">3</span></span>)</pre></div></div><div class="cell out" id="out-12"><span class="label">Out[12]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<hr class="sep">
+<p><code class="lean"><span class="t">cega</span> [fast]</code> with the default settings is bare <code class="lean"><span class="t">cega</span></code>, checked in the kernel:</p>
+<div class="cells"><div class="cell in" id="in-13"><a class="label" href="#in-13">In[13]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h0 : 0 ≤ x" title="h0 : 0 ≤ x">h0</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h1 : x ≤ 1" title="h1 : x ≤ 1">h1</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> * <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * x ≤ 1
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * x ≤ 1
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * x ≤ 1
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * x ≤ 1
+
+After
+no goals"><span class="t">cega</span></span> [<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * x ≤ 1
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 0 ≤ x
+h1 : x ≤ 1
+⊢ x * x ≤ 1
+
+After
+no goals">fast</span>]</pre></div></div><div class="cell out" id="out-13"><span class="label">Out[13]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<hr class="sep">
+<p><code class="lean">[use_floats]</code> computes the same bound with binary64 floats, and <code class="lean">(arith := binary128)</code> with binary128:</p>
+<div class="cells"><div class="cell in" id="in-14"><a class="label" href="#in-14">In[14]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₀ : 0 ≤ x" title="h₀ : 0 ≤ x">h₀</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₁ : x ≤ 1" title="h₁ : x ≤ 1">h₁</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential" title="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential">Real.exp</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">2.72</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals"><span class="t">cega</span></span> [<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals">use_floats</span>]</pre></div></div><div class="cell out" id="out-14"><span class="label">Out[14]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<div class="cells"><div class="cell in" id="in-15"><a class="label" href="#in-15">In[15]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₀ : 0 ≤ x" title="h₀ : 0 ≤ x">h₀</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₁ : x ≤ 1" title="h₁ : x ≤ 1">h₁</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential" title="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential">Real.exp</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">2.72</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals"><span class="t">cega</span></span> (<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals">arith</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.exp x ≤ 2.72
+
+After
+no goals">binary128</span>)</pre></div></div><div class="cell out" id="out-15"><span class="label">Out[15]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<hr class="sep">
+<p>With floats, <code class="lean">(depth := <span class="n">5</span>)</code> evaluates the sine on 32 pieces of <span class="inline-math"><math alttext="[0, 1]" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>&#x0002C;</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math></span>:</p>
+<div class="cells"><div class="cell in" id="in-16"><a class="label" href="#in-16">In[16]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₀ : 0 ≤ x" title="h₀ : 0 ≤ x">h₀</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₁ : x ≤ 1" title="h₁ : x ≤ 1">h₁</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine" title="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine">Real.sin</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">0.85</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals"><span class="t">cega</span></span> [<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals">use_floats</span>] (<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals">depth</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals"><span class="n">5</span></span>)</pre></div></div><div class="cell out" id="out-16"><span class="label">Out[16]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<hr class="sep">
+<p>A finite statement, checked three indices at a time, and then four at a time with the <code class="lean">fast</code> form:</p>
+<div class="cells"><div class="cell in" id="in-17"><a class="label" href="#in-17">In[17]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : ∀ <span class="lean-hover" tabindex="0" data-lean-hover="i : Fin 10" title="i : Fin 10">i</span> : <span class="lean-hover" tabindex="0" data-lean-hover="Fin : ℕ → Type
+
+Natural numbers less than some upper bound.
+
+In particular, a `Fin n` is a natural number `i` with the constraint that `i &lt; n`. It is the
+canonical type with `n` elements." title="Fin : ℕ → Type
+
+Natural numbers less than some upper bound.
+
+In particular, a `Fin n` is a natural number `i` with the constraint that `i &lt; n`. It is the
+canonical type with `n` elements.">Fin</span> <span class="n">10</span>, <span class="lean-hover" tabindex="0" data-lean-hover="i.val : ℕ" title="i.val : ℕ">i.val</span> * <span class="lean-hover" tabindex="0" data-lean-hover="i.val : ℕ" title="i.val : ℕ">i.val</span> &lt; <span class="n">100</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals" title="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals" title="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals"><span class="t">cega</span></span> [<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals" title="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals">batch</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals" title="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals"><span class="n">3</span></span>]</pre></div></div><div class="cell out" id="out-17"><span class="label">Out[17]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<div class="cells"><div class="cell in" id="in-18"><a class="label" href="#in-18">In[18]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : ∀ <span class="lean-hover" tabindex="0" data-lean-hover="i : Fin 10" title="i : Fin 10">i</span> : <span class="lean-hover" tabindex="0" data-lean-hover="Fin : ℕ → Type
+
+Natural numbers less than some upper bound.
+
+In particular, a `Fin n` is a natural number `i` with the constraint that `i &lt; n`. It is the
+canonical type with `n` elements." title="Fin : ℕ → Type
+
+Natural numbers less than some upper bound.
+
+In particular, a `Fin n` is a natural number `i` with the constraint that `i &lt; n`. It is the
+canonical type with `n` elements.">Fin</span> <span class="n">10</span>, <span class="lean-hover" tabindex="0" data-lean-hover="i.val : ℕ" title="i.val : ℕ">i.val</span> * <span class="lean-hover" tabindex="0" data-lean-hover="i.val : ℕ" title="i.val : ℕ">i.val</span> &lt; <span class="n">100</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals" title="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals" title="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals"><span class="t">cega</span></span> [<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals" title="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals">fast</span>, <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals" title="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals">batch</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals" title="Before
+
+⊢ ∀ (i : Fin 10), ↑i * ↑i &lt; 100
+
+After
+no goals"><span class="n">4</span></span>]</pre></div></div><div class="cell out" id="out-18"><span class="label">Out[18]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div></div></details><details class="ex-section" id="applications"><summary><h3>Applications <span class="count">(2)</span></h3></summary><div class="ex-body"><p><code class="lean"><span class="t">cega</span></code> proves the numerical fact and <code class="lean"><span class="t">linarith</span></code> finishes. Only the three standard axioms are used:</p>
+<div class="cells"><div class="cell in" id="in-19"><a class="label" href="#in-19">In[19]:=</a><div class="cell-body"><pre class="lean"><span class="k">theorem</span> <span class="lean-hover" tabindex="0" data-lean-hover="cega_sin_lt_one : ∀ (x : ℝ), 0 ≤ x → x ≤ 1 → Real.sin x &lt; 1" title="cega_sin_lt_one : ∀ (x : ℝ), 0 ≤ x → x ≤ 1 → Real.sin x &lt; 1">cega_sin_lt_one</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₀ : 0 ≤ x" title="h₀ : 0 ≤ x">h₀</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₁ : x ≤ 1" title="h₁ : x ≤ 1">h₁</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine" title="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine">Real.sin</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> &lt; <span class="n">1</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x &lt; 1
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x &lt; 1
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x &lt; 1
+
+After
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+h : Real.sin x ≤ 17 / 20
+⊢ Real.sin x &lt; 1" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x &lt; 1
+
+After
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+h : Real.sin x ≤ 17 / 20
+⊢ Real.sin x &lt; 1"><span class="k">have</span></span> <span class="lean-hover" tabindex="0" data-lean-hover="h : Real.sin x ≤ 17 / 20" title="h : Real.sin x ≤ 17 / 20">h</span> : <span class="lean-hover" tabindex="0" data-lean-hover="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine" title="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine">Real.sin</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x &lt; 1
+
+After
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+h : Real.sin x ≤ 17 / 20
+⊢ Real.sin x &lt; 1" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x &lt; 1
+
+After
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+h : Real.sin x ≤ 17 / 20
+⊢ Real.sin x &lt; 1"><span class="n">17</span></span> / <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x &lt; 1
+
+After
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+h : Real.sin x ≤ 17 / 20
+⊢ Real.sin x &lt; 1" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x &lt; 1
+
+After
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+h : Real.sin x ≤ 17 / 20
+⊢ Real.sin x &lt; 1"><span class="n">20</span></span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 17 / 20
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 17 / 20
+
+After
+no goals"><span class="k">by</span></span> <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 17 / 20
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 17 / 20
+
+After
+no goals"><span class="t">cega</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+h : Real.sin x ≤ 17 / 20
+⊢ Real.sin x &lt; 1
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+h : Real.sin x ≤ 17 / 20
+⊢ Real.sin x &lt; 1
+
+After
+no goals"><span class="t">linarith</span></span>
+
+<span class="lean-hover" tabindex="0" data-lean-hover="Prints the axioms used by a declaration, directly or indirectly.
+Please consult [the reference manual](https://lean-lang.org/doc/reference/4.36.0/find/?domain=Verso.Genre.Manual.section&amp;name=validating-proofs) to understand the significance of the output." title="Prints the axioms used by a declaration, directly or indirectly.
+Please consult [the reference manual](https://lean-lang.org/doc/reference/4.36.0/find/?domain=Verso.Genre.Manual.section&amp;name=validating-proofs) to understand the significance of the output."><span class="k">#print</span></span> axioms <span class="lean-hover" tabindex="0" data-lean-hover="cega_sin_lt_one : ∀ (x : ℝ), 0 ≤ x → x ≤ 1 → Real.sin x &lt; 1" title="cega_sin_lt_one : ∀ (x : ℝ), 0 ≤ x → x ≤ 1 → Real.sin x &lt; 1">cega_sin_lt_one</span></pre></div></div><div class="cell out" id="out-19"><span class="label">Out[19]=</span><div class="cell-body"><div class="msg axioms"><p><code>cega_sin_lt_one</code> depends on the axioms <code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>.</p></div></div></div></div>
+<hr class="sep">
+<p>The digits that <a class="sym" href="N.html"><code class="lean">N</code></a> prints, as a bound:</p>
+<div class="cells"><div class="cell in" id="in-20"><a class="label" href="#in-20">In[20]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : <span class="lean-hover" tabindex="0" data-lean-hover="Real.sqrt : ℝ → ℝ
+
+The square root of a real number. This returns 0 for negative inputs.
+
+This has notation `√x`. Note that `√x⁻¹` is parsed as `√(x⁻¹)`." title="Real.sqrt : ℝ → ℝ
+
+The square root of a real number. This returns 0 for negative inputs.
+
+This has notation `√x`. Note that `√x⁻¹` is parsed as `√(x⁻¹)`.">Real.sqrt</span> <span class="n">2</span> ≤ <span class="n">1.415</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ √2 ≤ 1.415
+
+After
+no goals" title="Before
+
+⊢ √2 ≤ 1.415
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ √2 ≤ 1.415
+
+After
+no goals" title="Before
+
+⊢ √2 ≤ 1.415
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-20"><span class="label">Out[20]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div></div></details><details class="ex-section" id="properties-and-relations"><summary><h3>Properties and Relations <span class="count">(3)</span></h3></summary><div class="ex-body"><p><a class="sym" href="cega-query.html"><code class="lean"><span class="t">cega?</span></code></a> proves the goal and tells you the explicit query that did it:</p>
+<div class="cells"><div class="cell in" id="in-21"><a class="label" href="#in-21">In[21]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₀ : 0 ≤ x" title="h₀ : 0 ≤ x">h₀</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₁ : x ≤ 1" title="h₁ : x ≤ 1">h₁</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine" title="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine">Real.sin</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">0.85</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals"><span class="t">cega?</span></span></pre></div></div><div class="cell out" id="out-21"><span class="label">Out[21]=</span><div class="cell-body"><div class="msg try"><p class="try-label">Try this</p><pre class="lean"><span class="t">cega</span>
+
+Lean checked the suggested replacement against the original goal. Selected route: CEGA route: checked box enclosure of an ordinary inequality, arithmetic: <span class="t">exact</span> rationals.</pre></div></div></div></div>
+<hr class="sep">
+<p>That query is the one <a class="sym" href="enclose.html"><code class="lean">enclose</code></a> runs, and it prints the interval behind the proof:</p>
+<div class="cells"><div class="cell in" id="in-22"><a class="label" href="#in-22">In[22]:=</a><div class="cell-body"><pre class="lean"><span class="lean-hover" tabindex="0" data-lean-hover="`#cas [enclose x in [a, b], y in [c, d]] e` computes an interval with rational endpoints that
+contains every value of `e` on the box of the bindings, proves it, and derives an upper bound, an
+absolute bound and a center with a radius." title="`#cas [enclose x in [a, b], y in [c, d]] e` computes an interval with rational endpoints that
+contains every value of `e` on the box of the bindings, proves it, and derives an upper bound, an
+absolute bound and a center with a radius."><span class="k">#cas</span></span> [<span class="m">enclose</span> x <span class="k">in</span> [<span class="n">0</span>, <span class="n">1</span>]] (sin x)</pre></div></div><div class="cell out" id="out-22"><span class="label">Out[22]=</span><div class="cell-body"><div class="report"><div class="result"><p class="qual">certified interval in ℝ</p><div class="tf"><math alttext="\displaystyle \left[0,\ 0.841471\right]" xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mstyle displaystyle="true" scriptlevel="0"><mrow><mo stretchy="true" fence="true" form="prefix">[</mo><mn>0</mn><mo>&#x0002C;</mo><mtext>&#x000A0;</mtext><mn>0.841471</mn><mo stretchy="true" fence="true" form="postfix">]</mo></mrow></mstyle></mrow></math></div><code class="plain">[0, 0.841471]</code></div><dl class="fields"><dt>Domain</dt><dd><code>x ∈ [0, 1] ⊆ ℝ</code></dd><dt>Upper bound</dt><dd><code>0.841471</code></dd><dt>Absolute bound</dt><dd><code>0.841471</code></dd><dt>Center and radius</dt><dd><code>≈0.420735 ± 0.420736</code></dd></dl><div class="theorem"><p class="badge kernel"><span class="tick" aria-hidden="true">✓</span> Checked by Lean’s kernel: Enclosure of the input</p><pre class="lean">∀ x ∈ Set.Icc <span class="n">0</span> <span class="n">1</span>, <span class="n">0</span> ≤ Real.sin x ∧ Real.sin x ≤ <span class="n">0.841471</span></pre><p class="by">from <code>CAS.Tactic.BoxInequality.mem_of_enclosedOn_box</code></p></div><details class="cert"><summary>The certificate: 8 checked steps</summary><ol class="steps"><li><p class="step-title">Enclosure of the input</p><pre class="lean">∀ x ∈ Set.Icc <span class="n">0</span> <span class="n">1</span>, <span class="n">0</span> ≤ Real.sin x ∧ Real.sin x ≤ <span class="n">0.841471</span></pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Tactic.BoxInequality.mem_of_enclosedOn_box</code></p></li><li><p class="step-title">Upper bound of the input</p><pre class="lean">∀ x ∈ Set.Icc <span class="n">0</span> <span class="n">1</span>, Real.sin x ≤ <span class="n">0.841471</span></pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Tactic.BoxInequality.le_of_boundOn_box</code></p></li><li><p class="step-title">Absolute bound of the input</p><pre class="lean">∀ x ∈ Set.Icc <span class="n">0</span> <span class="n">1</span>, |Real.sin x| ≤ <span class="n">0.841471</span></pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Tactic.BoxInequality.abs_le_of_boundOn_abs_box</code></p></li><li><p class="step-title">Center and radius of the input</p><pre class="lean">∀ x ∈ Set.Icc <span class="n">0</span> <span class="n">1</span>, |Real.sin x - <span class="n">0.420735</span>| ≤ <span class="n">0.420736</span></pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Tactic.BoxInequality.abs_sub_le_of_approxOn_box</code></p></li><li><p class="step-title">Certified enclosure</p><pre class="lean">CAS.Certificate.EnclosedOn (CAS.Exact.exprFn 𝕏[<span class="n">0</span>].sin)
+  (CAS.Continuum.RationalInterval.boxDomain <span class="k">fun</span> coordinate ↦
+    [CAS.Continuum.RationalInterval.ofBounds <span class="n">0</span> <span class="n">1</span> ⋯].get coordinate)
+  (↑<span class="n">0</span> / ↑<span class="n">1</span>) (↑<span class="n">286337738405724074564845076175058320435</span> / ↑<span class="n">340282366920938463463374607431768211456</span>)</pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Continuum.RationalInterval.EnclosureAttempt.enclosedOn_of_interval_eq</code></p></li><li><p class="step-title">Certified upper bound</p><pre class="lean">CAS.Certificate.BoundOn (CAS.Exact.exprFn 𝕏[<span class="n">0</span>].sin)
+  (CAS.Continuum.RationalInterval.boxDomain <span class="k">fun</span> coordinate ↦
+    [CAS.Continuum.RationalInterval.ofBounds <span class="n">0</span> <span class="n">1</span> ⋯].get coordinate)
+  (↑<span class="n">286337738405724074564845076175058320435</span> / ↑<span class="n">340282366920938463463374607431768211456</span>)</pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Continuum.RationalInterval.EnclosureAttempt.boundOn_of_interval_eq</code></p></li><li><p class="step-title">Certified absolute bound</p><pre class="lean">CAS.Certificate.BoundOn (<span class="k">fun</span> x ↦ |CAS.Exact.exprFn 𝕏[<span class="n">0</span>].sin x|)
+  (CAS.Continuum.RationalInterval.boxDomain <span class="k">fun</span> coordinate ↦
+    [CAS.Continuum.RationalInterval.ofBounds <span class="n">0</span> <span class="n">1</span> ⋯].get coordinate)
+  (↑<span class="n">286337738405724074564845076175058320435</span> / ↑<span class="n">340282366920938463463374607431768211456</span>)</pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Continuum.RationalInterval.EnclosureAttempt.boundOn_abs_of_interval_eq</code></p></li><li><p class="step-title">Certified center and radius</p><pre class="lean">CAS.Certificate.ApproxOn (CAS.Exact.exprFn 𝕏[<span class="n">0</span>].sin)
+  (<span class="k">fun</span> x ↦ ↑<span class="n">286337738405724074564845076175058320435</span> / ↑<span class="n">680564733841876926926749214863536422912</span>)
+  (CAS.Continuum.RationalInterval.boxDomain <span class="k">fun</span> coordinate ↦
+    [CAS.Continuum.RationalInterval.ofBounds <span class="n">0</span> <span class="n">1</span> ⋯].get coordinate)
+  (↑<span class="n">286337738405724074564845076175058320435</span> / ↑<span class="n">680564733841876926926749214863536422912</span>)</pre><p class="step-meta"><span class="badge kernel">Checked by Lean’s kernel</span> · <code>CAS.Continuum.RationalInterval.EnclosureAttempt.approxOn_center_of_interval_eq</code></p></li></ol></details><details class="comp"><summary>The computation</summary><ul class="tree"><li><pre class="node-body">Coordinates: x
+Certified domain: x ∈ [0, 1] ⊆ ℝ</pre></li><li><p class="node-title">Certified numerical guarantee</p><pre class="node-body">Guarantee: the input lies in the output interval throughout the box
+Decimal preview: outward-rounded to 6 places where it is a bound
+Exact certified output: [0, 286337738405724074564845076175058320435/340282366920938463463374607431768211456]</pre></li></ul></details></div></div></div></div>
+<hr class="sep">
+<p><a class="sym" href="cas.html"><code class="lean"><span class="t">cas</span></code></a> tries the same box route on ordinary inequalities:</p>
+<div class="cells"><div class="cell in" id="in-23"><a class="label" href="#in-23">In[23]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₀ : 0 ≤ x" title="h₀ : 0 ≤ x">h₀</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₁ : x ≤ 1" title="h₁ : x ≤ 1">h₁</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine" title="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine">Real.sin</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">0.85</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.85
+
+After
+no goals"><span class="t">cas</span></span></pre></div></div><div class="cell out" id="out-23"><span class="label">Out[23]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div></div></details><details class="ex-section" id="possible-issues"><summary><h3>Possible Issues <span class="count">(6)</span></h3></summary><div class="ex-body"><p>A false bound is refused. Here <span class="inline-math"><math alttext="\sin 1 &gt; 0.84" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>sin</mi><mspace width="0.1667em"/><mn>1</mn><mo>&#x0003E;</mo><mn>0.84</mn></mrow></math></span>:</p>
+<div class="cells"><div class="cell in" id="in-24"><a class="label" href="#in-24">In[24]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₀ : 0 ≤ x" title="h₀ : 0 ≤ x">h₀</span> : <span class="n">0</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h₁ : x ≤ 1" title="h₁ : x ≤ 1">h₁</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">1</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine" title="Real.sin : ℝ → ℝ
+
+The real sine function, defined as the real part of the complex sine">Real.sin</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">0.8</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.8
+
+After
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.8" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.8
+
+After
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.8"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.8
+
+After
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.8" title="Before
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.8
+
+After
+
+x : ℝ
+h₀ : 0 ≤ x
+h₁ : x ≤ 1
+⊢ Real.sin x ≤ 0.8"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-24"><span class="label">Out[24]=</span><div class="cell-body"><div class="msg error"><p class="sev">Error</p><pre>cega box route: comparison with the stated bound: the certified value does not give the stated bound.
+  ↑286337738405724074564845076175058320435 / ↑340282366920938463463374607431768211456 ≤ 0.8
+Exact rational arithmetic did not close this comparison.
+The query run was `cega [enclose x in [0, 1]]
+    (Real.sin
+      x)`; its certified upper bound 286337738405724074564845076175058320435/340282366920938463463374607431768211456 may be too weak for the stated bound. If the bound is true, a deeper subdivision or a higher precision may prove it, as in `cega (depth := 4)` or `cega (prec := 24)`. FloatLib&#x27;s check, which `cega` tries first, evaluates at most 4096 pieces of the box and cuts a branch at most 32 times.</pre><details class="more"><summary>The rest of the message</summary><pre>Subdivision to depth 2 (`cega (depth := 2) [enclose x in [0, 1]] (Real.sin x)`) did not prove it either:
+  cega box route: comparison with the stated bound: the certified value does not give the stated bound.
+    ↑286337738405724074564845076175058320435 / ↑340282366920938463463374607431768211456 ≤ 0.8
+  Exact rational arithmetic did not close this comparison.
+Other routes:
+  carrier search:
+    cega found no registered checked carrier or direct certificate matching the target
+  interval route:
+    interval could not certify: on the original box, the expression is enclosed by [-3784231770697581387/4611686018427387904, 1654908495459613035/9223372036854775808]; its upper endpoint does not establish ≤ 0.
+    Box: x in [0, 1]. Verification used subdivision depth 8. Try tighter input bounds, more subdivision, or higher approximation settings.
+    The coefficient route did not prove it either: interval: the coefficients alone give the range [-1, 1] for the polynomial, which does not prove the goal; a sharp bound takes a sum-of-squares certificate `(upper := h)`, which `scripts/coeff_cert.py` finds
+Bare `cega` proves an ordinary real inequality (`f x ≤ c`, `f x &lt; c`, `c ≤ f x`, `c &lt; f x` (also with `≥` and `&gt;`), `|f x| ≤ c`, `|f x| &lt; c`, `a ≤ f x ∧ f x ≤ b` (also with `&lt;`), `f x ∈ Set.Icc a b` (also `Set.Ioo`, `Set.Ico`, `Set.Ioc`), `f x ≤ g x`, `f x &lt; g x`, and conjunctions of these, with `c`, `a`, `b` closed and every real variable bounded by hypotheses `a ≤ x` and `x ≤ b`, `x ∈ Set.Icc a b`, or `|x| ≤ r` with rational literal endpoints), a bound on an interval integral `∫ x in a..b, f x` with rational limits, a certificate goal (`EnclosedOn f s lo hi`, `BoundOn f s c`, `ApproxOn f g s ε`, `ResidualBound r s ε`) on a coordinate box or from a checked carrier in the local context or the goal, a closed decidable statement about floats, which `float_decide` decides, a real inequality that FloatLib&#x27;s `interval` proves, on finite sums and norms too, and a closed goal that interval evaluation proves.</pre></details></div></div></div></div>
+<hr class="sep">
+<p>No hypothesis bounds <span class="inline-math"><math alttext="x" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi></mrow></math></span> here, so there is no box. The bound holds for every real <span class="inline-math"><math alttext="x" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi></mrow></math></span>, since <span class="inline-math"><math alttext="x(1 - x) = \tfrac{1}{4} - (x - \tfrac{1}{2})^2" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x02212;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mn>4</mn></mrow></mfrac></mstyle><mo>&#x02212;</mo><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo>&#x02212;</mo><mstyle displaystyle="false" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac></mstyle><msup><mo stretchy="false">&#x00029;</mo><mn>2</mn></msup></mrow></math></span>, and <code class="lean"><span class="t">nlinarith</span> [sq_nonneg (x - <span class="n">1</span> / <span class="n">2</span>)]</code> proves it:</p>
+<div class="cells"><div class="cell in" id="in-25"><a class="label" href="#in-25">In[25]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> * (<span class="n">1</span> - <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) ≤ <span class="n">1</span> / <span class="n">4</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+⊢ x * (1 - x) ≤ 1 / 4
+
+After
+
+x : ℝ
+⊢ x * (1 - x) ≤ 1 / 4" title="Before
+
+x : ℝ
+⊢ x * (1 - x) ≤ 1 / 4
+
+After
+
+x : ℝ
+⊢ x * (1 - x) ≤ 1 / 4"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+⊢ x * (1 - x) ≤ 1 / 4
+
+After
+
+x : ℝ
+⊢ x * (1 - x) ≤ 1 / 4" title="Before
+
+x : ℝ
+⊢ x * (1 - x) ≤ 1 / 4
+
+After
+
+x : ℝ
+⊢ x * (1 - x) ≤ 1 / 4"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-25"><span class="label">Out[25]=</span><div class="cell-body"><div class="msg error"><p class="sev">Error</p><pre>cega box route: no rational bounds on `x` in the hypotheses; the route needs hypotheses `a ≤ x` and `x ≤ b`, `x ∈ Set.Icc a b`, or `|x| ≤ r` with rational literal endpoints
+Other routes:
+  carrier search:
+    cega found no registered checked carrier or direct certificate matching the target
+  interval route:
+    interval needs a rational lower bound for x
+Bare `cega` proves an ordinary real inequality (`f x ≤ c`, `f x &lt; c`, `c ≤ f x`, `c &lt; f x` (also with `≥` and `&gt;`), `|f x| ≤ c`, `|f x| &lt; c`, `a ≤ f x ∧ f x ≤ b` (also with `&lt;`), `f x ∈ Set.Icc a b` (also `Set.Ioo`, `Set.Ico`, `Set.Ioc`), `f x ≤ g x`, `f x &lt; g x`, and conjunctions of these, with `c`, `a`, `b` closed and every real variable bounded by hypotheses `a ≤ x` and `x ≤ b`, `x ∈ Set.Icc a b`, or `|x| ≤ r` with rational literal endpoints), a bound on an interval integral `∫ x in a..b, f x` with rational limits, a certificate goal (`EnclosedOn f s lo hi`, `BoundOn f s c`, `ApproxOn f g s ε`, `ResidualBound r s ε`) on a coordinate box or from a checked carrier in the local context or the goal, a closed decidable statement about floats, which `float_decide` decides, a real inequality that FloatLib&#x27;s `interval` proves, on finite sums and norms too, and a closed goal that interval evaluation proves.</pre></div></div></div></div>
+<hr class="sep">
+<p>Too few panels. The message gives the interval that the search proposes and the call to try next:</p>
+<div class="cells"><div class="cell in" id="in-26"><a class="label" href="#in-26">In[26]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : |(∫ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> <span class="k">in</span> (<span class="n">0</span> : <span class="ty">ℝ</span>)..<span class="n">1</span>, <span class="lean-hover" tabindex="0" data-lean-hover="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential" title="Real.exp : ℝ → ℝ
+
+The real exponential function, defined as the real part of the complex exponential">Real.exp</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) - <span class="n">17182818</span> / <span class="n">10000000</span>| ≤ <span class="n">1</span> / <span class="n">10000</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000" title="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000" title="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000"><span class="t">cega</span></span> (<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000" title="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000">panels</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000" title="Before
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+
+After
+
+⊢ |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000"><span class="n">1</span></span>)</pre></div></div><div class="cell out" id="out-26"><span class="label">Out[26]=</span><div class="cell-body"><div class="msg error"><p class="sev">Error</p><pre>cega: with 1 Simpson panel the search proposes [1.717917, 1.719805] for the integral, an interval of width less than 1.9e-3 that does not prove the stated bound. Each doubling of the panels divides the Simpson remainder by 16; try `cega (panels := 2)`.</pre><details class="more"><summary>The rest of the message</summary><pre>Other routes:
+  carrier search:
+    cega found no registered checked carrier or direct certificate matching the target
+  box route:
+    cega box route: unsupported closed subterm
+      ∫ (x : ℝ) in 0..1, Real.exp x
+    The checked elementary expression language cannot evaluate this subterm, and no rational enclosure of it was supplied by hypotheses.
+  interval route:
+    interval needs a rational lower bound for ∫ (x : ℝ) in 0..1, Real.exp x
+  dyadic_interval route:
+    The proposition was not proven true or false.
+Bare `cega` proves an ordinary real inequality (`f x ≤ c`, `f x &lt; c`, `c ≤ f x`, `c &lt; f x` (also with `≥` and `&gt;`), `|f x| ≤ c`, `|f x| &lt; c`, `a ≤ f x ∧ f x ≤ b` (also with `&lt;`), `f x ∈ Set.Icc a b` (also `Set.Ioo`, `Set.Ico`, `Set.Ioc`), `f x ≤ g x`, `f x &lt; g x`, and conjunctions of these, with `c`, `a`, `b` closed and every real variable bounded by hypotheses `a ≤ x` and `x ≤ b`, `x ∈ Set.Icc a b`, or `|x| ≤ r` with rational literal endpoints), a bound on an interval integral `∫ x in a..b, f x` with rational limits, a certificate goal (`EnclosedOn f s lo hi`, `BoundOn f s c`, `ApproxOn f g s ε`, `ResidualBound r s ε`) on a coordinate box or from a checked carrier in the local context or the goal, a closed decidable statement about floats, which `float_decide` decides, a real inequality that FloatLib&#x27;s `interval` proves, on finite sums and norms too, and a closed goal that interval evaluation proves.
+CEGA finite certificate could not certify a checked computation: the kernel did not reduce the decision procedure of
+  |(∫ (x : ℝ) in 0..1, Real.exp x) - 17182818 / 10000000| ≤ 1 / 10000
+to `true`. Its decision procedure mentions `Real.decidableLE`, which is classical and never reduces in the kernel. Whether or not that is what stopped this check, the failure says nothing about the truth of the statement.</pre></details></div></div></div></div>
+<hr class="sep">
+<p>An overflow. <span class="inline-math"><math alttext="10^{200}" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>10</mn><mrow><mn>200</mn></mrow></msup></mrow></math></span> fits within binary64’s finite range but its square does not, so the call fails and names the format. <code class="lean"><span class="t">cega</span> (arith := binary128)</code> and plain <code class="lean"><span class="t">cega</span></code> prove this bound:</p>
+<div class="cells"><div class="cell in" id="in-27"><a class="label" href="#in-27">In[27]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : (<span class="n">10</span> : <span class="ty">ℝ</span>) ^ <span class="n">200</span> * <span class="n">10</span> ^ <span class="n">200</span> ≤ <span class="n">10</span> ^ <span class="n">401</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401
+
+After
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401" title="Before
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401
+
+After
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401
+
+After
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401" title="Before
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401
+
+After
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401"><span class="t">cega</span></span> [<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401
+
+After
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401" title="Before
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401
+
+After
+
+⊢ 10 ^ 200 * 10 ^ 200 ≤ 10 ^ 401">use_floats</span>]</pre></div></div><div class="cell out" id="out-27"><span class="label">Out[27]=</span><div class="cell-body"><div class="msg error"><p class="sev">Error</p><pre>cega box route: the query `cega (arith := binary64) [enclose]
+    (10 ^ 200 *
+      10 ^
+        200)` found no certificate: the binary64 evaluation found no enclosure: the enclosure of a product has an end beyond the largest finite binary64 number (overflow). A wider format, as in `(arith := binary128)`, or exact arithmetic, `cega [use_floats := false]`, may prove it.</pre><details class="more"><summary>The rest of the message</summary><pre>Other routes:
+  carrier search:
+    cega found no registered checked carrier or direct certificate matching the target
+  interval route:
+    cega interval route: FloatLib&#x27;s `interval` computes with exact rationals, so it is not run in binary64 arithmetic. `cega [use_floats := false]` runs it.
+  dyadic_interval route:
+    `dyadic_interval` computes with exact dyadic rationals, so it is not run in binary64 arithmetic. `cega [use_floats := false]` runs it.
+Bare `cega` proves an ordinary real inequality (`f x ≤ c`, `f x &lt; c`, `c ≤ f x`, `c &lt; f x` (also with `≥` and `&gt;`), `|f x| ≤ c`, `|f x| &lt; c`, `a ≤ f x ∧ f x ≤ b` (also with `&lt;`), `f x ∈ Set.Icc a b` (also `Set.Ioo`, `Set.Ico`, `Set.Ioc`), `f x ≤ g x`, `f x &lt; g x`, and conjunctions of these, with `c`, `a`, `b` closed and every real variable bounded by hypotheses `a ≤ x` and `x ≤ b`, `x ∈ Set.Icc a b`, or `|x| ≤ r` with rational literal endpoints), a bound on an interval integral `∫ x in a..b, f x` with rational limits, a certificate goal (`EnclosedOn f s lo hi`, `BoundOn f s c`, `ApproxOn f g s ε`, `ResidualBound r s ε`) on a coordinate box or from a checked carrier in the local context or the goal, a closed decidable statement about floats, which `float_decide` decides, a real inequality that FloatLib&#x27;s `interval` proves, on finite sums and norms too, and a closed goal that interval evaluation proves.</pre></details></div></div></div></div>
+<hr class="sep">
+<p>Thirty digits of <span class="inline-math"><math alttext="\sqrt 2" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msqrt><mn>2</mn></msqrt></mrow></math></span> are more than binary64 has. <code class="lean"><span class="t">cega</span> (arith := binary128)</code> proves this one:</p>
+<div class="cells"><div class="cell in" id="in-28"><a class="label" href="#in-28">In[28]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : <span class="lean-hover" tabindex="0" data-lean-hover="Real.sqrt : ℝ → ℝ
+
+The square root of a real number. This returns 0 for negative inputs.
+
+This has notation `√x`. Note that `√x⁻¹` is parsed as `√(x⁻¹)`." title="Real.sqrt : ℝ → ℝ
+
+The square root of a real number. This returns 0 for negative inputs.
+
+This has notation `√x`. Note that `√x⁻¹` is parsed as `√(x⁻¹)`.">Real.sqrt</span> <span class="n">2</span> ≤ <span class="n">1.41421356237309504880168872421</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ √2 ≤ 1.41421356237309504880168872421
+
+After
+
+⊢ √2 ≤ 1.41421356237309504880168872421" title="Before
+
+⊢ √2 ≤ 1.41421356237309504880168872421
+
+After
+
+⊢ √2 ≤ 1.41421356237309504880168872421"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ √2 ≤ 1.41421356237309504880168872421
+
+After
+
+⊢ √2 ≤ 1.41421356237309504880168872421" title="Before
+
+⊢ √2 ≤ 1.41421356237309504880168872421
+
+After
+
+⊢ √2 ≤ 1.41421356237309504880168872421"><span class="t">cega</span></span> [<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ √2 ≤ 1.41421356237309504880168872421
+
+After
+
+⊢ √2 ≤ 1.41421356237309504880168872421" title="Before
+
+⊢ √2 ≤ 1.41421356237309504880168872421
+
+After
+
+⊢ √2 ≤ 1.41421356237309504880168872421">use_floats</span>]</pre></div></div><div class="cell out" id="out-28"><span class="label">Out[28]=</span><div class="cell-body"><div class="msg error"><p class="sev">Error</p><pre>cega box route: comparison with the stated bound: the certified value does not give the stated bound.
+  ↑6369051672525773 / ↑4503599627370496 ≤ 1.41421356237309504880168872421
+Exact rational arithmetic did not close this comparison.
+The query run was `cega (arith := binary64) [enclose]
+    (√2)`; its certified upper bound 6369051672525773/4503599627370496 may be too weak for the stated bound. The goal has no variables, so subdivision does not apply, and the arithmetic is binary64. A wider format, as in `(arith := binary128)`, or exact arithmetic, `cega [use_floats := false]`, may prove it.</pre><details class="more"><summary>The rest of the message</summary><pre>Other routes:
+  carrier search:
+    cega found no registered checked carrier or direct certificate matching the target
+  interval route:
+    cega interval route: FloatLib&#x27;s `interval` computes with exact rationals, so it is not run in binary64 arithmetic. `cega [use_floats := false]` runs it.
+  dyadic_interval route:
+    `dyadic_interval` computes with exact dyadic rationals, so it is not run in binary64 arithmetic. `cega [use_floats := false]` runs it.
+Bare `cega` proves an ordinary real inequality (`f x ≤ c`, `f x &lt; c`, `c ≤ f x`, `c &lt; f x` (also with `≥` and `&gt;`), `|f x| ≤ c`, `|f x| &lt; c`, `a ≤ f x ∧ f x ≤ b` (also with `&lt;`), `f x ∈ Set.Icc a b` (also `Set.Ioo`, `Set.Ico`, `Set.Ioc`), `f x ≤ g x`, `f x &lt; g x`, and conjunctions of these, with `c`, `a`, `b` closed and every real variable bounded by hypotheses `a ≤ x` and `x ≤ b`, `x ∈ Set.Icc a b`, or `|x| ≤ r` with rational literal endpoints), a bound on an interval integral `∫ x in a..b, f x` with rational limits, a certificate goal (`EnclosedOn f s lo hi`, `BoundOn f s c`, `ApproxOn f g s ε`, `ResidualBound r s ε`) on a coordinate box or from a checked carrier in the local context or the goal, a closed decidable statement about floats, which `float_decide` decides, a real inequality that FloatLib&#x27;s `interval` proves, on finite sums and norms too, and a closed goal that interval evaluation proves.</pre></details></div></div></div></div>
+<hr class="sep">
+<p>A batch that fails names its indices. A failed batch is not a counterexample. Either the check did not reduce to <code class="lean">true</code>, as here, or the kernel reached its recursion limit, and then the message proposes a larger <code class="lean">maxRecDepth</code> or smaller batches:</p>
+<div class="cells"><div class="cell in" id="in-29"><a class="label" href="#in-29">In[29]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> : ∀ <span class="lean-hover" tabindex="0" data-lean-hover="i : Fin 2" title="i : Fin 2">i</span> : <span class="lean-hover" tabindex="0" data-lean-hover="Fin : ℕ → Type
+
+Natural numbers less than some upper bound.
+
+In particular, a `Fin n` is a natural number `i` with the constraint that `i &lt; n`. It is the
+canonical type with `n` elements." title="Fin : ℕ → Type
+
+Natural numbers less than some upper bound.
+
+In particular, a `Fin n` is a natural number `i` with the constraint that `i &lt; n`. It is the
+canonical type with `n` elements.">Fin</span> <span class="n">2</span>, <span class="lean-hover" tabindex="0" data-lean-hover="i.val : ℕ" title="i.val : ℕ">i.val</span> = <span class="n">0</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ (i : Fin 2), ↑i = 0
+
+After
+
+⊢ ∀ (i : Fin 2), ↑i = 0" title="Before
+
+⊢ ∀ (i : Fin 2), ↑i = 0
+
+After
+
+⊢ ∀ (i : Fin 2), ↑i = 0"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ (i : Fin 2), ↑i = 0
+
+After
+
+⊢ ∀ (i : Fin 2), ↑i = 0" title="Before
+
+⊢ ∀ (i : Fin 2), ↑i = 0
+
+After
+
+⊢ ∀ (i : Fin 2), ↑i = 0"><span class="t">cega</span></span> [<span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ (i : Fin 2), ↑i = 0
+
+After
+
+⊢ ∀ (i : Fin 2), ↑i = 0" title="Before
+
+⊢ ∀ (i : Fin 2), ↑i = 0
+
+After
+
+⊢ ∀ (i : Fin 2), ↑i = 0">batch</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ ∀ (i : Fin 2), ↑i = 0
+
+After
+
+⊢ ∀ (i : Fin 2), ↑i = 0" title="Before
+
+⊢ ∀ (i : Fin 2), ↑i = 0
+
+After
+
+⊢ ∀ (i : Fin 2), ↑i = 0"><span class="n">1</span></span>]</pre></div></div><div class="cell out" id="out-29"><span class="label">Out[29]=</span><div class="cell-body"><div class="msg error"><p class="sev">Error</p><pre>cega [batch := 1] could not certify batch 2 of 2, the indices i with 1 ≤ i &lt; 2, of
+  ∀ (i : Fin 2), ↑i = 0
+The kernel did not reduce the check of this batch to `true`: the statement may be false for an index in this range, or its decision procedure may not reduce in the kernel.</pre></div></div></div></div></div></details><details class="ex-section" id="neat-examples"><summary><h3>Neat Examples <span class="count">(2)</span></h3></summary><div class="ex-body"><p>The examples from here on run after <code class="lean"><span class="k">open</span> CAS.Certificate</code>.</p>
+<p>The exact range of <span class="inline-math"><math alttext="x/(1+x^2)" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo>&#x0002F;</mo><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x0002B;</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">&#x00029;</mo></mrow></math></span> on <span class="inline-math"><math alttext="[-2, 2]" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">[</mo><mo>&#x02212;</mo><mn>2</mn><mo>&#x0002C;</mo><mn>2</mn><mo stretchy="false">]</mo></mrow></math></span>, stated as a certificate proposition on a box in <span class="inline-math"><math alttext="\mathbb{R}^1" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>&#x0211D;</mi><mn>1</mn></msup></mrow></math></span>. The first query falls short, and bare <code class="lean"><span class="t">cega</span></code> then bisects to depth 2, which cuts <span class="inline-math"><math alttext="[-2, 2]" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">[</mo><mo>&#x02212;</mo><mn>2</mn><mo>&#x0002C;</mo><mn>2</mn><mo stretchy="false">]</mo></mrow></math></span> at 0 and at the turning points <span class="inline-math"><math alttext="\pm 1" xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x000B1;</mo><mn>1</mn></mrow></math></span>:</p>
+
+<div class="cells"><div class="cell in" id="in-30"><a class="label" href="#in-30">In[30]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> :
+    <span class="lean-hover" tabindex="0" data-lean-hover="EnclosedOn : {α : Type} → (α → ℝ) → Set α → ℝ → ℝ → Prop
+
+A pointwise two-sided real enclosure over a domain.
+
+Interval backends and validated numerical routines usually produce this first;
+it can then be projected to a bound, residual estimate, or midpoint
+approximation certificate." title="EnclosedOn : {α : Type} → (α → ℝ) → Set α → ℝ → ℝ → Prop
+
+A pointwise two-sided real enclosure over a domain.
+
+Interval backends and validated numerical routines usually produce this first;
+it can then be projected to a bound, residual estimate, or midpoint
+approximation certificate.">EnclosedOn</span> (<span class="k">fun</span> <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^1" title="p : ℝ^1">p</span> : <span class="ty">ℝ</span>^<span class="n">1</span> ↦ <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^1" title="p : ℝ^1">p</span> <span class="n">0</span> / (<span class="n">1</span> + <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^1" title="p : ℝ^1">p</span> <span class="n">0</span> ^ <span class="n">2</span>)) {<span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^1" title="p : ℝ^1">p</span> | -<span class="n">2</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^1" title="p : ℝ^1">p</span> <span class="n">0</span> ∧ <span class="lean-hover" tabindex="0" data-lean-hover="p : ℝ^1" title="p : ℝ^1">p</span> <span class="n">0</span> ≤ <span class="n">2</span>}
+      (-<span class="n">1</span> / <span class="n">2</span> : <span class="ty">ℝ</span>) (<span class="n">1</span> / <span class="n">2</span> : <span class="ty">ℝ</span>) := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0 ^ 2)) {p | -2 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 2} (-1 / 2) (1 / 2)
+
+After
+no goals" title="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0 ^ 2)) {p | -2 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 2} (-1 / 2) (1 / 2)
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0 ^ 2)) {p | -2 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 2} (-1 / 2) (1 / 2)
+
+After
+no goals" title="Before
+
+⊢ EnclosedOn (fun p ↦ p.ofLp 0 / (1 + p.ofLp 0 ^ 2)) {p | -2 ≤ p.ofLp 0 ∧ p.ofLp 0 ≤ 2} (-1 / 2) (1 / 2)
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-30"><span class="label">Out[30]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div>
+<hr class="sep">
+<p>The cosine on a short interval near 100:</p>
+<div class="cells"><div class="cell in" id="in-31"><a class="label" href="#in-31">In[31]:=</a><div class="cell-body"><pre class="lean"><span class="k">example</span> (<span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> : <span class="ty">ℝ</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h0 : 100 ≤ x" title="h0 : 100 ≤ x">h0</span> : <span class="n">100</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span>) (<span class="lean-hover" tabindex="0" data-lean-hover="h1 : x ≤ 100001 / 1000" title="h1 : x ≤ 100001 / 1000">h1</span> : <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> ≤ <span class="n">100001</span> / <span class="n">1000</span>) : <span class="n">0.86</span> ≤ <span class="lean-hover" tabindex="0" data-lean-hover="Real.cos : ℝ → ℝ
+
+The real cosine function, defined as the real part of the complex cosine" title="Real.cos : ℝ → ℝ
+
+The real cosine function, defined as the real part of the complex cosine">Real.cos</span> <span class="lean-hover" tabindex="0" data-lean-hover="x : ℝ" title="x : ℝ">x</span> := <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 100 ≤ x
+h1 : x ≤ 100001 / 1000
+⊢ 0.86 ≤ Real.cos x
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 100 ≤ x
+h1 : x ≤ 100001 / 1000
+⊢ 0.86 ≤ Real.cos x
+
+After
+no goals"><span class="k">by</span></span>
+  <span class="lean-hover" tabindex="0" data-lean-hover="Before
+
+x : ℝ
+h0 : 100 ≤ x
+h1 : x ≤ 100001 / 1000
+⊢ 0.86 ≤ Real.cos x
+
+After
+no goals" title="Before
+
+x : ℝ
+h0 : 100 ≤ x
+h1 : x ≤ 100001 / 1000
+⊢ 0.86 ≤ Real.cos x
+
+After
+no goals"><span class="t">cega</span></span></pre></div></div><div class="cell out" id="out-31"><span class="label">Out[31]=</span><div class="cell-body"><div class="msg ok"><p><span class="tick" aria-hidden="true">✓</span> Lean accepts the proof.</p></div></div></div></div></div></details></section><section class="see-also" id="see-also"><h2>See Also</h2><p class="sym-row"><a class="sym" href="cega-query.html"><code class="lean"><span class="t">cega?</span></code></a> <span class="dot">·</span> <a class="sym" href="cega-using.html"><code class="lean"><span class="t">cega</span> <span class="t">using</span></code></a> <span class="dot">·</span> <a class="sym" href="enclose.html"><code class="lean">enclose</code></a> <span class="dot">·</span> <a class="sym" href="nintegrate.html"><code class="lean">nintegrate</code></a> <span class="dot">·</span> <a class="sym" href="N.html"><code class="lean">N</code></a> <span class="dot">·</span> <a class="sym" href="cas.html"><code class="lean"><span class="t">cas</span></code></a> <span class="dot">·</span> <a class="sym" href="options.html"><code class="lean">Options</code></a></p></section><section class="related" id="related-guides"><h2>Related Guides</h2><ul><li><a href="../guide/numerics.html">Numerics</a></li><li><a href="../guide/certificates.html">Certificates</a></li><li><a href="../guide/tactics.html">Tactics</a></li></ul></section><section class="related" id="tutorials"><h2>Tutorials</h2><ul><li><a href="../tutorial/proving.html">Proving with <code class="lean"><span class="t">cas</span></code></a></li><li><a href="../tutorial/trust.html">What you trust</a></li></ul></section></main></div>
+<script defer src="../../static/site.js"></script>
+</body>
+</html>

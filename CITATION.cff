@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If SymLean is useful in your work, please cite the software version you used."
+title: "SymLean: A Verified Computer Algebra System in Lean"
+abstract: >-
+  SymLean is a computer algebra system for Lean 4 and Mathlib. It simplifies expressions, factors
+  polynomials, finds roots, differentiates, integrates, takes limits and series, solves linear
+  differential equations and proves numerical bounds, and every answer it gives is a theorem that
+  Lean's kernel checks, with the conditions under which it holds as hypotheses.
+authors:
+  - family-names: "George"
+    given-names: "Robert Joseph"
+    affiliation: "California Institute of Technology"
+  - family-names: "Yang"
+    given-names: "Changhe"
+    affiliation: "California Institute of Technology"
+  - family-names: "Song"
+    given-names: "Peicong"
+    affiliation: "California Institute of Technology"
+  - family-names: "Hou"
+    given-names: "Thomas Y."
+    affiliation: "California Institute of Technology"
+  - family-names: "Anandkumar"
+    given-names: "Anima"
+    affiliation: "California Institute of Technology"
+version: "1.0.0"
+url: "https://lean-dojo.github.io/SymLean/"
+repository-code: "https://github.com/lean-dojo/SymLean"
+license: "Apache-2.0"
+keywords:
+  - "Lean 4"
+  - "Mathlib"
+  - "computer algebra"
+  - "formal verification"
+  - "certified computation"
+  - "interval arithmetic"

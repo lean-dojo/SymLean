@@ -1,0 +1,25 @@
+DUPDEF 0
+DUPTHM 0
+RESTATE 2
+UNUSED 0
+EQUIV 16
+MISSING 1
+RESTATE: CAS.Numerics.GridBall.natDiv_eq_div = FloatLib.Floats.Formats.BinaryInterchange.KernelPath.div_def
+RESTATE: CAS.Numerics.GridBall.natMod_eq_mod = FloatLib.Floats.Formats.BinaryInterchange.KernelPath.mod_def
+EQUIV: CAS.Analysis.SpecialFunctions.legendreMonomialCoeff_eq_legendreCoeff: CAS.Analysis.SpecialFunctions.legendreMonomialCoeff ~ CAS.Analysis.SpecialFunctions.legendreCoeff
+EQUIV: CAS.Continuum.RationalInterval.translatedLogPanelInterval_eq_shared: CAS.Continuum.RationalInterval.translatedLogPanelInterval ~ CAS.Continuum.RationalInterval.translatedLogPanelIntervalShared
+EQUIV: CAS.Continuum.fin_cases_eq_direct: Fin.cases ~ CAS.Continuum.finCasesDirect
+EQUIV: CAS.Continuum.fin_cons_eq_direct: Fin.cons ~ CAS.Continuum.finConsDirect
+EQUIV: CAS.Numerics.Binary64Word.bit_eq: CAS.Numerics.Binary64Word.bit ~ Nat.testBit
+EQUIV: CAS.Numerics.Binary64Word.roundShiftEven_eq: CAS.Numerics.Binary64Word.roundShiftEven ~ FloatLib.Numerics.roundShiftRightEven
+EQUIV: CAS.Numerics.Binary64Word.sumExponentInline_eq: CAS.Numerics.Binary64Word.sumExponentInline ~ CAS.Numerics.Binary64Word.sumExponent
+EQUIV: CAS.Numerics.Binary64Word.sumSignificandInline_eq: CAS.Numerics.Binary64Word.sumSignificandInline ~ CAS.Numerics.Binary64Word.sumSignificand
+EQUIV: CAS.Numerics.factorRow_eq_factorRowFast: CAS.Numerics.factorRow ~ CAS.Numerics.factorRowFast
+EQUIV: CAS.Numerics.natPowNine_eq_ord: CAS.Numerics.natPowNine ~ CAS.Numerics.natPowNineOrd
+EQUIV: CAS.Numerics.oddLogLoopFast_eq: CAS.Numerics.oddLogLoopFast ~ CAS.Numerics.oddLogLoop
+EQUIV: CAS.Numerics.rotationRowsStrictAux_eq: CAS.Numerics.rotationRowsStrictAux ~ CAS.Numerics.rotationRowsAux
+EQUIV: CAS.Numerics.rotationRowsStrict_eq: CAS.Numerics.rotationRowsStrict ~ CAS.Numerics.rotationRows
+EQUIV: CAS.Numerics.spreadConst_eq: CAS.Numerics.spreadConst ~ CAS.Numerics.spread
+EQUIV: CAS.Numerics.twoStageRow_eq_fast: CAS.Numerics.twoStageRow ~ CAS.Numerics.twoStageRowFast
+EQUIV: CAS.Numerics.vecCons_eq_vecConsLookup: Matrix.vecCons ~ CAS.Numerics.vecConsLookup
+MISSING: CAS.Numerics.binaryGrid_toRat_eq_div

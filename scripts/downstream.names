@@ -1,0 +1,1700 @@
+# Declarations of SymLean that downstream projects reference in their built modules or
+# cite in a blueprint (scripts/downstream_names.py). The duplicate gate counts them as
+# used and reports one that no longer exists.
+# Read from: PDEAtlas, PDEAtlas-Blueprint, BlowupZoo.
+CAS.Analysis.IsEvenCosineSeries PDEAtlas BlowupZoo
+CAS.Analysis.IsEvenCosineSeries.congr PDEAtlas BlowupZoo
+CAS.Analysis.IsEvenCosineSeries.continuous PDEAtlas
+CAS.Analysis.IsEvenCosineSeries.integral_eq_trapezoid PDEAtlas
+CAS.Analysis.IsEvenCosineSeries.integral_mul_sin_eq_rule PDEAtlas BlowupZoo
+CAS.Analysis.IsEvenCosineSeries.mono PDEAtlas
+CAS.Analysis.IsEvenCosineSeries.of_trigSeries PDEAtlas
+CAS.Analysis.IsEvenCosineSeries.sum PDEAtlas BlowupZoo
+CAS.Analysis.Matrix.QuadFormLE PDEAtlas BlowupZoo
+CAS.Analysis.Matrix.abs_quadForm_le_of_abs_le PDEAtlas BlowupZoo
+CAS.Analysis.Matrix.abs_quadForm_le_of_frobenius PDEAtlas BlowupZoo
+CAS.Analysis.Matrix.appendBlocks PDEAtlas
+CAS.Analysis.Matrix.quadForm_appendBlocks PDEAtlas
+CAS.Analysis.Matrix.sum_sq_eq_dotProduct PDEAtlas BlowupZoo
+CAS.Analysis.Matrix.sum_sum_mul_mul_eq_dotProduct_mulVec PDEAtlas BlowupZoo
+CAS.Analysis.Scalar.mixed_energy_le_of_discriminant BlowupZoo
+CAS.Analysis.SpecialFunctions.coeff_X_mul_derivative PDEAtlas
+CAS.Analysis.SpecialFunctions.coeff_legendre_eq_zero_or PDEAtlas
+CAS.Analysis.SpecialFunctions.coeff_legendre_recursion PDEAtlas
+CAS.Analysis.SpecialFunctions.degree_legendre BlowupZoo
+CAS.Analysis.SpecialFunctions.derivative_legendre_eval_neg PDEAtlas
+CAS.Analysis.SpecialFunctions.derivative_legendre_succ_ne_zero PDEAtlas
+CAS.Analysis.SpecialFunctions.derivative_one_sub_sq_mul_derivative_of_eval PDEAtlas
+CAS.Analysis.SpecialFunctions.legendre PDEAtlas BlowupZoo
+CAS.Analysis.SpecialFunctions.legendreMonomialCoeff PDEAtlas
+CAS.Analysis.SpecialFunctions.legendre_equation PDEAtlas BlowupZoo
+CAS.Analysis.SpecialFunctions.legendre_eval PDEAtlas
+CAS.Analysis.SpecialFunctions.legendre_eval_eq_sum_coeff PDEAtlas
+CAS.Analysis.SpecialFunctions.legendre_eval_neg PDEAtlas
+CAS.Analysis.SpecialFunctions.legendre_eval_neg_one PDEAtlas
+CAS.Analysis.SpecialFunctions.legendre_eval_one PDEAtlas BlowupZoo
+CAS.Analysis.SpecialFunctions.legendre_ne_zero BlowupZoo
+CAS.Analysis.SpecialFunctions.legendre_one PDEAtlas BlowupZoo
+CAS.Analysis.SpecialFunctions.legendre_zero PDEAtlas
+CAS.Analysis.SpecialFunctions.mem_span_legendre_of_degree_lt PDEAtlas
+CAS.Analysis.SpecialFunctions.natDegree_legendre PDEAtlas BlowupZoo
+CAS.Analysis.SpecialFunctions.neg_one_pow_mul_coeff_legendre PDEAtlas
+CAS.Analysis.SpecialFunctions.span_derivative_legendre PDEAtlas
+CAS.Analysis.SpecialFunctions.span_legendre PDEAtlas
+CAS.Analysis.abs_cos_odd_mul_le BlowupZoo
+CAS.Analysis.abs_iteratedDeriv_cos_mul_le BlowupZoo
+CAS.Analysis.abs_iteratedDeriv_sin_mul_le BlowupZoo
+CAS.Analysis.abs_log_sub_log_le PDEAtlas BlowupZoo
+CAS.Analysis.abs_polynomialLogPanel_sub_le BlowupZoo
+CAS.Analysis.abs_sin_even_mul_le BlowupZoo
+CAS.Analysis.contDiff_oddCosineQuotient PDEAtlas BlowupZoo
+CAS.Analysis.contDiff_sineQuotient PDEAtlas
+CAS.Analysis.continuous_logMonomialPrimitive PDEAtlas BlowupZoo
+CAS.Analysis.cos_mul_oddCosineQuotient PDEAtlas BlowupZoo
+CAS.Analysis.cos_two_mul_dist PDEAtlas
+CAS.Analysis.cosineRuleWeight PDEAtlas BlowupZoo
+CAS.Analysis.eval_neg_chebyshevT_two_mul BlowupZoo
+CAS.Analysis.eval_neg_chebyshevU_two_mul BlowupZoo
+CAS.Analysis.hasDerivAt_logMonomialPrimitive PDEAtlas
+CAS.Analysis.integrableOn_log_sub BlowupZoo
+CAS.Analysis.integral_abs_log_sub_le BlowupZoo
+CAS.Analysis.integral_cosSeries_eq_quarterCosineRule PDEAtlas
+CAS.Analysis.integral_cos_nat_mul_mul_sin_zero_to_pi PDEAtlas
+CAS.Analysis.integral_cos_nat_mul_zero_to_pi PDEAtlas
+CAS.Analysis.integral_cos_nat_mul_zero_to_pi_div_two BlowupZoo
+CAS.Analysis.integral_cos_two_mul_nat_mul_mul_sin_zero_to_pi_div_two BlowupZoo
+CAS.Analysis.integral_integral_eq_sum_sum PDEAtlas BlowupZoo
+CAS.Analysis.integral_integral_mul_sin_eq_rule PDEAtlas
+CAS.Analysis.integral_polynomial_mul_log_sub PDEAtlas BlowupZoo
+CAS.Analysis.integral_pow_mul_log PDEAtlas
+CAS.Analysis.intervalIntegrable_abs_log_sub BlowupZoo
+CAS.Analysis.intervalIntegrable_polynomial_mul_log PDEAtlas BlowupZoo
+CAS.Analysis.intervalIntegrable_pow_mul_log PDEAtlas
+CAS.Analysis.logMonomialPrimitive PDEAtlas BlowupZoo
+CAS.Analysis.oddCosineQuotient PDEAtlas BlowupZoo
+CAS.Analysis.polynomialLogPanel PDEAtlas BlowupZoo
+CAS.Analysis.polynomialLogPanel_eq_sum_of_eval BlowupZoo
+CAS.Analysis.quarterCosineMoment BlowupZoo
+CAS.Analysis.quarterCosineWeight PDEAtlas
+CAS.Analysis.quarterSinWeight PDEAtlas BlowupZoo
+CAS.Analysis.quarterSinWeightApprox BlowupZoo
+CAS.Analysis.quarterSinWeight_eq_cosineRuleWeight BlowupZoo
+CAS.Analysis.quarterSinWeight_pos BlowupZoo
+CAS.Analysis.quarterTrapezoidWeight PDEAtlas BlowupZoo
+CAS.Analysis.quarterTrapezoidWeight_pos BlowupZoo
+CAS.Analysis.sineQuotient PDEAtlas
+CAS.Analysis.sineQuotient_mul_sin PDEAtlas BlowupZoo
+CAS.Analysis.sum_cosineRuleWeight_mul_cos PDEAtlas
+CAS.Analysis.sum_quarterSinWeight BlowupZoo
+CAS.Analysis.sum_quarterSinWeight_mul_cos PDEAtlas
+CAS.Analysis.sum_quarterTrapezoidWeight BlowupZoo
+CAS.Analysis.sum_range_cos_mul_two_pi PDEAtlas
+CAS.Analysis.sum_range_sin_mul_two_pi PDEAtlas
+CAS.Analysis.trapezoidFactor PDEAtlas BlowupZoo
+CAS.Analysis.trapezoidFactor_le_one BlowupZoo
+CAS.Analysis.trapezoidFactor_of_pos_of_lt BlowupZoo
+CAS.Analysis.trapezoidFactor_pos BlowupZoo
+CAS.Analysis.trapezoidFactor_zero BlowupZoo
+CAS.CEGA.Elaboration.cega.nativeCertificates BlowupZoo
+CAS.CEGA.Elaboration.decideClosedCertificate PDEAtlas
+CAS.Certificate.ApproxAtlasCert.sound PDEAtlas-Blueprint
+CAS.Certificate.ApproxCert PDEAtlas-Blueprint
+CAS.Certificate.ApproxCert.add PDEAtlas-Blueprint
+CAS.Certificate.ApproxCert.eps_nonneg_or_eq_empty PDEAtlas-Blueprint
+CAS.Certificate.ApproxCert.eqOn_of_eps_eq_zero PDEAtlas-Blueprint
+CAS.Certificate.ApproxCert.mapLipschitz PDEAtlas-Blueprint
+CAS.Certificate.ApproxCert.mulRealOfBoundCerts PDEAtlas-Blueprint
+CAS.Certificate.ApproxCert.neg PDEAtlas-Blueprint
+CAS.Certificate.ApproxCert.sound_restrict PDEAtlas-Blueprint
+CAS.Certificate.ApproxCert.sub PDEAtlas-Blueprint
+CAS.Certificate.ApproxCert.trans PDEAtlas-Blueprint
+CAS.Certificate.ApproxOn PDEAtlas
+CAS.Certificate.BoundCert.sound_restrict PDEAtlas-Blueprint
+CAS.Certificate.BoundOn PDEAtlas
+CAS.Certificate.EnclosedOn PDEAtlas
+CAS.Certificate.EnclosureCert.sound_restrict PDEAtlas-Blueprint
+CAS.Certificate.ModelApproxCert PDEAtlas-Blueprint
+CAS.Certificate.ModelApproxCert.restrict PDEAtlas-Blueprint
+CAS.Certificate.ModelApproxCert.sound PDEAtlas-Blueprint
+CAS.Certificate.ResidualAtlasCert PDEAtlas
+CAS.Certificate.ResidualAtlasCert.sound PDEAtlas-Blueprint
+CAS.Certificate.ResidualAtlasCert.toResidualCert PDEAtlas
+CAS.Certificate.ResidualBound PDEAtlas
+CAS.Certificate.ResidualCert PDEAtlas
+CAS.Certificate.ResidualCert.eps PDEAtlas
+CAS.Certificate.ResidualCert.eps_nonneg PDEAtlas
+CAS.Certificate.ResidualCert.eps_nonneg_or_eq_empty PDEAtlas-Blueprint
+CAS.Certificate.ResidualCert.ofResidualBound PDEAtlas
+CAS.Certificate.ResidualCert.residual PDEAtlas
+CAS.Certificate.ResidualCert.sound PDEAtlas
+CAS.Certificate.ResidualCert.sound_restrict PDEAtlas-Blueprint
+CAS.Certificate.approxOn_mono_error PDEAtlas
+CAS.Certificate.approxOn_of_eqOn PDEAtlas
+CAS.Certificate.eqOn_of_approxOn_zero PDEAtlas
+CAS.Certificate.eqOn_zero_of_residualBound_zero PDEAtlas
+CAS.CertificateRoute PDEAtlas
+CAS.CertificateRoute.cert PDEAtlas
+CAS.CertificateRoute.steps PDEAtlas
+CAS.Command.DSolveOrder.primitiveIn PDEAtlas
+CAS.Command.Digits.Outcome PDEAtlas
+CAS.Command.Digits.Outcome.enclosure PDEAtlas
+CAS.Command.Digits.Outcome.negativeDecimal PDEAtlas
+CAS.Command.Digits.Outcome.negativeScaled PDEAtlas
+CAS.Command.Digits.Outcome.positiveDecimal PDEAtlas
+CAS.Command.Digits.Outcome.positiveScaled PDEAtlas
+CAS.Command.Digits.cleanProof PDEAtlas
+CAS.Command.Digits.enclosureOutcome PDEAtlas
+CAS.Command.Digits.evaluateNumerals PDEAtlas
+CAS.Command.Digits.renderOutcome PDEAtlas
+CAS.Command.Digits.resolve? PDEAtlas
+CAS.Command.ExpPolynomials.cleanLemmas PDEAtlas
+CAS.Command.ExpPolynomials.real PDEAtlas
+CAS.Command.InfoView.ReportSummary.conditions? PDEAtlas
+CAS.Command.InfoView.ReportSummary.domain PDEAtlas
+CAS.Command.InfoView.ReportSummary.input PDEAtlas
+CAS.Command.InfoView.ReportSummary.inputType PDEAtlas
+CAS.Command.InfoView.ReportSummary.output PDEAtlas
+CAS.Command.InfoView.ReportSummary.outputType PDEAtlas
+CAS.Command.InfoView.computationNode PDEAtlas
+CAS.Command.InfoView.logReport PDEAtlas
+CAS.Command.ReifiedExpr PDEAtlas
+CAS.Command.ReifiedExpr.expr PDEAtlas
+CAS.Command.ReifiedExpr.names PDEAtlas
+CAS.Command.ReifiedExpr.render PDEAtlas
+CAS.Command.RootSplit.squareFactor PDEAtlas
+CAS.Command.SpecialFunctions.parseRational PDEAtlas
+CAS.Command.SpecialFunctions.quoteDecimal PDEAtlas
+CAS.Command.SpecialFunctions.quoteRat PDEAtlas
+CAS.Command.SpecialFunctions.ratCastLemmas PDEAtlas
+CAS.Command.SpecialFunctions.renderRoot PDEAtlas
+CAS.Command.SpecialFunctions.unparen PDEAtlas
+CAS.Command.checkDigitCount PDEAtlas
+CAS.Command.derivativeComputation PDEAtlas
+CAS.Command.derivativeEvidence PDEAtlas
+CAS.Command.displayDerivativeRoute PDEAtlas
+CAS.Command.evidenceReportMessage PDEAtlas
+CAS.Command.fderiv_apply_single_eq_eval_displayDerivative PDEAtlas
+CAS.Command.laplacianRequirements PDEAtlas
+CAS.Command.parseDigitsOption PDEAtlas
+CAS.Command.parseExact PDEAtlas
+CAS.Command.proofStep PDEAtlas
+CAS.Command.quoteVerifiedExpr PDEAtlas
+CAS.Command.ratSyntax PDEAtlas
+CAS.Command.renderConditions PDEAtlas
+CAS.Command.renderExpr PDEAtlas
+CAS.Command.renderExprList PDEAtlas
+CAS.Command.renderName PDEAtlas
+CAS.Command.renderNames PDEAtlas
+CAS.Command.renderRealDomain PDEAtlas
+CAS.Command.requirementsComputation PDEAtlas
+CAS.Command.surfaceText PDEAtlas
+CAS.Continuum.AdaptiveQuadrature.search PDEAtlas-Blueprint
+CAS.Continuum.CEGAInclusion.cos_mem PDEAtlas-Blueprint
+CAS.Continuum.CEGAInclusion.div_mem PDEAtlas-Blueprint
+CAS.Continuum.CEGAInclusion.exp_mem PDEAtlas-Blueprint
+CAS.Continuum.CEGAInclusion.log_mem PDEAtlas-Blueprint
+CAS.Continuum.CEGAInclusion.mem_liftUnary PDEAtlas-Blueprint
+CAS.Continuum.CEGAInclusion.sin_mem PDEAtlas-Blueprint
+CAS.Continuum.CEGAInclusion.sqrt_mem PDEAtlas-Blueprint
+CAS.Continuum.CompiledDerivative.contDiffOn PDEAtlas-Blueprint
+CAS.Continuum.CompiledTaylorJet.derivative PDEAtlas-Blueprint
+CAS.Continuum.ExprAdaptiveTaylor.adaptiveToTolerance?_sound PDEAtlas-Blueprint
+CAS.Continuum.ExprAdaptiveTaylor.panelOfRange PDEAtlas-Blueprint
+CAS.Continuum.ExprRangeProviderOn.ofPanelEvaluator PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule.abs_error_le PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule.nodal_eq_integralOrthogonalPolynomial PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule.nodal_orthogonal PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule.nodes_eq_gaussLegendreTwo PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule.remainder PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule.remainder_orthogonal PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule.sum_weights PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule.tendsto_value PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule.toNodalRule PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule.value PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule.value_eq_gaussLegendreTwoRule_valueOn PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule.weight_le_mass PDEAtlas-Blueprint
+CAS.Continuum.GaussianRule.weights_eq_interpolatoryWeight PDEAtlas-Blueprint
+CAS.Continuum.HermiteRule BlowupZoo
+CAS.Continuum.HermiteRule.Valid BlowupZoo
+CAS.Continuum.HermiteRule.Valid.mem_Icc BlowupZoo
+CAS.Continuum.HermiteRule.abs_integral_sub_composite_le BlowupZoo
+CAS.Continuum.HermiteRule.nodalSquareIntegral BlowupZoo
+CAS.Continuum.HermiteRule.node BlowupZoo
+CAS.Continuum.HermiteRule.panelNode BlowupZoo
+CAS.Continuum.HermiteRule.panelPoint BlowupZoo
+CAS.Continuum.HermiteRule.slope BlowupZoo
+CAS.Continuum.HermiteRule.slopeMass BlowupZoo
+CAS.Continuum.HermiteRule.weight BlowupZoo
+CAS.Continuum.Icc_uniformMeshPoint_subset BlowupZoo
+CAS.Continuum.IteratedDerivativeBounderOn PDEAtlas-Blueprint BlowupZoo
+CAS.Continuum.IteratedDerivativeBounderOn.bound BlowupZoo
+CAS.Continuum.IteratedDerivativeBounderOn.ofExpr PDEAtlas-Blueprint
+CAS.Continuum.IteratedDerivativeBounderOn.ofExprWithRewrite PDEAtlas-Blueprint
+CAS.Continuum.IteratedDerivativeBounderOn.ofExprWithSideRoute PDEAtlas-Blueprint
+CAS.Continuum.IteratedDerivativeBounderOn.ofIndependentExpr PDEAtlas-Blueprint
+CAS.Continuum.IteratedDerivativeBounderOn.ofRationalExpr PDEAtlas-Blueprint
+CAS.Continuum.IteratedDerivativeBounderOn.sound BlowupZoo
+CAS.Continuum.Krawczyk.Certificate PDEAtlas-Blueprint
+CAS.Continuum.Krawczyk.Certificate.IsCertified PDEAtlas-Blueprint
+CAS.Continuum.Krawczyk.Certificate.existsUnique_zero PDEAtlas-Blueprint
+CAS.Continuum.Krawczyk.CertifiesOperatorNorm PDEAtlas
+CAS.Continuum.Krawczyk.certifyFrobenius PDEAtlas-Blueprint
+CAS.Continuum.Krawczyk.certifyFrobenius_sound PDEAtlas-Blueprint
+CAS.Continuum.Krawczyk.isCertified_of_intervals PDEAtlas-Blueprint
+CAS.Continuum.Krawczyk.matrixOperator PDEAtlas
+CAS.Continuum.Krawczyk.residualBounds PDEAtlas-Blueprint
+CAS.Continuum.Legendre.RootCertificates.integral_quotient PDEAtlas-Blueprint
+CAS.Continuum.Legendre.RootCertificates.interpolatoryWeight_eq_quotient PDEAtlas-Blueprint
+CAS.Continuum.Legendre.RootCertificates.nodal_eq PDEAtlas-Blueprint
+CAS.Continuum.Legendre.RootCertificates.nodes_mem PDEAtlas-Blueprint
+CAS.Continuum.Legendre.RootCertificates.nodes_strictMono PDEAtlas-Blueprint
+CAS.Continuum.Legendre.RootCertificates.orthogonal_of_shiftedMoments PDEAtlas-Blueprint
+CAS.Continuum.Legendre.RootCertificates.rule PDEAtlas-Blueprint
+CAS.Continuum.Legendre.RootCertificates.shiftedMoment PDEAtlas-Blueprint
+CAS.Continuum.Legendre.RootCertificates.weightInterval PDEAtlas-Blueprint
+CAS.Continuum.Legendre.RootCertificates.weightInterval_sound PDEAtlas-Blueprint
+CAS.Continuum.Legendre.RootCertificates.weight_mem PDEAtlas-Blueprint
+CAS.Continuum.Legendre.fourGaussian PDEAtlas-Blueprint
+CAS.Continuum.Legendre.four_exact PDEAtlas-Blueprint
+CAS.Continuum.Legendre.four_nodal_eq PDEAtlas-Blueprint
+CAS.Continuum.Legendre.monicPolynomial PDEAtlas-Blueprint
+CAS.Continuum.Legendre.one_nodal_eq PDEAtlas-Blueprint
+CAS.Continuum.Legendre.threeGaussian PDEAtlas-Blueprint
+CAS.Continuum.Legendre.three_exact PDEAtlas-Blueprint
+CAS.Continuum.Legendre.three_nodal_eq PDEAtlas-Blueprint
+CAS.Continuum.Legendre.two_nodal_eq PDEAtlas-Blueprint
+CAS.Continuum.MatrixVerification.ApproximateInverseCandidate PDEAtlas-Blueprint
+CAS.Continuum.MatrixVerification.ApproximateInverseCandidate.IsCertified PDEAtlas-Blueprint
+CAS.Continuum.MatrixVerification.ApproximateInverseCandidate.inverse_sub_proposedInverse_norm_le PDEAtlas-Blueprint
+CAS.Continuum.MatrixVerification.ApproximateInverseCandidate.matrix_isUnit PDEAtlas-Blueprint
+CAS.Continuum.MatrixVerification.ApproximateInverseCandidate.toEuclideanCLM_bijective PDEAtlas-Blueprint
+CAS.Continuum.MatrixVerification.Expression.ApproximateInverseData.certify? PDEAtlas-Blueprint
+CAS.Continuum.MatrixVerification.Expression.ApproximateInverseData.matrix_isUnitAt PDEAtlas-Blueprint
+CAS.Continuum.MatrixVerification.Expression.evalMatrix_leftResidual PDEAtlas-Blueprint
+CAS.Continuum.MatrixVerification.ResidualEntryBounds.matrix_isUnit PDEAtlas-Blueprint
+CAS.Continuum.MatrixVerification.ResidualEntryBounds.residual_norm_lt_one PDEAtlas-Blueprint
+CAS.Continuum.MatrixVerification.ResidualEntryBounds.row_norm_sum_le PDEAtlas-Blueprint
+CAS.Continuum.NodalRule PDEAtlas-Blueprint
+CAS.Continuum.NodalRule.ExactToDegree PDEAtlas-Blueprint
+CAS.Continuum.NodalRule.ExactToDegree.transport PDEAtlas-Blueprint
+CAS.Continuum.NodalRule.NodesIn PDEAtlas-Blueprint
+CAS.Continuum.NodalRule.Positive PDEAtlas-Blueprint
+CAS.Continuum.NodalRule.abs_eval_sub_integral_le_of_polynomial_approx PDEAtlas-Blueprint
+CAS.Continuum.NodalRule.eval PDEAtlas-Blueprint
+CAS.Continuum.NodalRule.exactToDegree_iff_monomial PDEAtlas-Blueprint
+CAS.Continuum.NodalRule.interpolatory PDEAtlas-Blueprint
+CAS.Continuum.NodalRule.interpolatory_exactToDegree PDEAtlas-Blueprint
+CAS.Continuum.NodalRule.tendsto_eval_of_positive PDEAtlas-Blueprint
+CAS.Continuum.NormalizedQuadratureRule.nodes_mem_unit BlowupZoo
+CAS.Continuum.NormalizedQuadratureRule.terms BlowupZoo
+CAS.Continuum.ODETrajectoryCert.comparison_sound PDEAtlas-Blueprint
+CAS.Continuum.ODETrajectoryCert.dist_le_gronwall PDEAtlas-Blueprint
+CAS.Continuum.ODETrajectoryCert.dist_velocity_vectorField_le PDEAtlas-Blueprint
+CAS.Continuum.PanelPlan.div_ratRequiredPanels_pow_le PDEAtlas-Blueprint
+CAS.Continuum.PanelPlan.errorConstant_div_requiredPanels_pow_le PDEAtlas-Blueprint
+CAS.Continuum.PanelPlan.requiredPanels PDEAtlas-Blueprint
+CAS.Continuum.PanelPlan.uniformCompositeError_le PDEAtlas-Blueprint
+CAS.Continuum.PanelRule PDEAtlas-Blueprint BlowupZoo
+CAS.Continuum.PanelRule.composite PDEAtlas-Blueprint BlowupZoo
+CAS.Continuum.PanelRule.compositeToTolerance PDEAtlas-Blueprint
+CAS.Continuum.PanelRule.compositeToTolerance_error_le PDEAtlas-Blueprint
+CAS.Continuum.PanelRule.compositeToTolerance_sound_le PDEAtlas-Blueprint
+CAS.Continuum.PanelRule.composite_error PDEAtlas-Blueprint
+CAS.Continuum.PanelRule.denominator BlowupZoo
+CAS.Continuum.PanelRule.denominator_pos BlowupZoo
+CAS.Continuum.PanelRule.norm_integral_sub_valueOn_le BlowupZoo
+CAS.Continuum.PanelRule.rule BlowupZoo
+CAS.Continuum.PanelRule.search PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCandidateFamily.AcceptedCandidate.sound PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert.compositeGaussLegendreTwo PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert.compositeGaussLegendreTwo_error PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert.compositeSimpson PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert.compositeSimpson_error PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert.integral_mem_Icc PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert.norm_intervalIntegral_sub_le PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert.ofIntervalRange PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert.replaceValue_sound PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert.sound BlowupZoo
+CAS.Continuum.QuadratureCert.transportApprox PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert.trapezoidal PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert.trapezoidalToTolerance_sound_le PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert.trapezoidalToTotalToleranceOfInterval_sound_le PDEAtlas-Blueprint
+CAS.Continuum.QuadratureCert.uniformCompositeFourthOrder PDEAtlas-Blueprint
+CAS.Continuum.QuadratureRule PDEAtlas-Blueprint BlowupZoo
+CAS.Continuum.QuadratureRule.ExactUpTo BlowupZoo
+CAS.Continuum.QuadratureRule.abs_valueOn_sub_le PDEAtlas-Blueprint
+CAS.Continuum.QuadratureRule.certOfApproxEvaluated PDEAtlas-Blueprint
+CAS.Continuum.QuadratureRule.exactFor_polynomial PDEAtlas-Blueprint
+CAS.Continuum.QuadratureRule.moment BlowupZoo
+CAS.Continuum.QuadratureRule.normalizedValue BlowupZoo
+CAS.Continuum.QuadratureRule.normalizedValue_add BlowupZoo
+CAS.Continuum.QuadratureRule.normalizedValue_const_mul BlowupZoo
+CAS.Continuum.QuadratureRule.normalizedValue_finset_sum BlowupZoo
+CAS.Continuum.QuadratureRule.tendsto_valueOn_of_nonneg PDEAtlas-Blueprint
+CAS.Continuum.QuadratureRule.termsOn BlowupZoo
+CAS.Continuum.QuadratureRule.toNodalRule PDEAtlas-Blueprint
+CAS.Continuum.QuadratureRule.toNodalRule_eval BlowupZoo
+CAS.Continuum.QuadratureRule.toNodalRule_exactToDegree PDEAtlas-Blueprint
+CAS.Continuum.QuadratureRule.toNodalRule_positive PDEAtlas-Blueprint
+CAS.Continuum.QuadratureRule.valueOn BlowupZoo
+CAS.Continuum.QuadratureRule.valueOn_eq_smul_normalizedValue BlowupZoo
+CAS.Continuum.QuadratureTree.WithErrorAtMost.sound PDEAtlas-Blueprint
+CAS.Continuum.QuadratureTree.improveLeaves_error_le PDEAtlas-Blueprint
+CAS.Continuum.QuadratureTree.selectLowerError_sound PDEAtlas-Blueprint
+CAS.Continuum.QuadratureTree.sound PDEAtlas-Blueprint
+CAS.Continuum.RationalAdaptiveQuadrature.searchPartial PDEAtlas-Blueprint
+CAS.Continuum.RationalAdaptiveSystem.searchPartial PDEAtlas-Blueprint
+CAS.Continuum.RationalBudgetCandidate.error_le_of_accepted PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.CertifiedEvalContext.sideHolds_of_certifiesSideConditions PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.CertifiedEvalContext.sound PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.CertifiedEvalRegistry PDEAtlas
+CAS.Continuum.RationalInterval.CertifiedEvalRegistry.centeredFormEnclosureAttempt? PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.CertifiedEvalRegistry.exists_eq_add_deriv_mul_sub PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.CertifiedEvalRegistry.ofEnvironment PDEAtlas
+CAS.Continuum.RationalInterval.CertifiedEvalRegistry.selectVariableSubdivisionChoice? PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.CertifiedEvalRegistry.validOn? PDEAtlas
+CAS.Continuum.RationalInterval.CertifiedEvalRegistry.variableSensitivities PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.EnclosureAttempt.approxOn_center_of_interval_eq PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.EnclosureAttempt.boundOn_abs_of_interval_eq PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.EnclosureAttempt.boundOn_of_interval_eq PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.EnclosureAttempt.enclosedOn_of_interval_eq PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.EnclosureAttempt.memReal PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.MemReal PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.PowDomain PDEAtlas
+CAS.Continuum.RationalInterval.PowerPrecision PDEAtlas
+CAS.Continuum.RationalInterval.Precision PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.Precision.withDepth PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.Precision.withPrec PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.absMax BlowupZoo
+CAS.Continuum.RationalInterval.absMax_nonneg BlowupZoo
+CAS.Continuum.RationalInterval.abs_le_absMax BlowupZoo
+CAS.Continuum.RationalInterval.add PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.add_hi BlowupZoo
+CAS.Continuum.RationalInterval.add_lo PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.add_sound PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.affineRange? PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.atanRangeWith PDEAtlas
+CAS.Continuum.RationalInterval.atanRangeWith_sound PDEAtlas
+CAS.Continuum.RationalInterval.atanRange_sound PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.checkBounds PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.checkBounds_sound BlowupZoo
+CAS.Continuum.RationalInterval.coeffRange PDEAtlas
+CAS.Continuum.RationalInterval.coeffRange_sound PDEAtlas
+CAS.Continuum.RationalInterval.compileDerivative? PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.compileTaylorJet? PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.const PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.const_hi PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.const_lo PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.cosBase_sound PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.cosPoint PDEAtlas
+CAS.Continuum.RationalInterval.cosPoint_sound PDEAtlas
+CAS.Continuum.RationalInterval.cos_sound PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.divPositive BlowupZoo
+CAS.Continuum.RationalInterval.divPositiveOrZero PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.divPositiveOrZero_sound PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.divPositive_sound BlowupZoo
+CAS.Continuum.RationalInterval.dyadicHull PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.dyadicHull_hi BlowupZoo
+CAS.Continuum.RationalInterval.dyadicHull_lo BlowupZoo
+CAS.Continuum.RationalInterval.dyadicHull_sound PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.evalPolynomial PDEAtlas
+CAS.Continuum.RationalInterval.evalPolynomial_sound PDEAtlas
+CAS.Continuum.RationalInterval.expRangeWith PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.expRangeWith_sound PDEAtlas PDEAtlas-Blueprint BlowupZoo
+CAS.Continuum.RationalInterval.expRange_sound PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.ext BlowupZoo
+CAS.Continuum.RationalInterval.hle PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.hull PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.hull_hi PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.hull_lo PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.inflate BlowupZoo
+CAS.Continuum.RationalInterval.inflate_sound BlowupZoo
+CAS.Continuum.RationalInterval.intersect BlowupZoo
+CAS.Continuum.RationalInterval.intersect_hi BlowupZoo
+CAS.Continuum.RationalInterval.intersect_lo BlowupZoo
+CAS.Continuum.RationalInterval.intersect_sound BlowupZoo
+CAS.Continuum.RationalInterval.intervalIntegral_mem_uniform BlowupZoo
+CAS.Continuum.RationalInterval.invPositive BlowupZoo
+CAS.Continuum.RationalInterval.invPositive_hi BlowupZoo
+CAS.Continuum.RationalInterval.invPositive_lo BlowupZoo
+CAS.Continuum.RationalInterval.invPositive_sound BlowupZoo
+CAS.Continuum.RationalInterval.le_roundUpRel PDEAtlas
+CAS.Continuum.RationalInterval.logAbsPointIntervalWith BlowupZoo
+CAS.Continuum.RationalInterval.logMonomialPrimitiveInterval BlowupZoo
+CAS.Continuum.RationalInterval.logPointInterval BlowupZoo
+CAS.Continuum.RationalInterval.logPointIntervalWith PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.logPointIntervalWith_sound PDEAtlas PDEAtlas-Blueprint BlowupZoo
+CAS.Continuum.RationalInterval.logPointInterval_sound BlowupZoo
+CAS.Continuum.RationalInterval.logRange BlowupZoo
+CAS.Continuum.RationalInterval.logRangeWith PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.logRangeWith_sound PDEAtlas PDEAtlas-Blueprint BlowupZoo
+CAS.Continuum.RationalInterval.logRange_sound PDEAtlas-Blueprint BlowupZoo
+CAS.Continuum.RationalInterval.logSeriesTerms BlowupZoo
+CAS.Continuum.RationalInterval.matrixTraceFourth BlowupZoo
+CAS.Continuum.RationalInterval.matrixTraceFourth_sound BlowupZoo
+CAS.Continuum.RationalInterval.meet PDEAtlas
+CAS.Continuum.RationalInterval.memReal_const PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.memReal_hull_left PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.memReal_hull_right PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.memReal_meet PDEAtlas
+CAS.Continuum.RationalInterval.memReal_of_bounds BlowupZoo
+CAS.Continuum.RationalInterval.memReal_rationalHull PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.mem_Icc_of_bounds BlowupZoo
+CAS.Continuum.RationalInterval.mem_affineRange_of_memBox PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.mul PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.mulUnits BlowupZoo
+CAS.Continuum.RationalInterval.mulUnits_eq BlowupZoo
+CAS.Continuum.RationalInterval.mulUnits_ordered BlowupZoo
+CAS.Continuum.RationalInterval.mul_hi BlowupZoo
+CAS.Continuum.RationalInterval.mul_lo PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.mul_sound PDEAtlas PDEAtlas-Blueprint BlowupZoo
+CAS.Continuum.RationalInterval.neg PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.neg_hi BlowupZoo
+CAS.Continuum.RationalInterval.neg_lo BlowupZoo
+CAS.Continuum.RationalInterval.neg_sound PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.nestedRange PDEAtlas
+CAS.Continuum.RationalInterval.nestedRange_sound PDEAtlas
+CAS.Continuum.RationalInterval.ofBounds PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.ofFloatLib PDEAtlas
+CAS.Continuum.RationalInterval.of_decimalEnclosureCheck PDEAtlas
+CAS.Continuum.RationalInterval.of_decimalLowerCheck PDEAtlas
+CAS.Continuum.RationalInterval.of_decimalUpperCheck PDEAtlas
+CAS.Continuum.RationalInterval.of_scaledLowerCheck PDEAtlas
+CAS.Continuum.RationalInterval.of_scaledUpperCheck PDEAtlas
+CAS.Continuum.RationalInterval.orderedUnits BlowupZoo
+CAS.Continuum.RationalInterval.piInterval BlowupZoo
+CAS.Continuum.RationalInterval.piInterval_sound BlowupZoo
+CAS.Continuum.RationalInterval.piLower PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.piLower_le_pi PDEAtlas
+CAS.Continuum.RationalInterval.piUpper PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.pi_le_piUpper PDEAtlas
+CAS.Continuum.RationalInterval.powNat PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.powNat_sound PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.relativeExponent PDEAtlas
+CAS.Continuum.RationalInterval.relativeHull PDEAtlas
+CAS.Continuum.RationalInterval.relativeHull_sound PDEAtlas
+CAS.Continuum.RationalInterval.roundDownRel PDEAtlas
+CAS.Continuum.RationalInterval.roundDownRel_le PDEAtlas
+CAS.Continuum.RationalInterval.roundUpRel PDEAtlas
+CAS.Continuum.RationalInterval.rpowRat PDEAtlas
+CAS.Continuum.RationalInterval.rpowRat_sound PDEAtlas
+CAS.Continuum.RationalInterval.scaleNonneg BlowupZoo
+CAS.Continuum.RationalInterval.scaleNonneg_hi BlowupZoo
+CAS.Continuum.RationalInterval.scaleNonneg_lo BlowupZoo
+CAS.Continuum.RationalInterval.sinBase_sound PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.sinPoint PDEAtlas
+CAS.Continuum.RationalInterval.sinPoint_sound PDEAtlas
+CAS.Continuum.RationalInterval.sin_sound PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.sqrtNonnegativePointInterval_sound PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.sqrtNonnegativePointInterval_width_le PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.sqrtPointInterval PDEAtlas
+CAS.Continuum.RationalInterval.sqrtPointInterval_sound PDEAtlas
+CAS.Continuum.RationalInterval.sqrtRange BlowupZoo
+CAS.Continuum.RationalInterval.sqrtRangeInterval_sound PDEAtlas-Blueprint
+CAS.Continuum.RationalInterval.sqrtRange_sound PDEAtlas-Blueprint BlowupZoo
+CAS.Continuum.RationalInterval.sub PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.sub_hi PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.sub_lo PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.sub_sound PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.sum PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.sum_fin_mul BlowupZoo
+CAS.Continuum.RationalInterval.sum_memReal_of_bounds BlowupZoo
+CAS.Continuum.RationalInterval.sum_sound PDEAtlas BlowupZoo
+CAS.Continuum.RationalInterval.translatedLogPanelInterval BlowupZoo
+CAS.Continuum.RationalInterval.translatedLogPanelInterval_sound BlowupZoo
+CAS.Continuum.RationalInterval.unitsRange BlowupZoo
+CAS.Continuum.RationalInterval.unitsRange_mul BlowupZoo
+CAS.Continuum.RationalModelTree.Validated.selectLeaf_relation PDEAtlas-Blueprint
+CAS.Continuum.RationalModelTree.Validated.sound_of_adaptive PDEAtlas-Blueprint
+CAS.Continuum.RationalModelTree.WithPayload.model_eq_selectedLeaf PDEAtlas-Blueprint
+CAS.Continuum.RationalModelTree.WithPayload.sound PDEAtlas-Blueprint
+CAS.Continuum.RationalModelTree.sound PDEAtlas-Blueprint
+CAS.Continuum.RationalModelTree.sound_of_adaptive PDEAtlas-Blueprint
+CAS.Continuum.RationalQuadratureRule.cast_valueOn PDEAtlas-Blueprint
+CAS.Continuum.RationalQuadratureRule.symbolicTermsOn?_sound PDEAtlas-Blueprint
+CAS.Continuum.RationalQuadratureRule.uniformComposite_toQuadratureRule_termsOn PDEAtlas-Blueprint
+CAS.Continuum.RationalQuadratureRule.uniformComposite_toQuadratureRule_valueOn PDEAtlas-Blueprint
+CAS.Continuum.RealIntervalBackend PDEAtlas-Blueprint
+CAS.Continuum.RealIntervalBackend.enclosedOn_of_memReal PDEAtlas-Blueprint
+CAS.Continuum.RealIntervalBackend.residualBound_of_memReal_le PDEAtlas-Blueprint
+CAS.Continuum.TaylorJetCert.coefficients_approx PDEAtlas-Blueprint
+CAS.Continuum.TaylorJetCert.ofDerivativeEnclosures PDEAtlas-Blueprint
+CAS.Continuum.TaylorJetCert.remainder_approx PDEAtlas-Blueprint
+CAS.Continuum.TaylorJetCert.sound PDEAtlas-Blueprint
+CAS.Continuum.TaylorJetCert.toModelApproxCert PDEAtlas-Blueprint
+CAS.Continuum.abs_sub_midpoint_le_of_approximation BlowupZoo
+CAS.Continuum.approxOn_taylorJetEval_of_coefficient_bounds PDEAtlas-Blueprint
+CAS.Continuum.exists_between_derivative_zero PDEAtlas
+CAS.Continuum.exists_derivative_chain_zero_of_double_zeros PDEAtlas-Blueprint
+CAS.Continuum.exists_gaussian_quadrature PDEAtlas-Blueprint
+CAS.Continuum.exists_monic_orthogonal PDEAtlas-Blueprint
+CAS.Continuum.exists_nodalRule_gaussian PDEAtlas-Blueprint
+CAS.Continuum.exists_nodes_of_monic_splits_squarefree PDEAtlas-Blueprint
+CAS.Continuum.finiteHornerEval BlowupZoo
+CAS.Continuum.finiteHornerEval_eq_sum BlowupZoo
+CAS.Continuum.gaussLegendreTwoRule.exactUpTo_three PDEAtlas-Blueprint
+CAS.Continuum.gaussLegendreTwoRule.fourthOrder PDEAtlas-Blueprint
+CAS.Continuum.gaussLegendreTwoRule.fourthOrderCert PDEAtlas-Blueprint
+CAS.Continuum.gaussianRule PDEAtlas-Blueprint
+CAS.Continuum.gaussian_exact PDEAtlas-Blueprint
+CAS.Continuum.gaussian_rules_converge PDEAtlas-Blueprint
+CAS.Continuum.gaussian_weight_pos PDEAtlas-Blueprint
+CAS.Continuum.hermiteInterpolant PDEAtlas-Blueprint
+CAS.Continuum.hermite_remainder PDEAtlas-Blueprint
+CAS.Continuum.integralOrthogonalPolynomial PDEAtlas-Blueprint
+CAS.Continuum.integral_eq_value_mul_of_pointwise_image PDEAtlas-Blueprint
+CAS.Continuum.integral_le_midpoint_of_second_deriv_bound BlowupZoo
+CAS.Continuum.integral_sq_le_of_midpoint_abs_bound BlowupZoo
+CAS.Continuum.integral_sq_le_of_midpoint_bound BlowupZoo
+CAS.Continuum.integral_sq_le_of_uniform_midpoint_deviation BlowupZoo
+CAS.Continuum.interpolatory_exact PDEAtlas-Blueprint
+CAS.Continuum.midpointRule.exactUpTo_one PDEAtlas-Blueprint
+CAS.Continuum.midpointRule.secondOrder PDEAtlas-Blueprint
+CAS.Continuum.momentInnerCore PDEAtlas-Blueprint
+CAS.Continuum.newtonCotes PDEAtlas-Blueprint
+CAS.Continuum.newtonCotes_exactToDegree PDEAtlas-Blueprint
+CAS.Continuum.newtonCotes_nodesIn PDEAtlas-Blueprint
+CAS.Continuum.newtonCotes_two_eval PDEAtlas-Blueprint
+CAS.Continuum.norm_integral_mul_le_of_nonneg BlowupZoo
+CAS.Continuum.norm_integral_mul_le_of_nonpos BlowupZoo
+CAS.Continuum.norm_integral_sub_gaussLegendreTwoRule_valueOn_le PDEAtlas-Blueprint
+CAS.Continuum.norm_integral_sub_midpointRule_valueOn_le PDEAtlas-Blueprint
+CAS.Continuum.norm_integral_sub_simpsonRule_valueOn_le PDEAtlas PDEAtlas-Blueprint
+CAS.Continuum.norm_integral_sub_trapezoidRule_valueOn_le PDEAtlas-Blueprint
+CAS.Continuum.orthogonalPolynomial PDEAtlas-Blueprint
+CAS.Continuum.orthogonalPolynomial_one PDEAtlas-Blueprint
+CAS.Continuum.orthogonalPolynomial_orthogonal PDEAtlas-Blueprint
+CAS.Continuum.orthogonalPolynomial_recurrence PDEAtlas-Blueprint
+CAS.Continuum.orthogonalPolynomial_unique PDEAtlas-Blueprint
+CAS.Continuum.orthogonalPolynomial_zero PDEAtlas-Blueprint
+CAS.Continuum.orthogonal_factor_has_root PDEAtlas-Blueprint
+CAS.Continuum.orthogonal_root_mem_Ioo PDEAtlas-Blueprint
+CAS.Continuum.orthogonal_splits PDEAtlas-Blueprint
+CAS.Continuum.orthogonal_squarefree PDEAtlas-Blueprint
+CAS.Continuum.polynomialIntegral_square_pos PDEAtlas-Blueprint
+CAS.Continuum.recurrenceAlpha PDEAtlas-Blueprint
+CAS.Continuum.recurrenceBeta PDEAtlas-Blueprint
+CAS.Continuum.recurrenceBeta_eq_norm_ratio PDEAtlas-Blueprint
+CAS.Continuum.recurrenceBeta_pos PDEAtlas-Blueprint
+CAS.Continuum.scalarTaylorPolynomialWithin_eval PDEAtlas-Blueprint
+CAS.Continuum.scalarTaylorPolynomialWithin_natDegree_le PDEAtlas-Blueprint
+CAS.Continuum.simpsonRule.exactUpTo_three PDEAtlas-Blueprint
+CAS.Continuum.simpsonRule.fourthOrder PDEAtlas-Blueprint
+CAS.Continuum.simpsonRule.fourthOrderCert PDEAtlas-Blueprint
+CAS.Continuum.simpsonRule_valueOn_eq_formula PDEAtlas
+CAS.Continuum.taylorApproxCert PDEAtlas-Blueprint
+CAS.Continuum.taylorJetEval_exact PDEAtlas-Blueprint
+CAS.Continuum.taylorLeafCandidate PDEAtlas-Blueprint
+CAS.Continuum.trapezoidRule.exactUpTo_one PDEAtlas-Blueprint
+CAS.Continuum.trapezoidRule.secondOrder PDEAtlas-Blueprint
+CAS.Continuum.uniformCompositeValue BlowupZoo
+CAS.Continuum.uniformMeshPoint BlowupZoo
+CAS.Continuum.uniformMeshPoint_end BlowupZoo
+CAS.Continuum.uniformMeshPoint_strictMono BlowupZoo
+CAS.Continuum.uniformMeshPoint_succ_sub BlowupZoo
+CAS.Continuum.uniformMeshPoint_zero BlowupZoo
+CAS.Continuum.weightedSum BlowupZoo
+CAS.Continuum.weightedSum_compositeSimpsonTerms PDEAtlas-Blueprint
+CAS.Continuum.weightedSum_cons BlowupZoo
+CAS.Continuum.weightedSum_uniformCompositeTerms PDEAtlas-Blueprint
+CAS.DiffExpr PDEAtlas
+CAS.DiffExpr.AnalyticSideCondition PDEAtlas
+CAS.DiffExpr.D PDEAtlas
+CAS.DiffExpr.D2 PDEAtlas
+CAS.DiffExpr.Equation PDEAtlas
+CAS.DiffExpr.Equation.ClosedResidualVanishesAt PDEAtlas
+CAS.DiffExpr.Equation.closedResidual PDEAtlas
+CAS.DiffExpr.Equation.lhs PDEAtlas
+CAS.DiffExpr.Equation.residual PDEAtlas
+CAS.DiffExpr.Equation.rhs PDEAtlas
+CAS.DiffExpr.Lap PDEAtlas
+CAS.DiffExpr.acos PDEAtlas
+CAS.DiffExpr.add PDEAtlas
+CAS.DiffExpr.analyticSideCondition_of_requirements PDEAtlas
+CAS.DiffExpr.asin PDEAtlas
+CAS.DiffExpr.atan PDEAtlas
+CAS.DiffExpr.atom PDEAtlas
+CAS.DiffExpr.cos PDEAtlas
+CAS.DiffExpr.div PDEAtlas
+CAS.DiffExpr.exp PDEAtlas
+CAS.DiffExpr.laplacian PDEAtlas
+CAS.DiffExpr.log PDEAtlas
+CAS.DiffExpr.lower PDEAtlas
+CAS.DiffExpr.mul PDEAtlas
+CAS.DiffExpr.neg PDEAtlas
+CAS.DiffExpr.pderiv PDEAtlas
+CAS.DiffExpr.pow PDEAtlas
+CAS.DiffExpr.sin PDEAtlas
+CAS.DiffExpr.sqrt PDEAtlas
+CAS.DiffExpr.sub PDEAtlas
+CAS.DiffExpr.unknown PDEAtlas
+CAS.Domain.PatchCover.lift PDEAtlas-Blueprint
+CAS.Elaboration.RealExpression.Config.coordinates BlowupZoo
+CAS.Elaboration.RealExpression.Config.operation BlowupZoo
+CAS.Elaboration.RealExpression.Config.rationalLiterals BlowupZoo
+CAS.Elaboration.RealExpression.Config.unfoldLocal BlowupZoo
+CAS.Elaboration.RealExpression.Reification.coordinates BlowupZoo
+CAS.Elaboration.RealExpression.Reification.toVerifiedExpr? BlowupZoo
+CAS.Elaboration.RealExpression.hasType PDEAtlas
+CAS.Elaboration.RealExpression.reify BlowupZoo
+CAS.Euclid2.x PDEAtlas
+CAS.Euclid2.y PDEAtlas
+CAS.Euclid3.x PDEAtlas
+CAS.Euclid3.y PDEAtlas
+CAS.Euclid3.z PDEAtlas
+CAS.Exact.SymbolicClaimRoute.SideHoldsOn PDEAtlas
+CAS.Exact.SymbolicClaimRoute.withSideConditions PDEAtlas
+CAS.Exact.VectorResidual PDEAtlas
+CAS.Exact.VectorResidual.ofDifference PDEAtlas
+CAS.Exact.VectorResidual.vectorFn PDEAtlas
+CAS.Exact.exprFn PDEAtlas
+CAS.Exact.zeroFn PDEAtlas
+CAS.ExactTactic.tacticCas PDEAtlas
+CAS.IntegrationCheck.AntiderivativeCert.eval_diff_eq PDEAtlas-Blueprint
+CAS.IntegrationCheck.AntiderivativeCert.intervalIntegral_eq_sub_eval_add_smul_single PDEAtlas-Blueprint
+CAS.IntegrationCheck.certifyCandidate? PDEAtlas-Blueprint
+CAS.IntegrationPlanner.candidate? PDEAtlas-Blueprint
+CAS.Numerics.Binary64Word.add BlowupZoo
+CAS.Numerics.Binary64Word.add_pack_fast BlowupZoo
+CAS.Numerics.Binary64Word.beq_eq_decide BlowupZoo
+CAS.Numerics.Binary64Word.beq_eq_false_of_ne BlowupZoo
+CAS.Numerics.Binary64Word.binary64ExponentField_pack BlowupZoo
+CAS.Numerics.Binary64Word.ble_eq_decide BlowupZoo
+CAS.Numerics.Binary64Word.blt_eq_decide BlowupZoo
+CAS.Numerics.Binary64Word.fractionField BlowupZoo
+CAS.Numerics.Binary64Word.fractionField_lt BlowupZoo
+CAS.Numerics.Binary64Word.isFinite_ofNatBits BlowupZoo
+CAS.Numerics.Binary64Word.le_sumExponent BlowupZoo
+CAS.Numerics.Binary64Word.lor_eq_pack BlowupZoo
+CAS.Numerics.Binary64Word.mul BlowupZoo
+CAS.Numerics.Binary64Word.pack BlowupZoo
+CAS.Numerics.Binary64Word.signField BlowupZoo
+CAS.Numerics.Binary64Word.signField_eq_of_xor BlowupZoo
+CAS.Numerics.Binary64Word.signedZero BlowupZoo
+CAS.Numerics.Binary64Word.significand BlowupZoo
+CAS.Numerics.Binary64Word.spec_add BlowupZoo
+CAS.Numerics.Binary64Word.spec_div_pow_two BlowupZoo
+CAS.Numerics.Binary64Word.spec_div_zero BlowupZoo
+CAS.Numerics.Binary64Word.spec_mul BlowupZoo
+CAS.Numerics.Binary64Word.spec_mul_pow_two BlowupZoo
+CAS.Numerics.Binary64Word.sumExponent BlowupZoo
+CAS.Numerics.Binary64Word.sumExponentInline BlowupZoo
+CAS.Numerics.Binary64Word.sumExponentInline_eq BlowupZoo
+CAS.Numerics.Binary64Word.sumGap BlowupZoo
+CAS.Numerics.Binary64Word.sumSignificand BlowupZoo
+CAS.Numerics.Binary64Word.sumSignificandInline BlowupZoo
+CAS.Numerics.Binary64Word.sumSignificandInline_eq BlowupZoo
+CAS.Numerics.Binary64Word.sumSignificand_bounds BlowupZoo
+CAS.Numerics.Binary64Word.toDyadic_ofNatBits BlowupZoo
+CAS.Numerics.Binary64WordTree BlowupZoo
+CAS.Numerics.Binary64WordTree.get BlowupZoo
+CAS.Numerics.Binary64WordTree.getNat BlowupZoo
+CAS.Numerics.Binary64WordTree.getNat_eq_get BlowupZoo
+CAS.Numerics.Binary64WordTree.get_ofPacked BlowupZoo
+CAS.Numerics.Binary64WordTree.get_ofPackedSlots BlowupZoo
+CAS.Numerics.Binary64WordTree.ofPacked BlowupZoo
+CAS.Numerics.Binary64WordTree.ofPackedSlots BlowupZoo
+CAS.Numerics.Binary64WordTree.value BlowupZoo
+CAS.Numerics.CoefficientTree PDEAtlas BlowupZoo
+CAS.Numerics.CoefficientTree.branch BlowupZoo
+CAS.Numerics.CoefficientTree.check BlowupZoo
+CAS.Numerics.CoefficientTree.check_of_forall BlowupZoo
+CAS.Numerics.CoefficientTree.check_sound BlowupZoo
+CAS.Numerics.CoefficientTree.leaf BlowupZoo
+CAS.Numerics.CoefficientTree.lookup BlowupZoo
+CAS.Numerics.CoefficientTree.lookup_ofFnBlock PDEAtlas BlowupZoo
+CAS.Numerics.CoefficientTree.ofArrayBlock BlowupZoo
+CAS.Numerics.CoefficientTree.ofFnBlock PDEAtlas BlowupZoo
+CAS.Numerics.CoefficientTree.pack BlowupZoo
+CAS.Numerics.CoefficientTree.sumMap BlowupZoo
+CAS.Numerics.CoefficientTree.sumMap_eq_sum_lookup BlowupZoo
+CAS.Numerics.CoefficientTree.sum_le_sumMap BlowupZoo
+CAS.Numerics.CoefficientTree.sum_lookup BlowupZoo
+CAS.Numerics.FitsSlot PDEAtlas BlowupZoo
+CAS.Numerics.GridBall PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.Encloses PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.abs PDEAtlas
+CAS.Numerics.GridBall.abs_encloses PDEAtlas
+CAS.Numerics.GridBall.add BlowupZoo
+CAS.Numerics.GridBall.add_encloses BlowupZoo
+CAS.Numerics.GridBall.cast_center BlowupZoo
+CAS.Numerics.GridBall.center BlowupZoo
+CAS.Numerics.GridBall.divPos BlowupZoo
+CAS.Numerics.GridBall.divPos_encloses BlowupZoo
+CAS.Numerics.GridBall.e BlowupZoo
+CAS.Numerics.GridBall.guard BlowupZoo
+CAS.Numerics.GridBall.guard_encloses BlowupZoo
+CAS.Numerics.GridBall.inv PDEAtlas
+CAS.Numerics.GridBall.inv_encloses PDEAtlas
+CAS.Numerics.GridBall.leCertain PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.le_of_leCertain PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.ltCertain PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.lt_of_ltCertain PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.max BlowupZoo
+CAS.Numerics.GridBall.max_encloses BlowupZoo
+CAS.Numerics.GridBall.min BlowupZoo
+CAS.Numerics.GridBall.min_encloses BlowupZoo
+CAS.Numerics.GridBall.mul BlowupZoo
+CAS.Numerics.GridBall.mulFrac BlowupZoo
+CAS.Numerics.GridBall.mulFrac_encloses BlowupZoo
+CAS.Numerics.GridBall.mul_encloses BlowupZoo
+CAS.Numerics.GridBall.n BlowupZoo
+CAS.Numerics.GridBall.natDiv_eq_div BlowupZoo
+CAS.Numerics.GridBall.neg PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.neg_encloses PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.nonnegCertain BlowupZoo
+CAS.Numerics.GridBall.nonneg_of_nonnegCertain BlowupZoo
+CAS.Numerics.GridBall.nonposCertain PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.nonpos_of_nonposCertain PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.ofFrac PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.ofFrac_encloses PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.ofFrac_encloses_signedFrac BlowupZoo
+CAS.Numerics.GridBall.ofNat PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.ofNat_encloses PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.ofRat PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.ofRat_encloses PDEAtlas
+CAS.Numerics.GridBall.ok BlowupZoo
+CAS.Numerics.GridBall.p BlowupZoo
+CAS.Numerics.GridBall.posCertain PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.pos_of_posCertain PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.scaleNat BlowupZoo
+CAS.Numerics.GridBall.scaleNat_encloses BlowupZoo
+CAS.Numerics.GridBall.sqNonneg BlowupZoo
+CAS.Numerics.GridBall.sqNonneg_encloses BlowupZoo
+CAS.Numerics.GridBall.sub PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.sub_encloses PDEAtlas BlowupZoo
+CAS.Numerics.GridBall.sumNat BlowupZoo
+CAS.Numerics.GridBall.sumNat_encloses BlowupZoo
+CAS.Numerics.IntervalBalls PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.Encloses PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.absMax BlowupZoo
+CAS.Numerics.IntervalBalls.absMax_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.add PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.add_encloses PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.atanRangeBall PDEAtlas
+CAS.Numerics.IntervalBalls.atanRangeBall_encloses PDEAtlas
+CAS.Numerics.IntervalBalls.checkBoundsCertain PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.checkBounds_of_certain PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.const PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.constMul PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.constMulFrac BlowupZoo
+CAS.Numerics.IntervalBalls.constMulFrac_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.constMul_encloses PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.const_encloses PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.const_mul_endpoints BlowupZoo
+CAS.Numerics.IntervalBalls.corners_of_nonneg_nonneg BlowupZoo
+CAS.Numerics.IntervalBalls.corners_of_nonneg_nonpos BlowupZoo
+CAS.Numerics.IntervalBalls.divPositive BlowupZoo
+CAS.Numerics.IntervalBalls.divPositiveOrZero PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.divPositiveOrZero_encloses PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.divPositive_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.divPositive_endpoints BlowupZoo
+CAS.Numerics.IntervalBalls.dyadicHull BlowupZoo
+CAS.Numerics.IntervalBalls.dyadicHull_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.expPointFrac BlowupZoo
+CAS.Numerics.IntervalBalls.expPointFrac_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.expRangeBall PDEAtlas
+CAS.Numerics.IntervalBalls.expRangeBall_encloses PDEAtlas
+CAS.Numerics.IntervalBalls.guard BlowupZoo
+CAS.Numerics.IntervalBalls.guard_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.hi PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.hi_le_of BlowupZoo
+CAS.Numerics.IntervalBalls.hull PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.hull_encloses PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.inflate BlowupZoo
+CAS.Numerics.IntervalBalls.inflate_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.invPositive BlowupZoo
+CAS.Numerics.IntervalBalls.invPositive_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.invalid PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.invalid_encloses PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.join PDEAtlas
+CAS.Numerics.IntervalBalls.join_encloses_ite PDEAtlas
+CAS.Numerics.IntervalBalls.lo PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.lo_pos_of PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.logAbsPointFrac BlowupZoo
+CAS.Numerics.IntervalBalls.logAbsPointFrac_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.logPointBall PDEAtlas
+CAS.Numerics.IntervalBalls.logPointBall_encloses PDEAtlas
+CAS.Numerics.IntervalBalls.logPointFrac BlowupZoo
+CAS.Numerics.IntervalBalls.logPointFrac_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.logRangeBall PDEAtlas
+CAS.Numerics.IntervalBalls.logRangeBall_encloses PDEAtlas
+CAS.Numerics.IntervalBalls.logRangeFrac BlowupZoo
+CAS.Numerics.IntervalBalls.logRangeFrac_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.mul PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.mulConst_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.mul_const_eq BlowupZoo
+CAS.Numerics.IntervalBalls.mul_encloses PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.neg BlowupZoo
+CAS.Numerics.IntervalBalls.neg_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.npowBinRec_eq_pow PDEAtlas
+CAS.Numerics.IntervalBalls.ofFracs BlowupZoo
+CAS.Numerics.IntervalBalls.ofFracs_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.powNat PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.powNat_encloses PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.rpowRatBall PDEAtlas
+CAS.Numerics.IntervalBalls.rpowRatBall_encloses PDEAtlas
+CAS.Numerics.IntervalBalls.signedFrac_pow_div BlowupZoo
+CAS.Numerics.IntervalBalls.sqAny BlowupZoo
+CAS.Numerics.IntervalBalls.sqAny_encloses BlowupZoo
+CAS.Numerics.IntervalBalls.sub PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.sub_encloses PDEAtlas BlowupZoo
+CAS.Numerics.IntervalBalls.sumNat PDEAtlas
+CAS.Numerics.IntervalBalls.sumNat_encloses_range PDEAtlas
+CAS.Numerics.IntervalJet.add PDEAtlas
+CAS.Numerics.IntervalJet.const PDEAtlas
+CAS.Numerics.IntervalJet.divNonzero PDEAtlas
+CAS.Numerics.IntervalJet.exp PDEAtlas
+CAS.Numerics.IntervalJet.get PDEAtlas
+CAS.Numerics.IntervalJet.get_ofFn PDEAtlas
+CAS.Numerics.IntervalJet.id PDEAtlas
+CAS.Numerics.IntervalJet.inv PDEAtlas
+CAS.Numerics.IntervalJet.mul PDEAtlas
+CAS.Numerics.IntervalJet.round PDEAtlas
+CAS.Numerics.IntervalJet.roundBits PDEAtlas
+CAS.Numerics.IntervalJet.round_sound PDEAtlas
+CAS.Numerics.IntervalJet.scaleArg PDEAtlas
+CAS.Numerics.IntervalJet.sub PDEAtlas
+CAS.Numerics.JetEncloses PDEAtlas
+CAS.Numerics.JetEncloses.add PDEAtlas
+CAS.Numerics.JetEncloses.const PDEAtlas
+CAS.Numerics.JetEncloses.exp PDEAtlas
+CAS.Numerics.JetEncloses.id PDEAtlas
+CAS.Numerics.JetEncloses.inv PDEAtlas
+CAS.Numerics.JetEncloses.mul PDEAtlas
+CAS.Numerics.JetEncloses.scaleArg PDEAtlas
+CAS.Numerics.JetEncloses.sub PDEAtlas
+CAS.Numerics.PackedLDLParams PDEAtlas BlowupZoo
+CAS.Numerics.PackedLDLParams.diagonalBound BlowupZoo
+CAS.Numerics.PackedLDLParams.factorBits BlowupZoo
+CAS.Numerics.PackedLDLParams.matrixBits BlowupZoo
+CAS.Numerics.PackedLDLParams.rank BlowupZoo
+CAS.Numerics.PackedLDLParams.residualBits PDEAtlas BlowupZoo
+CAS.Numerics.PackedLDLParams.scale PDEAtlas BlowupZoo
+CAS.Numerics.PackedLDLParams.shift PDEAtlas BlowupZoo
+CAS.Numerics.PackedLDLParams.size PDEAtlas BlowupZoo
+CAS.Numerics.PackedLDLParams.valid PDEAtlas BlowupZoo
+CAS.Numerics.PackedLDLParams.width PDEAtlas BlowupZoo
+CAS.Numerics.PairMonomial BlowupZoo
+CAS.Numerics.PairMonomial.sign BlowupZoo
+CAS.Numerics.PairMonomial.vars BlowupZoo
+CAS.Numerics.RangeAll BlowupZoo
+CAS.Numerics.SquareModel PDEAtlas
+CAS.Numerics.SquareModel.Encloses PDEAtlas
+CAS.Numerics.SquareModel.abs_sub_taylor_le PDEAtlas
+CAS.Numerics.SquareModel.ceilNat PDEAtlas
+CAS.Numerics.SquareModel.le_ceilNat PDEAtlas
+CAS.Numerics.SquareModel.listEval PDEAtlas
+CAS.Numerics.SquareModel.list_sum_range PDEAtlas
+CAS.Numerics.SquareModel.midEval PDEAtlas
+CAS.Numerics.SquareModel.rad PDEAtlas
+CAS.Numerics.SquareModel.terms PDEAtlas
+CAS.Numerics.TrigApprox BlowupZoo
+CAS.Numerics.TrigApprox.abs_div_sub_cos_le BlowupZoo
+CAS.Numerics.TrigApprox.abs_div_sub_sin_le BlowupZoo
+CAS.Numerics.ZFits BlowupZoo
+CAS.Numerics.abs_binary64DyadicValue_sub_signedSlot_le BlowupZoo
+CAS.Numerics.abs_conversion_evaluation_sub_le BlowupZoo
+CAS.Numerics.abs_evaluation_sub_le BlowupZoo
+CAS.Numerics.abs_le_of_zGuard BlowupZoo
+CAS.Numerics.abs_natInterval BlowupZoo
+CAS.Numerics.abs_pairPolyValue_sub_le BlowupZoo
+CAS.Numerics.abs_pairPolyValue_sub_le_of_lt BlowupZoo
+CAS.Numerics.abs_piFixed_sub_le BlowupZoo
+CAS.Numerics.abs_product_sub_le_of_guard PDEAtlas
+CAS.Numerics.abs_quarterSinWeight_sub_pairedWordEntry_le BlowupZoo
+CAS.Numerics.abs_roundShift_sub_le PDEAtlas BlowupZoo
+CAS.Numerics.abs_roundSlotBiased_sub_le BlowupZoo
+CAS.Numerics.abs_separable_sub_le BlowupZoo
+CAS.Numerics.abs_signedPolynomial_coeff_le PDEAtlas
+CAS.Numerics.abs_signedPolynomial_mul_coeff_le PDEAtlas
+CAS.Numerics.abs_signedSlot_le_of_offsetBoundCheck BlowupZoo
+CAS.Numerics.abs_signedSlot_packedPowerRow_sub_le BlowupZoo
+CAS.Numerics.abs_signedSlot_packedRowCombination_sub_le PDEAtlas
+CAS.Numerics.abs_sub_factorRow_le BlowupZoo
+CAS.Numerics.abs_sub_signedSlot_factorRow_le BlowupZoo
+CAS.Numerics.abs_trigTaylorCos_sub_le BlowupZoo
+CAS.Numerics.abs_trigTaylorSin_sub_le BlowupZoo
+CAS.Numerics.abs_zConv_le BlowupZoo
+CAS.Numerics.abs_zConv_le' BlowupZoo
+CAS.Numerics.add_natInterval BlowupZoo
+CAS.Numerics.allSlots_lt_of_guardMask BlowupZoo
+CAS.Numerics.atanBall PDEAtlas
+CAS.Numerics.atanBall_encloses PDEAtlas
+CAS.Numerics.atanRangeWith_hi PDEAtlas
+CAS.Numerics.atanRangeWith_lo PDEAtlas
+CAS.Numerics.batchCount BlowupZoo
+CAS.Numerics.batchIndex BlowupZoo
+CAS.Numerics.biasRow PDEAtlas BlowupZoo
+CAS.Numerics.biasRow_eq_packSlots BlowupZoo
+CAS.Numerics.biasRow_lt BlowupZoo
+CAS.Numerics.biasedAbs BlowupZoo
+CAS.Numerics.biasedGridWord BlowupZoo
+CAS.Numerics.biasedPack PDEAtlas BlowupZoo
+CAS.Numerics.biasedPack_add_sub_offset BlowupZoo
+CAS.Numerics.biasedPack_lt PDEAtlas BlowupZoo
+CAS.Numerics.biasedPack_sub_offset BlowupZoo
+CAS.Numerics.biasedRowsSum BlowupZoo
+CAS.Numerics.biasedRowsSum_lt BlowupZoo
+CAS.Numerics.binary64DyadicValue BlowupZoo
+CAS.Numerics.binary64DyadicValue_eq_of_suffixChecks BlowupZoo
+CAS.Numerics.binary64DyadicValue_eq_toRat_of_gridSlotCheck BlowupZoo
+CAS.Numerics.binary64DyadicValue_slot_eq_toRat_of_gridRowCheck BlowupZoo
+CAS.Numerics.binary64ExponentField BlowupZoo
+CAS.Numerics.binary64ExponentField_lt BlowupZoo
+CAS.Numerics.binaryGrid_toRat_eq_div BlowupZoo
+CAS.Numerics.blockSignedSlot BlowupZoo
+CAS.Numerics.blockSignedSlot_eq BlowupZoo
+CAS.Numerics.blockSlot BlowupZoo
+CAS.Numerics.captureMapMatrix BlowupZoo
+CAS.Numerics.capture_center_form_of_lowRankRowCheck PDEAtlas
+CAS.Numerics.cast_biasedAbs BlowupZoo
+CAS.Numerics.cast_eq_sum_signedSlot BlowupZoo
+CAS.Numerics.cast_packedRowCombination PDEAtlas
+CAS.Numerics.cast_pairAbs BlowupZoo
+CAS.Numerics.cast_slotAbs BlowupZoo
+CAS.Numerics.ceilDiv PDEAtlas BlowupZoo
+CAS.Numerics.centerBlockCheck BlowupZoo
+CAS.Numerics.centerEntryOk_of_blockCheck BlowupZoo
+CAS.Numerics.centerEntryOk_spec BlowupZoo
+CAS.Numerics.centerRowSlots BlowupZoo
+CAS.Numerics.claim_of_batch_checks PDEAtlas-Blueprint
+CAS.Numerics.coefNegSum BlowupZoo
+CAS.Numerics.coefPosSum BlowupZoo
+CAS.Numerics.combValueN BlowupZoo
+CAS.Numerics.compactLiteralBits BlowupZoo
+CAS.Numerics.computedNat BlowupZoo
+CAS.Numerics.constSlots BlowupZoo
+CAS.Numerics.constSlots_eq BlowupZoo
+CAS.Numerics.decodeWordToGrid BlowupZoo
+CAS.Numerics.decodeWordToGridMagnitude BlowupZoo
+CAS.Numerics.decodeWordToGrid_eq BlowupZoo
+CAS.Numerics.divNonzero_sound PDEAtlas
+CAS.Numerics.div_le_ceilDiv BlowupZoo
+CAS.Numerics.divideNat_natInterval BlowupZoo
+CAS.Numerics.enclose_natCast_div BlowupZoo
+CAS.Numerics.encodeSignedCoefficient PDEAtlas
+CAS.Numerics.encodeSlot BlowupZoo
+CAS.Numerics.encodeSlot_lt BlowupZoo
+CAS.Numerics.encodeSlot_of_fits BlowupZoo
+CAS.Numerics.expRangeWith_lo PDEAtlas BlowupZoo
+CAS.Numerics.extendMatrix BlowupZoo
+CAS.Numerics.extendMatrix_of_lt BlowupZoo
+CAS.Numerics.factorCoefficient BlowupZoo
+CAS.Numerics.factorRow BlowupZoo
+CAS.Numerics.fitsSlot_of_natAbs_le PDEAtlas BlowupZoo
+CAS.Numerics.fitsSlot_of_signedGuardCheck BlowupZoo
+CAS.Numerics.fitsSlot_sum_mul PDEAtlas BlowupZoo
+CAS.Numerics.fitsSlot_sum_mul_le BlowupZoo
+CAS.Numerics.forall_lt_add_of_forall_fin BlowupZoo
+CAS.Numerics.forall_lt_of_forall_fin BlowupZoo
+CAS.Numerics.forall_of_batchAll PDEAtlas-Blueprint BlowupZoo
+CAS.Numerics.forall_of_rangeAll BlowupZoo
+CAS.Numerics.form_le_of_ldltCheck_captureMapMatrix BlowupZoo
+CAS.Numerics.form_le_of_ldltCheck_massMapMatrix BlowupZoo
+CAS.Numerics.gaussianIPow PDEAtlas
+CAS.Numerics.gaussianMul PDEAtlas
+CAS.Numerics.gaussianPow PDEAtlas
+CAS.Numerics.gaussianPow_eq PDEAtlas
+CAS.Numerics.gaussianToComplex PDEAtlas
+CAS.Numerics.gaussianToComplex_add PDEAtlas
+CAS.Numerics.gaussianToComplex_conj PDEAtlas
+CAS.Numerics.gaussianToComplex_iPow PDEAtlas
+CAS.Numerics.gaussianToComplex_im PDEAtlas
+CAS.Numerics.gaussianToComplex_mul PDEAtlas
+CAS.Numerics.gaussianToComplex_smul PDEAtlas
+CAS.Numerics.getD_of_listCheckFrom_take BlowupZoo
+CAS.Numerics.getD_slotList PDEAtlas
+CAS.Numerics.gridRowCheck BlowupZoo
+CAS.Numerics.gridRowTruncCheck BlowupZoo
+CAS.Numerics.gridSlotCheck BlowupZoo
+CAS.Numerics.gridSlotTruncCheck BlowupZoo
+CAS.Numerics.gridSlotTruncCheck_of_gridRowTruncCheck BlowupZoo
+CAS.Numerics.guardMask BlowupZoo
+CAS.Numerics.guardSlot BlowupZoo
+CAS.Numerics.guardSlot_lt BlowupZoo
+CAS.Numerics.intPolynomial_eq_of_eval_eq PDEAtlas
+CAS.Numerics.land_packSlots BlowupZoo
+CAS.Numerics.land_packSlots_mask BlowupZoo
+CAS.Numerics.land_shiftRight_packSlots BlowupZoo
+CAS.Numerics.land_two_pow_pred BlowupZoo
+CAS.Numerics.laurentApply BlowupZoo
+CAS.Numerics.laurentApply_eq BlowupZoo
+CAS.Numerics.laurentGramValue BlowupZoo
+CAS.Numerics.laurentGramValue_eq BlowupZoo
+CAS.Numerics.laurentPairSlot BlowupZoo
+CAS.Numerics.laurentRowSum BlowupZoo
+CAS.Numerics.laurentWindow BlowupZoo
+CAS.Numerics.laurentWindow_eq BlowupZoo
+CAS.Numerics.ldltCheck PDEAtlas BlowupZoo
+CAS.Numerics.ldltRowCheck PDEAtlas BlowupZoo
+CAS.Numerics.le_mul_ceilDiv PDEAtlas
+CAS.Numerics.le_natCast_ceilDiv BlowupZoo
+CAS.Numerics.le_quarterSinWeight_of_sinWeightLower BlowupZoo
+CAS.Numerics.le_shiftRight_packSlots BlowupZoo
+CAS.Numerics.listCheckFrom BlowupZoo
+CAS.Numerics.listCheckFrom_spec BlowupZoo
+CAS.Numerics.listRowSum BlowupZoo
+CAS.Numerics.listRowSum_eq BlowupZoo
+CAS.Numerics.lowRankRow PDEAtlas BlowupZoo
+CAS.Numerics.lt_of_signedGuardCheck PDEAtlas BlowupZoo
+CAS.Numerics.mapRowByHalving BlowupZoo
+CAS.Numerics.massMapMatrix BlowupZoo
+CAS.Numerics.mergeRows PDEAtlas
+CAS.Numerics.mkCompactNatLiteral BlowupZoo
+CAS.Numerics.mul_natInterval BlowupZoo
+CAS.Numerics.mul_packSlots BlowupZoo
+CAS.Numerics.natAbs_decodeWordToGrid_le_of_suffixChecks BlowupZoo
+CAS.Numerics.natAbs_le_of_abs_sub_le BlowupZoo
+CAS.Numerics.natAbs_signedSlot_firstStage_le PDEAtlas BlowupZoo
+CAS.Numerics.natAbs_signedSlot_le_of_signedGuardCheck PDEAtlas BlowupZoo
+CAS.Numerics.natAbs_signedSlot_le_slotBias BlowupZoo
+CAS.Numerics.natAbs_sum_mul_le BlowupZoo
+CAS.Numerics.natAbs_sum_mul_le_sum_bound PDEAtlas BlowupZoo
+CAS.Numerics.natAdd BlowupZoo
+CAS.Numerics.natAdd_ordered BlowupZoo
+CAS.Numerics.natAll PDEAtlas BlowupZoo
+CAS.Numerics.natAll_range_spec BlowupZoo
+CAS.Numerics.natAll_spec PDEAtlas BlowupZoo
+CAS.Numerics.natDivide BlowupZoo
+CAS.Numerics.natDivide_ordered BlowupZoo
+CAS.Numerics.natInterval BlowupZoo
+CAS.Numerics.natLiteral BlowupZoo
+CAS.Numerics.natLiteralPriv BlowupZoo
+CAS.Numerics.natMul BlowupZoo
+CAS.Numerics.natMulOrd BlowupZoo
+CAS.Numerics.natMulOrd_ordered BlowupZoo
+CAS.Numerics.natMul_eq_ord BlowupZoo
+CAS.Numerics.natMul_unit BlowupZoo
+CAS.Numerics.natMul_zero BlowupZoo
+CAS.Numerics.natPowNine BlowupZoo
+CAS.Numerics.natPowNineOrd BlowupZoo
+CAS.Numerics.natPowNineOrd_ordered BlowupZoo
+CAS.Numerics.natPowNine_eq_ord BlowupZoo
+CAS.Numerics.natSquareOrd BlowupZoo
+CAS.Numerics.natSquareOrd_ordered BlowupZoo
+CAS.Numerics.natSquare_eq_ord BlowupZoo
+CAS.Numerics.natSum PDEAtlas BlowupZoo
+CAS.Numerics.natSum_eq_sum PDEAtlas BlowupZoo
+CAS.Numerics.natSum_succ BlowupZoo
+CAS.Numerics.normSq_gaussianToComplex PDEAtlas
+CAS.Numerics.of_rangeAll BlowupZoo
+CAS.Numerics.offsetBoundCheck BlowupZoo
+CAS.Numerics.offsetWordValue BlowupZoo
+CAS.Numerics.offsetWordValue_eq_signedSlot BlowupZoo
+CAS.Numerics.packSignedBinary PDEAtlas BlowupZoo
+CAS.Numerics.packSignedBinary_eq_eval PDEAtlas
+CAS.Numerics.packSignedBinary_mul_of_zigzag BlowupZoo
+CAS.Numerics.packSlots BlowupZoo
+CAS.Numerics.packSlots_add BlowupZoo
+CAS.Numerics.packSlots_congr BlowupZoo
+CAS.Numerics.packSlots_eq_sum BlowupZoo
+CAS.Numerics.packSlots_land_slotMask BlowupZoo
+CAS.Numerics.packSlots_lt BlowupZoo
+CAS.Numerics.packSlots_mod BlowupZoo
+CAS.Numerics.packSlots_mul_packSlots BlowupZoo
+CAS.Numerics.packSlots_mul_spread BlowupZoo
+CAS.Numerics.packSlots_of_zero BlowupZoo
+CAS.Numerics.packSlots_pairs BlowupZoo
+CAS.Numerics.packSlots_regroup BlowupZoo
+CAS.Numerics.packSlots_slot BlowupZoo
+CAS.Numerics.packSlots_slotMask BlowupZoo
+CAS.Numerics.packSlots_sub BlowupZoo
+CAS.Numerics.packSlots_succ BlowupZoo
+CAS.Numerics.packSlots_succ_low BlowupZoo
+CAS.Numerics.packSlots_zero BlowupZoo
+CAS.Numerics.packedConvolution PDEAtlas BlowupZoo
+CAS.Numerics.packedConvolution_eq_zero BlowupZoo
+CAS.Numerics.packedConvolution_le BlowupZoo
+CAS.Numerics.packedConvolution_lt_of_le BlowupZoo
+CAS.Numerics.packedConvolution_reverse_eq BlowupZoo
+CAS.Numerics.packedConvolution_reverse_factors BlowupZoo
+CAS.Numerics.packedConvolution_reverse_right_eq BlowupZoo
+CAS.Numerics.packedMatMul PDEAtlas
+CAS.Numerics.packedMatMulRow PDEAtlas BlowupZoo
+CAS.Numerics.packedMatMul_eq PDEAtlas
+CAS.Numerics.packedPowerRow BlowupZoo
+CAS.Numerics.packedRevComb BlowupZoo
+CAS.Numerics.packedRevComb_eq BlowupZoo
+CAS.Numerics.packedRoundComb BlowupZoo
+CAS.Numerics.packedRowCombination PDEAtlas BlowupZoo
+CAS.Numerics.packedRowCombinationWith PDEAtlas
+CAS.Numerics.packedRowCombinationWith_eq PDEAtlas
+CAS.Numerics.packedRowCombination_eq_biasedPack BlowupZoo
+CAS.Numerics.packedRowCombination_lt BlowupZoo
+CAS.Numerics.packedSlotComb BlowupZoo
+CAS.Numerics.packedSlotComb_eq BlowupZoo
+CAS.Numerics.pairAbs BlowupZoo
+CAS.Numerics.pairAbsPair BlowupZoo
+CAS.Numerics.pairAbs_eq_natAbs BlowupZoo
+CAS.Numerics.pairAdd BlowupZoo
+CAS.Numerics.pairLe BlowupZoo
+CAS.Numerics.pairLe_iff BlowupZoo
+CAS.Numerics.pairLt BlowupZoo
+CAS.Numerics.pairLt_iff BlowupZoo
+CAS.Numerics.pairMul BlowupZoo
+CAS.Numerics.pairNeg BlowupZoo
+CAS.Numerics.pairNonneg BlowupZoo
+CAS.Numerics.pairNonneg_iff BlowupZoo
+CAS.Numerics.pairOfNat BlowupZoo
+CAS.Numerics.pairPolyErr BlowupZoo
+CAS.Numerics.pairPolyErr_mono BlowupZoo
+CAS.Numerics.pairPolyValue BlowupZoo
+CAS.Numerics.pairSmul BlowupZoo
+CAS.Numerics.pairSub BlowupZoo
+CAS.Numerics.pairValue BlowupZoo
+CAS.Numerics.pairValue_pairAbsPair BlowupZoo
+CAS.Numerics.pairValue_pairAdd BlowupZoo
+CAS.Numerics.pairValue_pairMul BlowupZoo
+CAS.Numerics.pairValue_pairNeg BlowupZoo
+CAS.Numerics.pairValue_pairOfNat BlowupZoo
+CAS.Numerics.pairValue_pairSmul BlowupZoo
+CAS.Numerics.pairValue_pairSub BlowupZoo
+CAS.Numerics.pairValue_slotPair BlowupZoo
+CAS.Numerics.pairedWordEntry BlowupZoo
+CAS.Numerics.pairedWordEntry_trigTable_sound BlowupZoo
+CAS.Numerics.pairedWordEntry_trigTable_sound_mul BlowupZoo
+CAS.Numerics.piFixed BlowupZoo
+CAS.Numerics.pow_natInterval_nine BlowupZoo
+CAS.Numerics.powerScaled BlowupZoo
+CAS.Numerics.powerScaled_succ BlowupZoo
+CAS.Numerics.powerScaled_zero BlowupZoo
+CAS.Numerics.prefixPack BlowupZoo
+CAS.Numerics.prodErr BlowupZoo
+CAS.Numerics.productRow PDEAtlas BlowupZoo
+CAS.Numerics.quadForm_ge_of_ldltCheck PDEAtlas BlowupZoo
+CAS.Numerics.quadForm_ge_of_ldltRowCheck_div BlowupZoo
+CAS.Numerics.quadForm_ge_of_sylvester3 BlowupZoo
+CAS.Numerics.quadForm_nonneg_of_sylvester3SlotCheck BlowupZoo
+CAS.Numerics.quadForm_sandwich_nonneg_of_sandwichCheck BlowupZoo
+CAS.Numerics.quarterSinWeightApprox_eq BlowupZoo
+CAS.Numerics.quarterSinWeight_le_sinWeightUpper BlowupZoo
+CAS.Numerics.quarterTrapezoidWeight_le BlowupZoo
+CAS.Numerics.rangeAll_append BlowupZoo
+CAS.Numerics.rationalPolynomial BlowupZoo
+CAS.Numerics.rationalPolynomial_coeff BlowupZoo
+CAS.Numerics.rationalPolynomial_mul_eq BlowupZoo
+CAS.Numerics.rebiasSlot BlowupZoo
+CAS.Numerics.rebiasSlot_sub BlowupZoo
+CAS.Numerics.rootBounds PDEAtlas
+CAS.Numerics.rootBounds_mem PDEAtlas
+CAS.Numerics.rotationIterate BlowupZoo
+CAS.Numerics.rotationIterate_approx BlowupZoo
+CAS.Numerics.rotationPower BlowupZoo
+CAS.Numerics.rotationPower_sound BlowupZoo
+CAS.Numerics.rotationRows BlowupZoo
+CAS.Numerics.rotationRowsStrict BlowupZoo
+CAS.Numerics.rotationRowsStrict_eq BlowupZoo
+CAS.Numerics.rotationStep BlowupZoo
+CAS.Numerics.roundRowByHalving BlowupZoo
+CAS.Numerics.roundShift PDEAtlas BlowupZoo
+CAS.Numerics.roundSlotBiased BlowupZoo
+CAS.Numerics.roundSlotBiased_fits BlowupZoo
+CAS.Numerics.roundSlotBiased_fits' BlowupZoo
+CAS.Numerics.rpowBounds PDEAtlas
+CAS.Numerics.rpowBounds_fst_nonneg PDEAtlas
+CAS.Numerics.rpowBounds_mem PDEAtlas
+CAS.Numerics.sandwichCheck BlowupZoo
+CAS.Numerics.sandwichNumerator BlowupZoo
+CAS.Numerics.scaleRat_natInterval BlowupZoo
+CAS.Numerics.shiftRight_packSlots BlowupZoo
+CAS.Numerics.signedCoefficient BlowupZoo
+CAS.Numerics.signedCoefficient_encode PDEAtlas
+CAS.Numerics.signedFrac BlowupZoo
+CAS.Numerics.signedFrac_false BlowupZoo
+CAS.Numerics.signedFrac_true BlowupZoo
+CAS.Numerics.signedGuardCheck PDEAtlas BlowupZoo
+CAS.Numerics.signedMass PDEAtlas BlowupZoo
+CAS.Numerics.signedMass_nonneg PDEAtlas
+CAS.Numerics.signedMass_ofBlocks BlowupZoo
+CAS.Numerics.signedPolynomial PDEAtlas BlowupZoo
+CAS.Numerics.signedPolynomial_coeff PDEAtlas
+CAS.Numerics.signedPolynomial_mul_eq_of_packed BlowupZoo
+CAS.Numerics.signedProductCheck PDEAtlas BlowupZoo
+CAS.Numerics.signedProductCheck_of_zigzag BlowupZoo
+CAS.Numerics.signedProductCheck_sound PDEAtlas BlowupZoo
+CAS.Numerics.signedSlot PDEAtlas BlowupZoo
+CAS.Numerics.signedSlot_biasRow BlowupZoo
+CAS.Numerics.signedSlot_biasedPack PDEAtlas BlowupZoo
+CAS.Numerics.signedSlot_biasedRowsSum BlowupZoo
+CAS.Numerics.signedSlot_eq_decodeWordToGrid BlowupZoo
+CAS.Numerics.signedSlot_eq_sum_of_suffixChecks BlowupZoo
+CAS.Numerics.signedSlot_firstStage BlowupZoo
+CAS.Numerics.signedSlot_mergeRows PDEAtlas
+CAS.Numerics.signedSlot_packedMatMulRow PDEAtlas
+CAS.Numerics.signedSlot_packedRowCombination PDEAtlas BlowupZoo
+CAS.Numerics.signedSlot_packedRowCombination_slots BlowupZoo
+CAS.Numerics.signedSlot_productRow BlowupZoo
+CAS.Numerics.signedSlot_slotWindow BlowupZoo
+CAS.Numerics.signedSlot_stageOne BlowupZoo
+CAS.Numerics.signedSlot_twoStageRow BlowupZoo
+CAS.Numerics.signedSlot_twoStageRow_le BlowupZoo
+CAS.Numerics.signedWindow BlowupZoo
+CAS.Numerics.signedWindow_eq BlowupZoo
+CAS.Numerics.signedWindow_lt BlowupZoo
+CAS.Numerics.sinWeightExact BlowupZoo
+CAS.Numerics.sinWeightLower BlowupZoo
+CAS.Numerics.sinWeightNeg BlowupZoo
+CAS.Numerics.sinWeightPos BlowupZoo
+CAS.Numerics.sinWeightUpper BlowupZoo
+CAS.Numerics.slot PDEAtlas BlowupZoo
+CAS.Numerics.slotAbs BlowupZoo
+CAS.Numerics.slotBias PDEAtlas BlowupZoo
+CAS.Numerics.slotBias_eq BlowupZoo
+CAS.Numerics.slotBias_le_slotBias BlowupZoo
+CAS.Numerics.slotBias_lt BlowupZoo
+CAS.Numerics.slotBias_succ BlowupZoo
+CAS.Numerics.slotDot BlowupZoo
+CAS.Numerics.slotDot_eq BlowupZoo
+CAS.Numerics.slotList PDEAtlas
+CAS.Numerics.slotLookup BlowupZoo
+CAS.Numerics.slotLookup_eq BlowupZoo
+CAS.Numerics.slotMask BlowupZoo
+CAS.Numerics.slotMask_eq BlowupZoo
+CAS.Numerics.slotPair BlowupZoo
+CAS.Numerics.slotShift BlowupZoo
+CAS.Numerics.slotShift_floor BlowupZoo
+CAS.Numerics.slotWindow BlowupZoo
+CAS.Numerics.slot_add_mul_pow BlowupZoo
+CAS.Numerics.slot_add_mul_pow_slot BlowupZoo
+CAS.Numerics.slot_add_of_lt BlowupZoo
+CAS.Numerics.slot_constBlocks BlowupZoo
+CAS.Numerics.slot_div_two_pow BlowupZoo
+CAS.Numerics.slot_eq BlowupZoo
+CAS.Numerics.slot_eq_zero_of_lt BlowupZoo
+CAS.Numerics.slot_land BlowupZoo
+CAS.Numerics.slot_lt BlowupZoo
+CAS.Numerics.slot_mapRowByHalving BlowupZoo
+CAS.Numerics.slot_mod_two_pow BlowupZoo
+CAS.Numerics.slot_mul_eq_sum_biased BlowupZoo
+CAS.Numerics.slot_mul_middle_eq_sum BlowupZoo
+CAS.Numerics.slot_mul_window_eq_sum BlowupZoo
+CAS.Numerics.slot_of_lt BlowupZoo
+CAS.Numerics.slot_packSlots_mul BlowupZoo
+CAS.Numerics.slot_packedRoundComb BlowupZoo
+CAS.Numerics.slot_packed_eq BlowupZoo
+CAS.Numerics.slot_prefixPack BlowupZoo
+CAS.Numerics.slot_rotationRows_fst BlowupZoo
+CAS.Numerics.slot_rotationRows_snd BlowupZoo
+CAS.Numerics.slot_roundRowByHalving BlowupZoo
+CAS.Numerics.slot_slotWindow BlowupZoo
+CAS.Numerics.slot_slot_mul BlowupZoo
+CAS.Numerics.slot_sub_constSlots BlowupZoo
+CAS.Numerics.slot_window BlowupZoo
+CAS.Numerics.spread BlowupZoo
+CAS.Numerics.spreadBlocks BlowupZoo
+CAS.Numerics.spreadMask BlowupZoo
+CAS.Numerics.spreadSlots BlowupZoo
+CAS.Numerics.spreadSlots_biased BlowupZoo
+CAS.Numerics.spreadSlots_eq BlowupZoo
+CAS.Numerics.spread_packSlots BlowupZoo
+CAS.Numerics.sqrtPointBall PDEAtlas
+CAS.Numerics.sqrtPointBall_encloses PDEAtlas
+CAS.Numerics.square_natInterval BlowupZoo
+CAS.Numerics.stageOne BlowupZoo
+CAS.Numerics.sub_constSlots_mod_eq BlowupZoo
+CAS.Numerics.suffixBlockCheck BlowupZoo
+CAS.Numerics.suffixPaddingCheck BlowupZoo
+CAS.Numerics.sum_abs_mul_eq_weightedAbsSum BlowupZoo
+CAS.Numerics.sum_mul_eq_of_biased BlowupZoo
+CAS.Numerics.sum_packedConvolution BlowupZoo
+CAS.Numerics.sum_range_mul_eq BlowupZoo
+CAS.Numerics.sum_sum_mul_mul_le_of_abs_sub_le BlowupZoo
+CAS.Numerics.sylvester3Check BlowupZoo
+CAS.Numerics.sylvester3SlotCheck BlowupZoo
+CAS.Numerics.testBit_guardSlot BlowupZoo
+CAS.Numerics.testBit_packSlots BlowupZoo
+CAS.Numerics.testBit_slot BlowupZoo
+CAS.Numerics.tileEntryBiased BlowupZoo
+CAS.Numerics.toNat_slots_lt BlowupZoo
+CAS.Numerics.trapezoidDouble BlowupZoo
+CAS.Numerics.trapezoidDouble_eq BlowupZoo
+CAS.Numerics.trigPi BlowupZoo
+CAS.Numerics.trigPi_mod BlowupZoo
+CAS.Numerics.trigPi_sound BlowupZoo
+CAS.Numerics.trigPi_sound_mul BlowupZoo
+CAS.Numerics.trigTable BlowupZoo
+CAS.Numerics.trigTaylorCos BlowupZoo
+CAS.Numerics.trigTaylorSin BlowupZoo
+CAS.Numerics.twoStageRow BlowupZoo
+CAS.Numerics.weightedAbsSum BlowupZoo
+CAS.Numerics.window_lt BlowupZoo
+CAS.Numerics.zAbsSum BlowupZoo
+CAS.Numerics.zAbsSum_zPack BlowupZoo
+CAS.Numerics.zBias BlowupZoo
+CAS.Numerics.zBias_eq BlowupZoo
+CAS.Numerics.zConv BlowupZoo
+CAS.Numerics.zConv_eq_zero_of_le BlowupZoo
+CAS.Numerics.zConv_sparse_left BlowupZoo
+CAS.Numerics.zFits_of_abs_le BlowupZoo
+CAS.Numerics.zGuard BlowupZoo
+CAS.Numerics.zPack BlowupZoo
+CAS.Numerics.zPack_add BlowupZoo
+CAS.Numerics.zPack_add_const BlowupZoo
+CAS.Numerics.zPack_add_zBias BlowupZoo
+CAS.Numerics.zPack_biased_toNat BlowupZoo
+CAS.Numerics.zPack_congr BlowupZoo
+CAS.Numerics.zPack_extend BlowupZoo
+CAS.Numerics.zPack_mul BlowupZoo
+CAS.Numerics.zPack_mul' BlowupZoo
+CAS.Numerics.zPack_neg BlowupZoo
+CAS.Numerics.zPack_smul BlowupZoo
+CAS.Numerics.zPack_sparse BlowupZoo
+CAS.Numerics.zPack_sub BlowupZoo
+CAS.Numerics.zPack_truncate BlowupZoo
+CAS.Numerics.zPack_zero BlowupZoo
+CAS.Numerics.zRestrict BlowupZoo
+CAS.Numerics.zRestrict_zPack BlowupZoo
+CAS.Numerics.zRound BlowupZoo
+CAS.Numerics.zRound_zPack BlowupZoo
+CAS.Numerics.zShift BlowupZoo
+CAS.Numerics.zShift_eq BlowupZoo
+CAS.Numerics.zSlot BlowupZoo
+CAS.Numerics.zSum BlowupZoo
+CAS.Numerics.zSum_eq BlowupZoo
+CAS.Numerics.zUp BlowupZoo
+CAS.Numerics.zUp_eq BlowupZoo
+CAS.Numerics.zUp_zPack BlowupZoo
+CAS.Numerics.zigzagMagnitudes BlowupZoo
+CAS.Numerics.zigzagProductCheck BlowupZoo
+CAS.Polynomial.RealRoot.CauchyBoundCertificate.abs_lt_bound PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.GlobalPolynomialIsolationCertificate.toGlobalRootAtlas PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.GlobalRootAtlas.root_mem_region PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.IntervalNewtonCertificate.existsUnique_root PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.IntervalNewtonCertificate.nonzeroOn_of_excludesRoots_eq_true PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.IntervalNewtonCertificate.root_mem_image PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.PolynomialIsolationCertificate.toRootAtlas PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.RadicalCertificate.derivative_ne_zero_at_root PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.RadicalCertificate.evalReal_eq_zero_iff PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.RadicalCertificate.generate? PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.RootAtlas.root_mem_region PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.RootAtlas.transportAlongRadical PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.RootBracket.existsUnique_root PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.SturmCertificate.first_polynomial PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.SturmCertificate.recurrence_head_identity PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.SturmCertificate.recurrence_terminal_nonzero PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.SturmCertificate.second_polynomial PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.SturmCertificate.valid PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.SturmCertificate.variationDifference_eq_rootSet_ncard PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.SturmIntervalCertificate.existsUnique_root PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.SturmSubdivisionCertificate.nodeCount_eq_rootSet_ncard PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.SturmSubdivisionCertificate.toRootAtlas PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.centredInterval_sound PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.enclosure_sound PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.evalInterval_sound PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.nonzeroOn_of_rootFreeOn_eq_true PDEAtlas-Blueprint
+CAS.Polynomial.RealRoot.nonzeroOn_of_rootFree_eq_true PDEAtlas-Blueprint
+CAS.Polynomial.Sparse.Univariate PDEAtlas
+CAS.Polynomial.Sparse.Univariate.DivisionResult.polynomial_identity PDEAtlas-Blueprint
+CAS.Polynomial.Sparse.derivative PDEAtlas
+CAS.Polynomial.Sparse.evalRat PDEAtlas
+CAS.Polynomial.Sparse.evalReal PDEAtlas
+CAS.Polynomial.Sparse.evalReal_eq_mvPolyVal PDEAtlas
+CAS.Polynomial.Sparse.evalReal_ratCast PDEAtlas
+CAS.Polynomial.Sparse.eval_toRealPolynomial PDEAtlas
+CAS.Polynomial.Sparse.iteratedDeriv_evalReal PDEAtlas
+CAS.Polynomial.Sparse.toRealPolynomial PDEAtlas
+CAS.Polynomial.Sparse.toRealPolynomial_derivative PDEAtlas
+CAS.Polynomial.abs_nestedEval_le_nestedNorm PDEAtlas
+CAS.Polynomial.coeffAdd PDEAtlas
+CAS.Polynomial.coeffCosIntegralFrom PDEAtlas
+CAS.Polynomial.coeffDeriv PDEAtlas
+CAS.Polynomial.coeffEval PDEAtlas
+CAS.Polynomial.coeffEvalRat PDEAtlas
+CAS.Polynomial.coeffEval_coeffAdd PDEAtlas
+CAS.Polynomial.coeffEval_coeffMul PDEAtlas
+CAS.Polynomial.coeffEval_coeffPow PDEAtlas
+CAS.Polynomial.coeffEval_coeffScale PDEAtlas
+CAS.Polynomial.coeffEval_coeffTrim PDEAtlas
+CAS.Polynomial.coeffEval_cons PDEAtlas
+CAS.Polynomial.coeffEval_nil PDEAtlas
+CAS.Polynomial.coeffEval_ratCast PDEAtlas
+CAS.Polynomial.coeffIntegralFrom PDEAtlas
+CAS.Polynomial.coeffMul PDEAtlas
+CAS.Polynomial.coeffPow PDEAtlas
+CAS.Polynomial.coeffScale PDEAtlas
+CAS.Polynomial.coeffTrim PDEAtlas
+CAS.Polynomial.continuous_coeffEval PDEAtlas
+CAS.Polynomial.hasDerivAt_coeffEval PDEAtlas
+CAS.Polynomial.hasDerivAt_nestedEval PDEAtlas
+CAS.Polynomial.hasDerivAt_nestedEval_inner PDEAtlas
+CAS.Polynomial.hasDerivAt_nestedEval_outer PDEAtlas
+CAS.Polynomial.integral_coeffEval_cos PDEAtlas
+CAS.Polynomial.integral_coeffEval_cos_mul_sin PDEAtlas
+CAS.Polynomial.listHornerEval PDEAtlas
+CAS.Polynomial.listHornerEval_eq_sum PDEAtlas
+CAS.Polynomial.listHornerEval_nil PDEAtlas
+CAS.Polynomial.nestedAdd PDEAtlas
+CAS.Polynomial.nestedDerivInner PDEAtlas
+CAS.Polynomial.nestedDerivOuter PDEAtlas
+CAS.Polynomial.nestedEval PDEAtlas
+CAS.Polynomial.nestedEval_cons PDEAtlas
+CAS.Polynomial.nestedEval_nestedAdd PDEAtlas
+CAS.Polynomial.nestedEval_nestedMulInner PDEAtlas
+CAS.Polynomial.nestedEval_nestedScale PDEAtlas
+CAS.Polynomial.nestedEval_nestedShift PDEAtlas
+CAS.Polynomial.nestedEval_nestedTrim PDEAtlas
+CAS.Polynomial.nestedEval_nil PDEAtlas
+CAS.Polynomial.nestedMulInner PDEAtlas
+CAS.Polynomial.nestedNorm PDEAtlas
+CAS.Polynomial.nestedNorm_nonneg PDEAtlas
+CAS.Polynomial.nestedScale PDEAtlas
+CAS.Polynomial.nestedShift PDEAtlas
+CAS.Polynomial.nestedTrim PDEAtlas
+CAS.Scalar.CheckedResidual.analyticRequirements PDEAtlas
+CAS.Scalar.CheckedResidual.analyticSideCondition_of_requirements PDEAtlas
+CAS.Scalar.CheckedResidual.residual_eval_eq_zero_of_normalized_eq_zero PDEAtlas
+CAS.Scalar.Unknown PDEAtlas
+CAS.Scalar.ansatz PDEAtlas
+CAS.Scalar.check PDEAtlas
+CAS.Scalar.heat1D PDEAtlas
+CAS.Scalar.heatSpatial PDEAtlas
+CAS.Scalar.helmholtz1D PDEAtlas
+CAS.Scalar.helmholtzSpatial PDEAtlas
+CAS.Scalar.laplace PDEAtlas
+CAS.Scalar.laplaceResidual PDEAtlas
+CAS.Scalar.poisson PDEAtlas
+CAS.Scalar.poissonResidual PDEAtlas
+CAS.Scalar.residual PDEAtlas
+CAS.Scalar.semanticAnsatz PDEAtlas
+CAS.Scalar.spatialLaplacian PDEAtlas
+CAS.Scalar.spatialLaplacian_cons PDEAtlas
+CAS.Scalar.spatialLaplacian_nil PDEAtlas
+CAS.Scalar.u PDEAtlas
+CAS.Scalar.wave1D PDEAtlas
+CAS.Splines.HermiteData PDEAtlas BlowupZoo
+CAS.Splines.HermiteData.mk PDEAtlas
+CAS.Splines.HermiteData.polynomialData PDEAtlas BlowupZoo
+CAS.Splines.HermiteData.slope PDEAtlas BlowupZoo
+CAS.Splines.HermiteData.slope_left PDEAtlas BlowupZoo
+CAS.Splines.HermiteData.slope_right PDEAtlas BlowupZoo
+CAS.Splines.HermiteData.toSpline PDEAtlas BlowupZoo
+CAS.Splines.HermiteData.value PDEAtlas BlowupZoo
+CAS.Splines.HermiteData.value_left PDEAtlas
+CAS.Splines.HermiteData.value_right PDEAtlas BlowupZoo
+CAS.Splines.PolynomialSpline PDEAtlas BlowupZoo
+CAS.Splines.PolynomialSpline.matchesJets PDEAtlas BlowupZoo
+CAS.Splines.PolynomialSpline.toPolynomialSplineData PDEAtlas
+CAS.Splines.PolynomialSplineData PDEAtlas
+CAS.Splines.PolynomialSplineData.MatchesJetsThrough PDEAtlas
+CAS.Splines.PolynomialSplineData.adjacentEvaluator PDEAtlas
+CAS.Splines.PolynomialSplineData.adjacentJetEvaluator PDEAtlas
+CAS.Splines.PolynomialSplineData.contDiff_adjacentEvaluator PDEAtlas
+CAS.Splines.PolynomialSplineData.continuous_polynomialJet PDEAtlas
+CAS.Splines.PolynomialSplineData.degree_le PDEAtlas BlowupZoo
+CAS.Splines.PolynomialSplineData.hasDerivAt_polynomialJet PDEAtlas BlowupZoo
+CAS.Splines.PolynomialSplineData.iteratedDeriv_adjacentEvaluator PDEAtlas
+CAS.Splines.PolynomialSplineData.piece PDEAtlas BlowupZoo
+CAS.Splines.PolynomialSplineData.value_eq_of_matchesJetsThrough PDEAtlas
+CAS.Splines.StrictKnotMesh PDEAtlas BlowupZoo
+CAS.Splines.StrictKnotMesh.knot PDEAtlas BlowupZoo
+CAS.Splines.StrictKnotMesh.panelLeft PDEAtlas BlowupZoo
+CAS.Splines.StrictKnotMesh.panelLeft_lt_panelRight PDEAtlas BlowupZoo
+CAS.Splines.StrictKnotMesh.panelRight PDEAtlas BlowupZoo
+CAS.Splines.StrictKnotMesh.panelRight_eq_panelLeft_rightNeighbor PDEAtlas
+CAS.Splines.StrictKnotMesh.rightNeighbor PDEAtlas BlowupZoo
+CAS.Splines.StrictKnotMesh.strictMono_knot PDEAtlas BlowupZoo
+CAS.Splines.differentiateCubicCoefficients BlowupZoo
+CAS.Splines.hermitePolynomial PDEAtlas BlowupZoo
+CAS.Splines.hermitePolynomial_eval PDEAtlas BlowupZoo
+CAS.Splines.hermitePolynomial_eval_translated BlowupZoo
+CAS.Splines.hermiteValue PDEAtlas BlowupZoo
+CAS.Splines.hermiteValue_one PDEAtlas
+CAS.Splines.hermiteValue_zero PDEAtlas
+CAS.Splines.iterate_derivative_eval_translated BlowupZoo
+CAS.Splines.polynomialJet PDEAtlas BlowupZoo
+CAS.Splines.polynomialJet_add PDEAtlas
+CAS.Splines.polynomialJet_eq_of_pow_dvd_sub PDEAtlas
+CAS.Splines.polynomialJet_eq_zero_of_degree_lt PDEAtlas
+CAS.Splines.polynomialJet_succ PDEAtlas BlowupZoo
+CAS.Splines.polynomialJet_zero PDEAtlas BlowupZoo
+CAS.Splines.polynomial_derivative_eval_translated BlowupZoo
+CAS.Splines.translatedHermiteCoefficients BlowupZoo
+CAS.Tactic.Certificate.closeFromLocalCertificates PDEAtlas-Blueprint
+CAS.Tactic.ConditionalRewrites.addSquareRootFacts PDEAtlas
+CAS.Tactic.DerivativeBridge.Derivative PDEAtlas
+CAS.Tactic.DerivativeBridge.Derivative.function PDEAtlas
+CAS.Tactic.DerivativeBridge.Derivative.parameters PDEAtlas
+CAS.Tactic.DerivativeBridge.Derivative.pointCoordinates PDEAtlas
+CAS.Tactic.DerivativeBridge.Derivative.proof PDEAtlas
+CAS.Tactic.DerivativeBridge.Derivative.value PDEAtlas
+CAS.Tactic.DerivativeBridge.applyBridge PDEAtlas
+CAS.Tactic.DerivativeBridge.closeMatchingGoals PDEAtlas
+CAS.Tactic.DerivativeBridge.coordinateTerms PDEAtlas
+CAS.Tactic.DerivativeBridge.dependentLocalDefinitions PDEAtlas
+CAS.Tactic.DerivativeBridge.euclideanDimension? PDEAtlas
+CAS.Tactic.DerivativeBridge.euclideanSpace PDEAtlas
+CAS.Tactic.DerivativeBridge.exposeCheckedExpressions PDEAtlas
+CAS.Tactic.DerivativeBridge.literalDimension? PDEAtlas
+CAS.Tactic.DerivativeBridge.mathlibCleanup PDEAtlas
+CAS.Tactic.DerivativeBridge.operation PDEAtlas
+CAS.Tactic.DerivativeBridge.statedLocalDefinitions PDEAtlas
+CAS.Tactic.DerivativeBridge.transportToFunction PDEAtlas
+CAS.Tactic.DerivativeBridge.unfoldEvaluation PDEAtlas
+CAS.Tactic.DerivativeBridge.unfoldLocalDefinitionsWhile PDEAtlas
+CAS.Tactic.DerivativeRegistry.Backend PDEAtlas
+CAS.Tactic.DerivativeRegistry.Request.close PDEAtlas
+CAS.Tactic.DerivativeRegistry.Request.equation PDEAtlas
+CAS.Tactic.DerivativeRegistry.Request.isGoal PDEAtlas
+CAS.Tactic.DerivativeRegistry.Request.isTerm PDEAtlas
+CAS.Tactic.DerivativeRegistry.Request.reflected PDEAtlas
+CAS.Tactic.DerivativeRegistry.Response.closed PDEAtlas
+CAS.Tactic.DerivativeRegistry.Response.equation PDEAtlas
+CAS.Tactic.DerivativeRegistry.Response.matches PDEAtlas
+CAS.Tactic.DerivativeRewrite.closeFunctionGoal PDEAtlas
+CAS.Tactic.DerivativeRewrite.finishEquation PDEAtlas
+CAS.Tactic.DerivativeRewrite.operation PDEAtlas
+CAS.Tactic.Explanation.UncheckedExplanationStep PDEAtlas
+CAS.Tactic.Explanation.UncheckedExplanationStep.ofProof PDEAtlas
+CAS.Tactic.Explanation.kernelCheckedProof PDEAtlas
+CAS.Tactic.ProofCarrier.runClosingMainGoal PDEAtlas
+CAS.Tactic.ProofCarrier.tacticEntry PDEAtlas
+CAS.Tactic.RealExpression.EmbeddedReflection PDEAtlas
+CAS.Tactic.RealExpression.EmbeddedReflection.coordinates PDEAtlas
+CAS.Tactic.RealExpression.EmbeddedReflection.expression PDEAtlas
+CAS.Tactic.RealExpression.EmbeddedReflection.parameterCount PDEAtlas
+CAS.Tactic.RealExpression.EmbeddedReflection.parameters PDEAtlas
+CAS.Tactic.RealExpression.reflectEmbedded PDEAtlas
+CAS.Verified.Expr PDEAtlas PDEAtlas-Blueprint BlowupZoo
+CAS.Verified.Expr.Alg.NormResult.expr PDEAtlas
+CAS.Verified.Expr.Alg.NormResult.nonzero PDEAtlas
+CAS.Verified.Expr.Alg.SideHolds PDEAtlas
+CAS.Verified.Expr.Alg.ZeroCheck.sideHolds_of_nonzero_eq_nil PDEAtlas
+CAS.Verified.Expr.Alg.eval_eq_zero_of_normalizeWithSide_eq_zero PDEAtlas-Blueprint
+CAS.Verified.Expr.Alg.eval_eq_zero_of_normalize_eq_zero PDEAtlas-Blueprint
+CAS.Verified.Expr.Alg.eval_mvNormalizeExpr?_eq PDEAtlas
+CAS.Verified.Expr.Alg.eval_normalize PDEAtlas
+CAS.Verified.Expr.Alg.mvNormalizeExpr? PDEAtlas
+CAS.Verified.Expr.Alg.mvPolyOf? PDEAtlas
+CAS.Verified.Expr.Alg.mvPolyVal_eq_eval_of_mvPolyOf? PDEAtlas
+CAS.Verified.Expr.Alg.normalize PDEAtlas
+CAS.Verified.Expr.Alg.proportionality?_sound PDEAtlas-Blueprint
+CAS.Verified.Expr.DiffDerivation PDEAtlas
+CAS.Verified.Expr.DiffDerivation.build PDEAtlas
+CAS.Verified.Expr.DiffDerivation.fderiv_apply_single_eq_eval_rawDerivative PDEAtlas
+CAS.Verified.Expr.DiffDerivation.fderiv_apply_single_eq_eval_simplifiedDerivative PDEAtlas
+CAS.Verified.Expr.DiffDerivation.rawDerivative PDEAtlas
+CAS.Verified.Expr.DiffDerivation.simplifiedDerivative PDEAtlas
+CAS.Verified.Expr.IsPolynomial PDEAtlas
+CAS.Verified.Expr.IsPolynomial.diff PDEAtlas
+CAS.Verified.Expr.IsPolynomial.mapVars PDEAtlas
+CAS.Verified.Expr.IsPolynomial.simplify PDEAtlas
+CAS.Verified.Expr.IsPolynomial.validAt PDEAtlas
+CAS.Verified.Expr.RationalCanonical.route_sound PDEAtlas-Blueprint
+CAS.Verified.Expr.SideClaimRoute PDEAtlas-Blueprint
+CAS.Verified.Expr.SideClaimRoute.exact PDEAtlas-Blueprint
+CAS.Verified.Expr.SideClaimRoute.nonzero PDEAtlas
+CAS.Verified.Expr.SideClaimRoute.rhs PDEAtlas
+CAS.Verified.Expr.SideClaimRoute.sound_of_nonzero_eq_nil PDEAtlas-Blueprint
+CAS.Verified.Expr.SymVar PDEAtlas
+CAS.Verified.Expr.SymVar.expr PDEAtlas
+CAS.Verified.Expr.SymVar.idx PDEAtlas
+CAS.Verified.Expr.ValidAt PDEAtlas
+CAS.Verified.Expr.ValidityRequirements.Holds PDEAtlas
+CAS.Verified.Expr.ValidityRequirements.holds_of_eq PDEAtlas
+CAS.Verified.Expr.ValidityRequirements.nonzero PDEAtlas
+CAS.Verified.Expr.ValidityRequirements.positive PDEAtlas
+CAS.Verified.Expr.acos PDEAtlas BlowupZoo
+CAS.Verified.Expr.add PDEAtlas BlowupZoo
+CAS.Verified.Expr.addList PDEAtlas
+CAS.Verified.Expr.asin PDEAtlas BlowupZoo
+CAS.Verified.Expr.atan PDEAtlas BlowupZoo
+CAS.Verified.Expr.closedCurl2 PDEAtlas
+CAS.Verified.Expr.closedCurl3 PDEAtlas
+CAS.Verified.Expr.closedDivergence PDEAtlas
+CAS.Verified.Expr.closedGradient PDEAtlas
+CAS.Verified.Expr.closedGradient_eval_eq_gradient PDEAtlas-Blueprint
+CAS.Verified.Expr.closedLaplacian PDEAtlas
+CAS.Verified.Expr.closedPartial PDEAtlas
+CAS.Verified.Expr.conditionFree PDEAtlas
+CAS.Verified.Expr.contDiffAt_eval PDEAtlas PDEAtlas-Blueprint
+CAS.Verified.Expr.contDiffOn_eval_paramEmbed PDEAtlas-Blueprint
+CAS.Verified.Expr.contDiffOn_univariateEval PDEAtlas-Blueprint
+CAS.Verified.Expr.contDiff_eval_lineEmbed PDEAtlas-Blueprint
+CAS.Verified.Expr.contDiff_eval_paramEmbed PDEAtlas-Blueprint
+CAS.Verified.Expr.containsReal_evalZero? PDEAtlas-Blueprint
+CAS.Verified.Expr.containsReal_loweredIntervals PDEAtlas-Blueprint
+CAS.Verified.Expr.containsVar PDEAtlas BlowupZoo
+CAS.Verified.Expr.cos PDEAtlas BlowupZoo
+CAS.Verified.Expr.diff PDEAtlas
+CAS.Verified.Expr.differentiableAt_eval PDEAtlas-Blueprint
+CAS.Verified.Expr.differentiable_eval_lineEmbed PDEAtlas-Blueprint
+CAS.Verified.Expr.div PDEAtlas BlowupZoo
+CAS.Verified.Expr.e PDEAtlas BlowupZoo
+CAS.Verified.Expr.eval PDEAtlas
+CAS.Verified.Expr.evalRat? BlowupZoo
+CAS.Verified.Expr.evalRat?_sound PDEAtlas-Blueprint
+CAS.Verified.Expr.eval_addList PDEAtlas
+CAS.Verified.Expr.eval_addList_ofFn PDEAtlas
+CAS.Verified.Expr.eval_div_operator PDEAtlas
+CAS.Verified.Expr.eval_mapVars PDEAtlas
+CAS.Verified.Expr.eval_mkRatConst PDEAtlas
+CAS.Verified.Expr.eval_mul_operator PDEAtlas
+CAS.Verified.Expr.eval_pow_operator PDEAtlas
+CAS.Verified.Expr.eval_realPowerDeepCleanup PDEAtlas-Blueprint
+CAS.Verified.Expr.eval_simplify PDEAtlas
+CAS.Verified.Expr.eval_sub_operator PDEAtlas
+CAS.Verified.Expr.eval_sum PDEAtlas
+CAS.Verified.Expr.eval_sumFin PDEAtlas
+CAS.Verified.Expr.eval_toFloatLib PDEAtlas PDEAtlas-Blueprint
+CAS.Verified.Expr.eval_trigSimplify PDEAtlas
+CAS.Verified.Expr.eventually_validAt PDEAtlas
+CAS.Verified.Expr.eventually_validAt_paramEmbed PDEAtlas
+CAS.Verified.Expr.exactValue? PDEAtlas
+CAS.Verified.Expr.exp PDEAtlas BlowupZoo
+CAS.Verified.Expr.fderiv_eval_eq PDEAtlas
+CAS.Verified.Expr.hasFDerivAt_eval PDEAtlas
+CAS.Verified.Expr.hasFDerivAt_eval_paramEmbed PDEAtlas
+CAS.Verified.Expr.hasFDerivAt_paramEmbed PDEAtlas
+CAS.Verified.Expr.int PDEAtlas BlowupZoo
+CAS.Verified.Expr.isPolynomial_addList PDEAtlas
+CAS.Verified.Expr.isWellFormed PDEAtlas-Blueprint
+CAS.Verified.Expr.iteratedDerivWithin_univariateEval_eq_symbolicDerivative PDEAtlas-Blueprint
+CAS.Verified.Expr.iteratedDiff PDEAtlas
+CAS.Verified.Expr.log PDEAtlas BlowupZoo
+CAS.Verified.Expr.mapVars PDEAtlas BlowupZoo
+CAS.Verified.Expr.mkIntConst PDEAtlas
+CAS.Verified.Expr.mkNeg PDEAtlas
+CAS.Verified.Expr.mkRatConst PDEAtlas
+CAS.Verified.Expr.mul PDEAtlas BlowupZoo
+CAS.Verified.Expr.nat PDEAtlas BlowupZoo
+CAS.Verified.Expr.neg PDEAtlas BlowupZoo
+CAS.Verified.Expr.paramEmbed PDEAtlas
+CAS.Verified.Expr.paramEmbedL_single PDEAtlas
+CAS.Verified.Expr.pi PDEAtlas BlowupZoo
+CAS.Verified.Expr.pow PDEAtlas BlowupZoo
+CAS.Verified.Expr.rat PDEAtlas BlowupZoo
+CAS.Verified.Expr.renderWith BlowupZoo
+CAS.Verified.Expr.rpow PDEAtlas BlowupZoo
+CAS.Verified.Expr.sideHolds_of_compactNonzero PDEAtlas-Blueprint
+CAS.Verified.Expr.simplify PDEAtlas
+CAS.Verified.Expr.sin PDEAtlas BlowupZoo
+CAS.Verified.Expr.sqrt PDEAtlas BlowupZoo
+CAS.Verified.Expr.sub PDEAtlas BlowupZoo
+CAS.Verified.Expr.sum PDEAtlas
+CAS.Verified.Expr.sumFin PDEAtlas
+CAS.Verified.Expr.symbolicFDeriv_apply_single_eq_diff_eval PDEAtlas
+CAS.Verified.Expr.toFloatLib PDEAtlas
+CAS.Verified.Expr.trigPostTop PDEAtlas
+CAS.Verified.Expr.trigSimplify PDEAtlas
+CAS.Verified.Expr.univariateEval PDEAtlas
+CAS.Verified.Expr.var PDEAtlas BlowupZoo
+CAS.dotProduct PDEAtlas
+CAS.dotProduct_eval_eq_sum PDEAtlas
+CAS.frobeniusInnerProduct PDEAtlas
+CAS.frobeniusInnerProduct_eval_eq_sum PDEAtlas
+CAS.hessian PDEAtlas
+CAS.integrate? PDEAtlas-Blueprint
+CAS.jacobian PDEAtlas
+CAS.radius3 PDEAtlas
+CAS.radiusSq3 PDEAtlas
+CAS.rotationField2 PDEAtlas
+CAS.rotationField2_validAt PDEAtlas
+CAS.symmetricGradient PDEAtlas
+CAS.tensorDivergence PDEAtlas
+CAS.vectorLaplacian PDEAtlas
+Polynomial.ofFn_map_coefficients BlowupZoo
+Polynomial.ofFn_mul_scalar BlowupZoo

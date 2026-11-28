@@ -1,0 +1,13 @@
+# A package that requires SymLean and computes every `cega` call of its modules with binary64
+# floats: the one line under `[leanOptions]`. `run.sh` puts SymLean next to the package.
+name = "fixed"
+
+[leanOptions]
+weak.cega.arithmetic = "binary64"
+
+[[require]]
+name = "SymLean"
+path = "../symlean"
+
+[[lean_lib]]
+name = "Bounds"

@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+# Copyright (c) 2026 SymLean Team. All rights reserved.
+# Released under Apache 2.0 license as described in the file LICENSE.
+"""A deliberately wrong Singular for the trust-boundary tests (tests/oracle/Refusals.lean).
+
+SymLean runs it as `Singular -q --no-rc --no-warn --cpus=1` with the script on standard input,
+and reads its records on standard output. The script ends with the procedure `symleanAnswer`,
+which defines the polynomials of the request and calls the procedure of its task. By these
+polynomials, the answers are wrong, use an undeclared variable, are not polynomials, come in the
+wrong order, or are the messages of a Singular that stopped with an error and exited with code 0.
+"""
+
+import sys
+
+script = sys.stdin.read()
+# The statements of the request, after the procedures that every script holds.
+request = script.split("proc symleanAnswer()", 1)[-1].replace(" ", "")
+
+
+def out(*records):
+    for record in records:
+        print("@@", record)
+
+
+if "polyp=((v0^2)-number(1));" in request:
+    out("constant 1", "factor 1 z-1", "factor 1 z+1")
+elif "polyp=((v0^2)-number(4));" in request:
+    # The first lines of what Singular prints when a statement of the procedure fails: no
+    # record, exit code 0.
+    print("   ? div. by 0")
+    print("   ? error occurred in or before ::symleanAnswer line 8: `  poly p = ...;`")
+    print("   ? leaving ::symleanAnswer (0)")
+elif "polyp=((v0^2)-number(9));" in request:
+    sys.exit(127)
+elif "polyp=((v0^2)-number(16));" in request:
+    out("constant 1", "factor 1 sin(v0)", "factor 1 v0+4")
+elif "polyp=" in request:
+    # x ^ 4 + 4 = (x^2 - 2x + 2)(x^2 + 2x + 2); the constant term is wrong here.
+    out("constant 1", "factor 1 v0^2-2*v0+1", "factor 1 v0^2+2*v0+2")
+elif "symleanGroebner(" in request and "idealI=((v0^2)-v1)," in request:
+    out("to_basis 1 ; 0", "basis v0", "from_basis 1", "from_basis 1")
+elif "symleanGroebner(" in request:
+    # The ideal of x ^ 2 + y ^ 2 - 5 and x * y - 2 is not the ideal of x.
+    out("basis v0", "to_basis 1 ; 0", "from_basis 1", "from_basis 1")
+elif "polyf=(v0-number(2));" in request:
+    out("power 1", "cofactors sin(v0)")
+elif "polyf=(v0-number(3));" in request:
+    out("unsupported singular found no power of the target up to 4 in the ideal")
+elif "polyf=" in request:
+    # Cofactors that do not combine the hypotheses into the goal.
+    generators = request.split("idealI=", 1)[1].split(";", 1)[0].count(",") + 1
+    out("power 1", "cofactors " + " ; ".join(["1"] * generators))
+else:
+    out("unsupported no such task")
